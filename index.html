@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURÉLIS | L'art du mur</title>
+  <meta name="description" content="Sculptures murales taillées à la main à Casablanca. Art paramétrique en bois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background-color: #F8F7F4;
+      color: #000000;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 30% center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 60px;
+      left: 40px;
+      right: 40px;
+      color: #FFFFFF;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 42px;
+      font-weight: 300;
+      letter-spacing: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      letter-spacing: 3px;
+      opacity: 0.9;
+    }
+
+    /* BRAND STATEMENT */
+    .statement {
+      padding: 100px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .statement-line {
+      width: 1px;
+      height: 60px;
+      background-color: #D4D2CD;
+      margin: 0 auto 50px;
+    }
+
+    .statement h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .statement p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.9;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* COLLECTION */
+    .collection {
+      padding: 60px 20px 100px;
+    }
+
+    .collection-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-align: center;
+      margin-bottom: 60px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .collection-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .product {
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    /* CRAFT SECTION */
+    .craft {
+      width: 100%;
+      height: 70vh;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .craft-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* CONTACT / FOOTER */
+    .contact {
+      background-color: #000000;
+      color: #FFFFFF;
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .contact-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    .contact-divider {
+      width: 60px;
+      height: 1px;
+      background-color: #444;
+      margin: 0 auto 30px;
+    }
+
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      font-style: italic;
+      letter-spacing: 2px;
+      margin-bottom: 50px;
+      opacity: 0.8;
+    }
+
+    .contact-links {
+      margin-bottom: 50px;
+    }
+
+    .contact-links a {
+      display: block;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      opacity: 1;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      padding: 16px 50px;
+      border: 1px solid #FFFFFF;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      margin-bottom: 50px;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #FFFFFF;
+      color: #000000;
+    }
+
+    .contact-info {
+      font-size: 12px;
+      letter-spacing: 1px;
+      opacity: 0.6;
+      line-height: 2;
+    }
+
+    .contact-info a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 28px;
+        letter-spacing: 8px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
+      .hero-content {
+        bottom: 40px;
+        left: 25px;
+        right: 25px;
+      }
+
+      .statement {
+        padding: 80px 25px;
+      }
+
+      .statement h2 {
+        font-size: 22px;
+      }
+
+      .contact {
+        padding: 80px 25px;
+      }
+
+      .contact-logo {
+        font-size: 24px;
+        letter-spacing: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img 
+      src="https://res.cloudinary.com/dsh3tzujw/image/upload/v1778672315/Edit_the_supplied_image_into_a_polished_poolside_v-1778671448318_oi3k3j.png" 
+      alt="AURÉLIS - Sculpture murale Sospiro" 
+      class="hero-image"
+      loading="eager"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="logo">AURÉLIS</h1>
+      <p class="tagline">L'art du mur.</p>
+    </div>
+  </section>
+
+  <!-- BRAND STATEMENT -->
+  <section class="statement">
+    <div class="statement-line"></div>
+    <h2>Sculptures murales taillées à la main à Casablanca.</h2>
+    <p>Chaque pièce est une œuvre unique, façonnée avec précision dans notre atelier. Le bois prend forme sous nos mains pour transformer vos murs en expressions d'art.</p>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection">
+    <p class="collection-title">Collection</p>
+    <div class="collection-grid">
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dsh3tzujw/image/upload/v1778673052/Edit_the_provided_reference_image_by_preserving_th-1778672635191_srrpgi.png" 
+          alt="Sospiro" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Sospiro</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621743/walking-horse-hero_nwgynw.webp" 
+          alt="Cavale" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Cavale</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621647/female-open-mouth-hero_uuvbcx.webp" 
+          alt="Parole" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Parole</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621597/decor-face-hero_fbaqgq.webp" 
+          alt="Visage" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Visage</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621683/monkey-face-hero_rplds2.webp" 
+          alt="Primo" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Primo</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621666/map-hero_jdrunx.webp" 
+          alt="Terreno" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Terreno</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621648/half-face-topangle_v9lsv1.webp" 
+          alt="Profilo" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Profilo</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621601/abstract-wood-hero_tvou7v.webp" 
+          alt="Ondula" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Ondula</p>
+      </div>
+
+      <div class="product">
+        <img 
+          src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621667/moai%CC%88-3-pieces-combo_eeleeh.webp" 
+          alt="Sentinelle" 
+          class="product-image"
+          loading="lazy"
+        >
+        <p class="product-name">Sentinelle</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CRAFT -->
+  <section class="craft">
+    <img 
+      src="https://res.cloudinary.com/dlo4exspj/image/upload/v1771621730/walking-horse-close_up_1_gbkjkp.webp" 
+      alt="Détail sculpture bois" 
+      class="craft-image"
+      loading="lazy"
+    >
+  </section>
+
+  <!-- CONTACT -->
+  <footer class="contact">
+    <p class="contact-logo">AURÉLIS</p>
+    <div class="contact-divider"></div>
+    <p class="contact-tagline">L'art du mur.</p>
+    
+    <div class="contact-links">
+      <a href="https://instagram.com/aurelis.maroc" target="_blank">@aurelis.maroc</a>
+      <a href="https://aurelis.ma">www.aurelis.ma</a>
+    </div>
+
+    <a 
+      href="https://wa.me/212661420939?text=Bonjour%2C%20je%20suis%20intéressé(e)%20par%20vos%20sculptures." 
+      class="whatsapp-btn"
+      target="_blank"
+    >
+      Nous contacter
+    </a>
+
+    <div class="contact-info">
+      <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
+      <a href="tel:+212607597526">+212 6 07 59 75 26</a><br><br>
+      Casablanca, Maroc
+    </div>
+  </footer>
+
+</body>
+</html>
