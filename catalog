@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AURÉLIS — Collection 2026. Tables sculptées à la main à Casablanca.">
+<meta property="og:title" content="AURÉLIS — Collection 2026">
+<meta property="og:description" content="L'art de la forme. Tables fabriquées à la main à Casablanca.">
+<meta property="og:type" content="website">
+<title>AURÉLIS — Collection 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:#1a1a1a; font-family:'Inter',sans-serif; overflow:hidden; }
+  .viewer { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:30px 20px 70px; }
+  .book {
+    display:flex; gap:0; height:100%; max-height:92vh;
+    aspect-ratio: 1588 / 1123;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    transition: aspect-ratio 0.2s;
+  }
+  .book.single { aspect-ratio: 794 / 1123; }
+  .page { flex:1; height:100%; background:#fff; overflow:hidden; position:relative; }
+  .page svg { width:100%; height:100%; display:block; }
+  .page.left { box-shadow: inset -8px 0 20px -10px rgba(0,0,0,0.25); }
+  .page.right { box-shadow: inset 8px 0 20px -10px rgba(0,0,0,0.25); }
+
+  .nav-zone { position:fixed; top:0; bottom:70px; width:15%; cursor:pointer; z-index:10; }
+  .nav-zone.left { left:0; }
+  .nav-zone.right { right:0; }
+  .nav-zone:hover::after { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:36px; opacity:0.5; font-family:serif; }
+  .nav-zone.left:hover::after { content:'‹'; left:25px; }
+  .nav-zone.right:hover::after { content:'›'; right:25px; }
+
+  .toolbar {
+    position:fixed; bottom:0; left:0; right:0; height:55px; background:#0d0d0d;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    color:#888; font-size:11px; letter-spacing:2px; z-index:20;
+  }
+  .toolbar button {
+    background:none; border:1px solid #444; color:#ccc;
+    padding:8px 14px; cursor:pointer; font-family:'Inter',sans-serif;
+    font-size:10px; letter-spacing:2px;
+  }
+  .toolbar button:hover { border-color:#fff; color:#fff; }
+  .counter { font-family:'JetBrains Mono',monospace; min-width:90px; text-align:center; }
+
+  @media (max-width: 768px) {
+    .viewer { padding:15px 10px 60px; }
+    .book { aspect-ratio: 794 / 1123 !important; max-height:88vh; }
+    .page.left, .page.right { box-shadow:none; }
+    .book .page:not(.mobile-show) { display:none; }
+    .nav-zone { width:40%; }
+    .nav-zone:hover::after { display:none; }
+    .toolbar { gap:10px; height:50px; }
+    .toolbar button { padding:6px 10px; font-size:9px; }
+  }
+
+  .print-container { display:none; }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { background:#fff !important; height:auto; overflow:visible; }
+    .viewer, .toolbar, .nav-zone { display:none !important; }
+    .print-container { display:block !important; }
+    .print-container .page { width:210mm; height:297mm; page-break-after: always; box-shadow:none !important; overflow:hidden; }
+    .print-container .page:last-child { page-break-after:auto; }
+    .print-container .page svg { width:100%; height:100%; display:block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="viewer"><div class="book" id="book"></div></div>
+<div class="print-container" id="printContainer"></div>
+
+<div class="nav-zone left" onclick="prev()"></div>
+<div class="nav-zone right" onclick="next()"></div>
+
+<div class="toolbar">
+  <button onclick="prev()">←</button>
+  <span class="counter" id="counter">00 / 27</span>
+  <button onclick="next()">→</button>
+  <button onclick="preparePrint()">PDF</button>
+</div>
+
+<script>
+const IMG = {
+  torsionHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/twisted_table_hero_qmewze.webp',
+  torsionSide:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392873/twisted_table_side_jz9hw2.webp',
+  sylveHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779393131/forest_table_hero_wrwfql.webp',
+  sylveLife:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779393130/forest_table_lifestyle_khshyj.webp',
+  sylveSide:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779393128/forest_table_side_closeup_mn5t0o.webp',
+  sylveClose:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779393124/forest_table_closeup_efgwwo.webp',
+  mielHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779395903/candy_hero_iocopp.webp',
+  mielClose:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779395899/candy_closeup_ur6vhw.webp',
+  arachneHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779395971/spider_table_hero_hj3ph2.webp',
+  arachneModel:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779395975/spider_table_model_ogse0x.webp',
+  arachneOther:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779395963/spider_table_other_color_ruh47m.webp',
+  vegaHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779379620/v_table_hero_buw0zb.webp',
+  vegaTop:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779379636/v_table_top_view_vgwcyw.webp',
+  serpaHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779379436/snake_table_hero_vjsy3x.jpg',
+  serpaUse:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779379443/snake_table_in_use_fx32n1.webp',
+  seuilHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392794/v_entrance_table_herp_rmbbrt.jpg',
+  seuilSide:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392790/v_entrance_table_side_rveoio.jpg',
+  apexHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779389975/a_table_hero_jladkf.webp',
+  apexLife:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779389973/a_table_life_style_ivvazr.webp',
+  ondeAlone:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_alone_y2kwo8.webp',
+  ondeChair:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_with_chair_c5ohps.webp',
+  basseHero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392414/coffee_table_hero_itnlmg.jpg',
+  basseAngle:'https://res.cloudinary.com/dlo4exspj/image/upload/v1779392401/coffee_table_other_angel_v13rna.png'
+};
+
+const VB = 'viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"';
+const header = (label) => `
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS — TABLES</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">${label}</text>`;
+const folio = (n, label='', light=false) => {
+  const fill = light ? 'fill="#fff" opacity="0.8"' : '';
+  const lfill = light ? 'fill="#fff" opacity="0.6"' : 'opacity="0.5"';
+  return `<text x="60" y="1080" font-family="Inter" font-size="9" font-weight="500" letter-spacing="2" ${fill}>${String(n).padStart(3,'0')}</text>
+  ${label?`<text x="734" y="1080" font-family="Inter" font-size="9" letter-spacing="2" text-anchor="end" ${lfill}>${label}</text>`:''}`;
+};
+
+// LAYOUT A — image-top + text-bottom
+const layoutA = ({n,name,voice,desc,img,label}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="640" preserveAspectRatio="xMidYMid slice"/>
+  <text x="60" y="820" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="852" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="880" x2="160" y2="880" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${920+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  ${folio(n,label)}
+</svg>`;
+
+// LAYOUT B — text-top + image-bottom (inverted)
+const layoutB = ({n,name,voice,desc,img,label}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <text x="60" y="180" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="212" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="240" x2="160" y2="240" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${280+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  <image href="${img}" x="60" y="420" width="674" height="620" preserveAspectRatio="xMidYMid slice"/>
+  ${folio(n,label)}
+</svg>`;
+
+// LAYOUT SPECS — image-top + dimensions/materials/footer
+const layoutSpecs = ({n,img,specs,plateau,label}) => {
+  const specRows = specs.map((s,i)=>`
+    <text x="60" y="${760+i*22}" font-family="JetBrains Mono" font-size="10">${s.dim}</text>
+    <text x="500" y="${760+i*22}" font-family="JetBrains Mono" font-size="10" opacity="0.5">${s.note}</text>`).join('');
+  const plateauY = 760 + specs.length*22 + 30;
+  return `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="580" preserveAspectRatio="xMidYMid slice"/>
+  <line x1="60" y1="720" x2="734" y2="720" stroke="#000" stroke-width="0.5"/>
+  <text x="60" y="745" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">DIMENSIONS</text>
+  ${specRows}
+  <text x="60" y="${plateauY}" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">MATÉRIAUX</text>
+  <text x="60" y="${plateauY+25}" font-family="JetBrains Mono" font-size="10">${plateau}</text>
+  <text x="60" y="1020" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3">FABRIQUÉ À CASABLANCA</text>
+  <text x="60" y="1040" font-family="Inter" font-size="9" letter-spacing="2" opacity="0.6">Sur commande · Délai 6–8 semaines · <tspan font-weight="600" opacity="1">Prix sur demande</tspan></text>
+  ${folio(n,label)}
+</svg>`;
+};
+
+// LAYOUT DETAIL — image + quote + body
+const layoutDetail = ({n,img,label,quote,body}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="640" preserveAspectRatio="xMidYMid slice"/>
+  <text x="60" y="800" font-family="Inter" font-size="20" font-style="italic" font-weight="300">${quote[0]}</text>
+  ${quote[1]?`<text x="60" y="828" font-family="Inter" font-size="20" font-style="italic" font-weight="300">${quote[1]}</text>`:''}
+  <line x1="60" y1="870" x2="160" y2="870" stroke="#000"/>
+  ${body.map((l,i)=>`<text x="60" y="${910+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  ${folio(n,label)}
+</svg>`;
+
+// LAYOUT FULL-BLEED
+const layoutFullBleed = ({n,img,label}) => `
+<svg ${VB}>
+  <image href="${img}" x="0" y="0" width="794" height="1123" preserveAspectRatio="xMidYMid slice"/>
+  ${folio(n,label,true)}
+</svg>`;
+
+// ============ PAGES ============
+const pages = [];
+
+// 0 — COVER
+pages.push(`
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">CASABLANCA</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MMXXVI</text>
+  <image href="${IMG.torsionHero}" x="60" y="120" width="674" height="700" preserveAspectRatio="xMidYMid slice"/>
+  <text x="60" y="920" font-family="Inter" font-size="88" font-weight="300" letter-spacing="6">AURÉLIS</text>
+  <text x="60" y="960" font-family="Inter" font-size="11" letter-spacing="4" opacity="0.7">L'ART DE LA FORME</text>
+  <line x1="60" y1="1010" x2="200" y2="1010" stroke="#000"/>
+  <text x="60" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">COLLECTION 2026 · VOLUME I · TABLES</text>
+</svg>`);
+
+// SPREAD 1 — Manifesto
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="561" font-family="Inter" font-size="16" font-style="italic" font-weight="300" text-anchor="middle">Une forme n'est jamais neutre.</text>
+  ${folio(1)}
+</svg>`);
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MANIFESTE</text>
+  <text x="60" y="200" font-family="Inter" font-size="42" font-weight="300">Le bois, la</text>
+  <text x="60" y="245" font-family="Inter" font-size="42" font-weight="300">main, le temps.</text>
+  <line x1="60" y1="290" x2="160" y2="290" stroke="#000"/>
+  <text x="60" y="340" font-family="Inter" font-size="11" font-weight="300">Chaque pièce naît à Casablanca, façonnée à la main</text>
+  <text x="60" y="358" font-family="Inter" font-size="11" font-weight="300">par des artisans qui ne connaissent qu'une mesure :</text>
+  <text x="60" y="376" font-family="Inter" font-size="11" font-weight="300">celle du juste.</text>
+  <text x="60" y="420" font-family="Inter" font-size="11" font-weight="300">Le bois est choisi, lu, écouté. Il se plie sans rompre,</text>
+  <text x="60" y="438" font-family="Inter" font-size="11" font-weight="300">se courbe sans céder. La main suit le grain, le temps</text>
+  <text x="60" y="456" font-family="Inter" font-size="11" font-weight="300">fait le reste.</text>
+  <text x="60" y="500" font-family="Inter" font-size="11" font-weight="300">Ici, rien n'est produit. Tout est fabriqué.</text>
+  ${folio(2)}
+</svg>`);
+
+// SPREAD 2 — SYLVE part 1
+pages.push(layoutA({
+  n:3, name:'SYLVE', voice:'TABLE DE SALLE À MANGER', label:'SYLVE',
+  img:IMG.sylveHero,
+  desc:[
+    'Le bois porte encore la mémoire de l\'arbre.',
+    'Chaque veine, chaque nœud raconte une saison.',
+    'La forme suit le bois, jamais l\'inverse.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:4, label:'SYLVE', img:IMG.sylveSide,
+  specs:[
+    {dim:'L 170 · P 75,8 · H 72 cm', note:'4 places'},
+    {dim:'L 198 · P 55,5 · H 72 cm', note:'6 places'},
+    {dim:'L 240 · P 75,8 · H 72 cm', note:'8 places'},
+    {dim:'L 280 · P 75,8 · H 72 cm', note:'10 places'}
+  ],
+  plateau:'Bois massif · Plateau marbre ou verre trempé'
+}));
+
+// SPREAD 3 — SYLVE part 2 (Detail + Full-bleed)
+pages.push(layoutDetail({
+  n:5, img:IMG.sylveClose, label:'SYLVE',
+  quote:['« Le bois garde la mémoire','de l\'arbre. »'],
+  body:[
+    'Bois massif sélectionné pièce par pièce.',
+    'Le grain reste visible, tactile, vivant.'
+  ]
+}));
+pages.push(layoutFullBleed({n:6, img:IMG.sylveLife, label:'SYLVE'}));
+
+// SPREAD 4 — MIEL
+pages.push(layoutA({
+  n:7, name:'MIEL', voice:'TABLE RONDE', label:'MIEL',
+  img:IMG.mielHero,
+  desc:[
+    'Ronde, pleine, généreuse. Une forme qui invite',
+    'à s\'asseoir, à rester. Le piétement central',
+    'libère l\'espace pour les jambes.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:8, label:'MIEL', img:IMG.mielClose,
+  specs:[
+    {dim:'Ø 110 · H 72 cm', note:'4 places'},
+    {dim:'Ø 172 · H 72 cm', note:'6–8 places'}
+  ],
+  plateau:'Bois massif · Plateau verre ou marbre'
+}));
+
+// SPREAD 5 — ARACHNÉ part 1 (Hero + Full-bleed model)
+pages.push(layoutA({
+  n:9, name:'ARACHNÉ', voice:'GUÉRIDON', label:'ARACHNÉ',
+  img:IMG.arachneHero,
+  desc:[
+    'Une structure fine, presque tendue.',
+    'Le piétement rayonne depuis un centre invisible.',
+    'Légère à l\'œil, stable à l\'usage.'
+  ]
+}));
+pages.push(layoutFullBleed({n:10, img:IMG.arachneModel, label:'ARACHNÉ'}));
+
+// SPREAD 6 — ARACHNÉ part 2 (Detail + Specs)
+pages.push(layoutDetail({
+  n:11, img:IMG.arachneOther, label:'ARACHNÉ',
+  quote:['« Une toile,','un point d\'appui. »'],
+  body:[
+    'Disponible en plusieurs finitions.',
+    'Adapté aux espaces réduits et aux entrées.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:12, label:'ARACHNÉ', img:IMG.arachneHero,
+  specs:[
+    {dim:'Ø 70 · H 72 cm', note:'guéridon'}
+  ],
+  plateau:'Bois massif · Plateau verre ou marbre'
+}));
+
+// SPREAD 7 — VEGA
+pages.push(layoutA({
+  n:13, name:'VEGA', voice:'TABLE DE SALLE À MANGER', label:'VEGA',
+  img:IMG.vegaHero,
+  desc:[
+    'Une géométrie franche. Deux piétements en V,',
+    'un plateau qui flotte. La masse devient ligne.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:14, label:'VEGA', img:IMG.vegaTop,
+  specs:[
+    {dim:'L 220 · P 120 · H 75 cm', note:'8 places'},
+    {dim:'L 250 · P 120 · H 75 cm', note:'10 places'}
+  ],
+  plateau:'Bois massif · Plateau verre trempé ou marbre'
+}));
+
+// SPREAD 8 — APEX (inverted hero + Specs) ← variation
+pages.push(layoutB({
+  n:15, name:'APEX', voice:'TABLE DE SALLE À MANGER', label:'APEX',
+  img:IMG.apexHero,
+  desc:[
+    'Un piétement renversé, sculptural.',
+    'Le plateau repose sur une tension visible.',
+    'Force et équilibre.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:16, label:'APEX', img:IMG.apexLife,
+  specs:[
+    {dim:'L 220 · P 120 · H 75 cm', note:'8 places'},
+    {dim:'L 250 · P 120 · H 75 cm', note:'10 places'}
+  ],
+  plateau:'Bois massif · Plateau verre trempé ou marbre'
+}));
+
+// SPREAD 9 — TORSION (moved here)
+pages.push(layoutA({
+  n:17, name:'TORSION', voice:'TABLE DE SALLE À MANGER', label:'TORSION',
+  img:IMG.torsionHero,
+  desc:[
+    'Une torsion continue du bois massif, sculptée',
+    'à la main. Chaque lamelle suit le grain.',
+    'Chaque courbe est unique.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:18, label:'TORSION', img:IMG.torsionSide,
+  specs:[
+    {dim:'L 170 · P 66,6 · H 72 cm', note:'4 places'},
+    {dim:'L 198 · P 66,6 · H 72 cm', note:'6 places'},
+    {dim:'L 220 · P 66,6 · H 72 cm', note:'8 places'}
+  ],
+  plateau:'Bois massif · Plateau verre trempé ou marbre'
+}));
+
+// SPREAD 10 — SEUIL (Hero + Specs, specs restored)
+pages.push(layoutA({
+  n:19, name:'SEUIL', voice:'CONSOLE D\'ENTRÉE', label:'SEUIL',
+  img:IMG.seuilHero,
+  desc:[
+    'Une console étroite, longue, droite.',
+    'Le piétement en V soutient sans s\'imposer.',
+    'Une présence qui marque le passage.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:20, label:'SEUIL', img:IMG.seuilSide,
+  specs:[
+    {dim:'L 135 · P 28,8 · H 80 cm', note:'standard'}
+  ],
+  plateau:'Bois massif · Plateau verre ou marbre'
+}));
+
+// SPREAD 11 — SERPA
+pages.push(layoutA({
+  n:21, name:'SERPA', voice:'TABLE BASSE', label:'SERPA',
+  img:IMG.serpaHero,
+  desc:[
+    'Une vague figée. Le bois sculpté épouse',
+    'le plateau de verre, sans le contraindre.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:22, label:'SERPA', img:IMG.serpaUse,
+  specs:[
+    {dim:'H 46 cm', note:'hauteur fixe'},
+    {dim:'Format sur mesure', note:'L · P sur demande'}
+  ],
+  plateau:'Bois massif sculpté · Plateau verre trempé'
+}));
+
+// SPREAD 12 — ONDE (inverted) ← variation
+pages.push(layoutB({
+  n:23, name:'ONDE', voice:'TABLE BASSE', label:'ONDE',
+  img:IMG.ondeAlone,
+  desc:[
+    'Le bois se replie sur lui-même, comme une',
+    'vague suspendue. Un plateau, deux courbes,',
+    'aucune ligne droite.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:24, label:'ONDE', img:IMG.ondeChair,
+  specs:[
+    {dim:'L 110 · P 110 · H 52 cm', note:'standard'}
+  ],
+  plateau:'Bois massif · Plateau verre trempé'
+}));
+
+// SPREAD 13 — BASSE
+pages.push(layoutA({
+  n:25, name:'BASSE', voice:'TABLE BASSE', label:'BASSE',
+  img:IMG.basseHero,
+  desc:[
+    'Compacte, dense, posée.',
+    'Le bois massif sculpté en bloc.',
+    'Un objet, pas un meuble.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:26, label:'BASSE', img:IMG.basseAngle,
+  specs:[
+    {dim:'L 120 · P 62 · H 40 cm', note:'standard'}
+  ],
+  plateau:'Bois massif intégré'
+}));
+
+// 27 — Back cover
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="380" font-family="Inter" font-size="48" font-weight="300" letter-spacing="4" text-anchor="middle">AURÉLIS</text>
+  <line x1="347" y1="420" x2="447" y2="420" stroke="#000"/>
+  <text x="397" y="460" font-family="Inter" font-size="10" letter-spacing="3" text-anchor="middle" opacity="0.6">L'ART DE LA FORME</text>
+  <text x="397" y="600" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">ATELIER</text>
+  <text x="397" y="625" font-family="JetBrains Mono" font-size="10" text-anchor="middle">Casablanca, Maroc</text>
+  <text x="397" y="680" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">CONTACT</text>
+  <text x="397" y="705" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 61 42 09 39</text>
+  <text x="397" y="722" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 07 59 75 26</text>
+  <text x="397" y="745" font-family="JetBrains Mono" font-size="10" text-anchor="middle">www.aurelis.ma</text>
+  <text x="397" y="762" font-family="JetBrains Mono" font-size="10" text-anchor="middle">@aurelis.maroc</text>
+  <text x="397" y="850" font-family="Inter" font-size="10" font-style="italic" font-weight="300" text-anchor="middle">Sur commande · Délai 6–8 semaines</text>
+  <text x="397" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="middle">COLLECTION 2026 · CASABLANCA · MAROC</text>
+</svg>`);
+
+// ====== SPREAD LOGIC ======
+const isMobile = () => window.innerWidth <= 768;
+let pageCursor = 0;
+let spreadCursor = 0;
+const LAST_SPREAD = 14; // 0=cover, 1..13=spreads, 14=back
+
+function getSpread(s) {
+  if (s === 0) return [0];
+  if (s === LAST_SPREAD) return [27];
+  return [2*s - 1, 2*s];
+}
+
+function render() {
+  const book = document.getElementById('book');
+  book.innerHTML = '';
+  if (isMobile()) {
+    book.className = 'book single';
+    const div = document.createElement('div');
+    div.className = 'page mobile-show';
+    div.innerHTML = pages[pageCursor];
+    book.appendChild(div);
+    document.getElementById('counter').textContent =
+      String(pageCursor).padStart(2,'0') + ' / ' + String(pages.length-1).padStart(2,'0');
+  } else {
+    const spread = getSpread(spreadCursor);
+    book.className = 'book' + (spread.length===1 ? ' single' : '');
+    spread.forEach((idx,i) => {
+      const div = document.createElement('div');
+      div.className = 'page ' + (spread.length===1 ? '' : (i===0?'left':'right'));
+      div.innerHTML = pages[idx];
+      book.appendChild(div);
+    });
+    document.getElementById('counter').textContent =
+      String(spread[0]).padStart(2,'0') + (spread[1]!==undefined?'–'+String(spread[1]).padStart(2,'0'):'') +
+      ' / ' + String(pages.length-1).padStart(2,'0');
+  }
+}
+
+function next() {
+  if (isMobile()) { if (pageCursor < pages.length-1) { pageCursor++; render(); } }
+  else { if (spreadCursor < LAST_SPREAD) { spreadCursor++; render(); } }
+}
+function prev() {
+  if (isMobile()) { if (pageCursor > 0) { pageCursor--; render(); } }
+  else { if (spreadCursor > 0) { spreadCursor--; render(); } }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (dx < -50) next();
+  if (dx > 50) prev();
+}, {passive:true});
+
+function preparePrint() {
+  const container = document.getElementById('printContainer');
+  container.innerHTML = '';
+  pages.forEach(pageHTML => {
+    const div = document.createElement('div');
+    div.className = 'page';
+    div.innerHTML = pageHTML;
+    container.appendChild(div);
+  });
+  setTimeout(() => { window.print(); }, 600);
+}
+
+window.addEventListener('resize', render);
+render();
+</script>
+</body>
+</html>
