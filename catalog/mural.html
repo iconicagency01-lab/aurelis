@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AURÉLIS — Collection 2026. Sculptures murales paramétriques sculptées à la main à Casablanca.">
+<meta property="og:title" content="AURÉLIS — Collection 2026 · Sculptures Murales">
+<meta property="og:description" content="La forme habite le mur. Sculptures murales paramétriques fabriquées à Casablanca.">
+<meta property="og:type" content="website">
+<title>AURÉLIS — Collection 2026 · Sculptures Murales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:#1a1a1a; font-family:'Inter',sans-serif; overflow:hidden; }
+  .viewer { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:30px 20px 70px; }
+  .book {
+    display:flex; gap:0; height:100%; max-height:92vh;
+    aspect-ratio: 1588 / 1123;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    transition: aspect-ratio 0.2s;
+  }
+  .book.single { aspect-ratio: 794 / 1123; }
+  .page { flex:1; height:100%; background:#fff; overflow:hidden; position:relative; }
+  .page svg { width:100%; height:100%; display:block; }
+  .page.left { box-shadow: inset -8px 0 20px -10px rgba(0,0,0,0.25); }
+  .page.right { box-shadow: inset 8px 0 20px -10px rgba(0,0,0,0.25); }
+  .nav-zone { position:fixed; top:0; bottom:70px; width:15%; cursor:pointer; z-index:10; }
+  .nav-zone.left { left:0; }
+  .nav-zone.right { right:0; }
+  .nav-zone:hover::after { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:36px; opacity:0.5; font-family:serif; }
+  .nav-zone.left:hover::after { content:'‹'; left:25px; }
+  .nav-zone.right:hover::after { content:'›'; right:25px; }
+  .toolbar {
+    position:fixed; bottom:0; left:0; right:0; height:55px; background:#0d0d0d;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    color:#888; font-size:11px; letter-spacing:2px; z-index:20;
+  }
+  .toolbar button {
+    background:none; border:1px solid #444; color:#ccc;
+    padding:8px 14px; cursor:pointer; font-family:'Inter',sans-serif;
+    font-size:10px; letter-spacing:2px;
+  }
+  .toolbar button:hover { border-color:#fff; color:#fff; }
+  .counter { font-family:'JetBrains Mono',monospace; min-width:90px; text-align:center; }
+  @media (max-width: 768px) {
+    .viewer { padding:15px 10px 60px; }
+    .book { aspect-ratio: 794 / 1123 !important; max-height:88vh; }
+    .page.left, .page.right { box-shadow:none; }
+    .book .page:not(.mobile-show) { display:none; }
+    .nav-zone { width:40%; }
+    .nav-zone:hover::after { display:none; }
+    .toolbar { gap:10px; height:50px; }
+    .toolbar button { padding:6px 10px; font-size:9px; }
+  }
+  .print-container { display:none; }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { background:#fff !important; height:auto; overflow:visible; }
+    .viewer, .toolbar, .nav-zone { display:none !important; }
+    .print-container { display:block !important; }
+    .print-container .page { width:210mm; height:297mm; page-break-after: always; box-shadow:none !important; overflow:hidden; }
+    .print-container .page:last-child { page-break-after:auto; }
+    .print-container .page svg { width:100%; height:100%; display:block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="viewer"><div class="book" id="book"></div></div>
+<div class="print-container" id="printContainer"></div>
+
+<div class="nav-zone left" onclick="prev()"></div>
+<div class="nav-zone right" onclick="next()"></div>
+
+<div class="toolbar">
+  <button onclick="prev()">←</button>
+  <span class="counter" id="counter">00 / 25</span>
+  <button onclick="next()">→</button>
+  <button onclick="preparePrint()">PDF</button>
+</div>
+
+<script>
+const IMG = {
+  cavale_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621743/walking-horse-hero_nwgynw.webp',
+  cavale_side:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621724/walking-horse-side_xhueli.webp',
+  cavale_office:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621744/walking-horse-behind_office_ylg5fa.webp',
+  cavale_setting:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621734/walking-horse-different_setting_ci8pcb.webp',
+  cavale_close1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621730/walking-horse-close_up_1_gbkjkp.webp',
+  cavale_close2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621713/walking-horse-close_up_2_as4qfv.webp',
+  cavale_huge:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621721/walking-horse_huge_akbjo8.webp',
+  cavale_metallic:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621710/walking-horse-matalic_pgaqvb.webp',
+
+  visage_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621597/decor-face-hero_fbaqgq.webp',
+  visage_top:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621611/decor-face-topangle_zhctzf.webp',
+  visage_close1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621603/decor-face-closeup1_hsi2kc.webp',
+  visage_close2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621601/decore-face-closeup2_xpbvqk.webp',
+
+  parole_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621647/female-open-mouth-hero_uuvbcx.webp',
+  parole_left:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621641/female-open-mouth-leftsideview_fkkueh.webp',
+  parole_right:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621641/female-open-mouth-rightsideview_ppun5l.webp',
+  parole_up:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621617/female-open-mouth-viewup_spztgr.webp',
+  parole_close1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621617/female-open-mouth-closeup1_fnabnx.webp',
+
+  profilo_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621630/half-face-hero_neddcl.webp',
+  profilo_other:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621649/half-face-otherangle_finbvj.webp',
+  profilo_top:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621648/half-face-topangle_v9lsv1.webp',
+  profilo_closer:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621623/half-face-closerdistance_voookj.webp',
+  profilo_close1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621620/half-face-closeup1_mhn2tf.webp',
+  profilo_close2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621638/half-face-closeup2_aduyzb.webp',
+  profilo_blackstraight:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621624/half-face-black-straightshot_todre2.webp',
+  profilo_blackside:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621631/half-face-black-sideview_lje7ej.webp',
+
+  terreno_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621666/map-hero_jdrunx.webp',
+  terreno_second:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621662/map-secon_f08fdz.webp',
+  terreno_office:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621650/map-office_bekpdt.webp',
+  terreno_living:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621648/map-living-room_j8iizk.webp',
+  terreno_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621647/map-close-up_mbxqhu.webp',
+
+  primo_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621683/monkey-face-hero_rplds2.webp',
+  primo_close1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621668/monkey-face-closeup-1_gd5cco.webp',
+  primo_close2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621667/monkey-face-closeup-2_e28ybf.webp',
+  primo_close3:'https://res.cloudinary.com/dlo4exspj/image/upload/v1771621670/monkey-face-closeup-3_fxemif.webp',
+
+  sospiro_hero:'https://res.cloudinary.com/dsh3tzujw/image/upload/v1778672315/Edit_the_supplied_image_into_a_polished_poolside_v-1778671448318_oi3k3j.png',
+  sospiro_secondary:'https://res.cloudinary.com/dsh3tzujw/image/upload/v1778673052/Edit_the_provided_reference_image_by_preserving_th-1778672635191_srrpgi.png',
+
+  // NEW — GORGONE (was Medusa)
+  gorgone_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780526561/medusa_hero_msnfzi.png',
+  gorgone_secondary:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780526560/medusa_2_ckwvfu.png',
+
+  // NEW — REVERS (girl from behind)
+  revers_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780526688/girl_back_hero_hluunk.png',
+  revers_side:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780526689/girl_back_side_t5jdfa.png',
+
+  // NEW — AUBE (girl face)
+  aube_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780526722/girl_face_hero_nhbypa.png'
+};
+
+const VB = 'viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"';
+const header = (label) => `
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS — SCULPTURES MURALES</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">${label}</text>`;
+const folio = (n, label='', light=false) => {
+  const fill = light ? 'fill="#fff" opacity="0.8"' : '';
+  const lfill = light ? 'fill="#fff" opacity="0.6"' : 'opacity="0.5"';
+  return `<text x="60" y="1080" font-family="Inter" font-size="9" font-weight="500" letter-spacing="2" ${fill}>${String(n).padStart(3,'0')}</text>
+  ${label?`<text x="734" y="1080" font-family="Inter" font-size="9" letter-spacing="2" text-anchor="end" ${lfill}>${label}</text>`:''}`;
+};
+
+const layoutA = ({n,name,voice,desc,img,label,align='xMidYMid'}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="640" preserveAspectRatio="${align} slice"/>
+  <text x="60" y="820" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="852" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="880" x2="160" y2="880" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${920+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  ${folio(n,label)}
+</svg>`;
+
+const layoutB = ({n,name,voice,desc,img,label,align='xMidYMid'}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <text x="60" y="180" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="212" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="240" x2="160" y2="240" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${280+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  <image href="${img}" x="60" y="420" width="674" height="620" preserveAspectRatio="${align} slice"/>
+  ${folio(n,label)}
+</svg>`;
+
+const layoutSpecs = ({n,img,materials,label,note,align='xMidYMid'}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="580" preserveAspectRatio="${align} slice"/>
+  <line x1="60" y1="720" x2="734" y2="720" stroke="#000" stroke-width="0.5"/>
+  <text x="60" y="745" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">FORMAT</text>
+  <text x="60" y="770" font-family="JetBrains Mono" font-size="10">Sur mesure</text>
+  <text x="60" y="788" font-family="Inter" font-size="9" font-style="italic" opacity="0.5">Dimensions calculées selon le mur d'installation</text>
+  <text x="60" y="830" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">FINITION</text>
+  <text x="60" y="855" font-family="JetBrains Mono" font-size="10">${materials}</text>
+  ${note?`<text x="60" y="900" font-family="Inter" font-size="9" font-style="italic" opacity="0.6">${note}</text>`:''}
+  <text x="60" y="950" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">INSTALLATION</text>
+  <text x="60" y="975" font-family="JetBrains Mono" font-size="10">Fixation murale incluse</text>
+  <text x="60" y="1020" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3">FABRIQUÉ À CASABLANCA</text>
+  <text x="60" y="1040" font-family="Inter" font-size="9" letter-spacing="2" opacity="0.6">Sur commande · Délai 6–8 semaines · <tspan font-weight="600" opacity="1">Prix sur demande</tspan></text>
+  ${folio(n,label)}
+</svg>`;
+
+const layoutFullBleed = ({n,img,label}) => `
+<svg ${VB}>
+  <image href="${img}" x="0" y="0" width="794" height="1123" preserveAspectRatio="xMidYMid slice"/>
+  ${folio(n,label,true)}
+</svg>`;
+
+const pages = [];
+
+// 0 — COVER
+pages.push(`
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">CASABLANCA</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MMXXVI</text>
+  <image href="${IMG.cavale_hero}" x="60" y="120" width="674" height="700" preserveAspectRatio="xMidYMid slice"/>
+  <text x="60" y="920" font-family="Inter" font-size="88" font-weight="300" letter-spacing="6">AURÉLIS</text>
+  <text x="60" y="960" font-family="Inter" font-size="11" letter-spacing="4" opacity="0.7">L'ART DE LA FORME</text>
+  <line x1="60" y1="1010" x2="200" y2="1010" stroke="#000"/>
+  <text x="60" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">COLLECTION 2026 · VOLUME III · SCULPTURES MURALES</text>
+</svg>`);
+
+// SPREAD 1 — Manifesto
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MANIFESTE</text>
+  <text x="60" y="200" font-family="Inter" font-size="36" font-weight="300">L'équation,</text>
+  <text x="60" y="240" font-family="Inter" font-size="36" font-weight="300">la surface, le mur.</text>
+  <line x1="60" y1="285" x2="160" y2="285" stroke="#000"/>
+  <text x="60" y="335" font-family="Inter" font-size="11" font-weight="300">Une forme paramétrique n'habite plus le sol.</text>
+  <text x="60" y="353" font-family="Inter" font-size="11" font-weight="300">Elle prend le mur, l'épouse, le redessine.</text>
+  <text x="60" y="395" font-family="Inter" font-size="11" font-weight="300">Chaque sculpture commence par un calcul,</text>
+  <text x="60" y="413" font-family="Inter" font-size="11" font-weight="300">se sculpte à la main, s'accroche à la paroi.</text>
+  <text x="60" y="455" font-family="Inter" font-size="11" font-weight="300">Le mur cesse d'être un fond.</text>
+  <text x="60" y="473" font-family="Inter" font-size="11" font-weight="300">Il devient le support d'une géométrie.</text>
+  ${folio(1)}
+</svg>`);
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="561" font-family="Inter" font-size="16" font-style="italic" font-weight="300" text-anchor="middle">Une forme pour le mur.</text>
+  ${folio(2)}
+</svg>`);
+
+// 1. CAVALE
+pages.push(layoutA({
+  n:3, name:'CAVALE', voice:'SCULPTURE MURALE', label:'CAVALE',
+  img:IMG.cavale_hero,
+  desc:[
+    'Un cheval en marche, suspendu au mur.',
+    'La crinière calculée, la foulée figée.',
+    'Le mouvement inscrit dans le bois.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:4, label:'CAVALE', img:IMG.cavale_side,
+  materials:'Bois massif · Finition huilée',
+  note:'Également disponible en finition métallique'
+}));
+
+// 2. VISAGE
+pages.push(layoutA({
+  n:5, name:'VISAGE', voice:'SCULPTURE MURALE', label:'VISAGE',
+  img:IMG.visage_hero,
+  desc:[
+    'Un visage en relief, dessiné par la courbe.',
+    'Les traits émergent du plan,',
+    'la lumière fait le reste.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:6, label:'VISAGE', img:IMG.visage_top,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 3. TERRENO (palette cleanser — landscape)
+pages.push(layoutB({
+  n:7, name:'TERRENO', voice:'SCULPTURE MURALE', label:'TERRENO',
+  img:IMG.terreno_hero,
+  desc:[
+    'Une carte en relief, paramétrée.',
+    'Les courbes du terrain deviennent texture.',
+    'La géographie tenue par le mur.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:8, label:'TERRENO', img:IMG.terreno_close,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 4. GORGONE (was Medusa) — new
+pages.push(layoutA({
+  n:9, name:'GORGONE', voice:'SCULPTURE MURALE', label:'GORGONE',
+  img:IMG.gorgone_hero,
+  desc:[
+    'Le regard qui pétrifie, sculpté en plan.',
+    'Les serpents calculés, la chevelure animée.',
+    'Une présence qui retient celui qui la regarde.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:10, label:'GORGONE', img:IMG.gorgone_secondary,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 5. REVERS (girl from behind) — new
+pages.push(layoutA({
+  n:11, name:'REVERS', voice:'SCULPTURE MURALE', label:'REVERS',
+  img:IMG.revers_hero,
+  desc:[
+    'Une figure qui se détourne.',
+    'La nuque, les cheveux, le mouvement du dos.',
+    'Ce qui se montre en refusant d\'être vu.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:12, label:'REVERS', img:IMG.revers_side,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 6. SOSPIRO
+pages.push(layoutA({
+  n:13, name:'SOSPIRO', voice:'SCULPTURE MURALE', label:'SOSPIRO',
+  img:IMG.sospiro_hero,
+  desc:[
+    'Une bouche ouverte, suspendue.',
+    'Le souffle figé entre l\'inspiration',
+    'et le mot qui ne vient pas.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:14, label:'SOSPIRO', img:IMG.sospiro_secondary,
+  materials:'Bois massif · Finition huilée',
+  note:'Variante teintée disponible sur demande'
+}));
+
+// 7. PRIMO (animal break between two mouths)
+pages.push(layoutA({
+  n:15, name:'PRIMO', voice:'SCULPTURE MURALE', label:'PRIMO',
+  img:IMG.primo_hero,
+  desc:[
+    'Un visage simien, sculpté en plan.',
+    'L\'expression contenue dans la géométrie.',
+    'Le primate, abstrait par le calcul.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:16, label:'PRIMO', img:IMG.primo_close1,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 8. PAROLE (now spaced from SOSPIRO by PRIMO)
+pages.push(layoutB({
+  n:17, name:'PAROLE', voice:'SCULPTURE MURALE', label:'PAROLE',
+  img:IMG.parole_hero,
+  desc:[
+    'Une bouche ouverte, en suspens.',
+    'Le geste de la parole, arrêté.',
+    'La forme entre le son et le silence.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:18, label:'PAROLE', img:IMG.parole_left,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 9. PROFILO (late-book heavyweight)
+pages.push(layoutA({
+  n:19, name:'PROFILO', voice:'SCULPTURE MURALE', label:'PROFILO',
+  img:IMG.profilo_hero,
+  desc:[
+    'Un demi-visage, tourné de profil.',
+    'La géométrie révèle ce que le frontal cache.',
+    'Disponible en bois naturel ou laqué noir.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:20, label:'PROFILO', img:IMG.profilo_blackstraight,
+  materials:'Bois massif · Finition huilée ou laqué noir',
+  note:'Deux finitions disponibles'
+}));
+
+// 10. AUBE (closing, quiet) — new
+pages.push(layoutA({
+  n:21, name:'AUBE', voice:'SCULPTURE MURALE', label:'AUBE',
+  img:IMG.aube_hero,
+  desc:[
+    'Un visage tranquille, frontal.',
+    'La courbe sans tension, le trait sans force.',
+    'La forme qui se tait.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:22, label:'AUBE', img:IMG.aube_hero,
+  materials:'Bois massif · Finition huilée'
+}));
+
+// Closing spread
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">FERMETURE</text>
+  <text x="60" y="420" font-family="Inter" font-size="36" font-weight="300">Le mur</text>
+  <text x="60" y="460" font-family="Inter" font-size="36" font-weight="300">comme support.</text>
+  <line x1="60" y1="505" x2="160" y2="505" stroke="#000"/>
+  <text x="60" y="555" font-family="Inter" font-size="11" font-weight="300">Dix sculptures, calculées avant d'être sculptées.</text>
+  <text x="60" y="573" font-family="Inter" font-size="11" font-weight="300">Chacune fabriquée à la main, dans l'atelier de Casablanca.</text>
+  <text x="60" y="615" font-family="Inter" font-size="11" font-style="italic" font-weight="300">Chaque pièce est unique, ajustée au mur qui l'accueille.</text>
+  ${folio(23)}
+</svg>`);
+pages.push(layoutFullBleed({n:24, img:IMG.cavale_office, label:'CAVALE'}));
+
+// 25 — Back cover
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="380" font-family="Inter" font-size="48" font-weight="300" letter-spacing="4" text-anchor="middle">AURÉLIS</text>
+  <line x1="347" y1="420" x2="447" y2="420" stroke="#000"/>
+  <text x="397" y="460" font-family="Inter" font-size="10" letter-spacing="3" text-anchor="middle" opacity="0.6">L'ART DE LA FORME</text>
+  <text x="397" y="600" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">ATELIER</text>
+  <text x="397" y="625" font-family="JetBrains Mono" font-size="10" text-anchor="middle">Casablanca, Maroc</text>
+  <text x="397" y="680" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">CONTACT</text>
+  <text x="397" y="705" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 61 42 09 39</text>
+  <text x="397" y="722" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 61 65 65 32</text>
+  <text x="397" y="745" font-family="JetBrains Mono" font-size="10" text-anchor="middle">www.aurelis.ma</text>
+  <text x="397" y="762" font-family="JetBrains Mono" font-size="10" text-anchor="middle">@aurelis.maroc</text>
+  <text x="397" y="850" font-family="Inter" font-size="10" font-style="italic" font-weight="300" text-anchor="middle">Sur commande · Délai 6–8 semaines</text>
+  <text x="397" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="middle">COLLECTION 2026 · VOLUME III · SCULPTURES MURALES</text>
+</svg>`);
+
+// === SPREAD LOGIC ===
+const isMobile = () => window.innerWidth <= 768;
+let pageCursor = 0;
+let spreadCursor = 0;
+const LAST_PAGE = pages.length - 1;
+const LAST_SPREAD = 13;
+
+function getSpread(s) {
+  if (s === 0) return [0];
+  if (s === LAST_SPREAD) return [LAST_PAGE];
+  return [2*s - 1, 2*s];
+}
+
+function render() {
+  const book = document.getElementById('book');
+  book.innerHTML = '';
+  if (isMobile()) {
+    book.className = 'book single';
+    const div = document.createElement('div');
+    div.className = 'page mobile-show';
+    div.innerHTML = pages[pageCursor];
+    book.appendChild(div);
+    document.getElementById('counter').textContent =
+      String(pageCursor).padStart(2,'0') + ' / ' + String(LAST_PAGE).padStart(2,'0');
+  } else {
+    const spread = getSpread(spreadCursor);
+    book.className = 'book' + (spread.length===1 ? ' single' : '');
+    spread.forEach((idx,i) => {
+      const div = document.createElement('div');
+      div.className = 'page ' + (spread.length===1 ? '' : (i===0?'left':'right'));
+      div.innerHTML = pages[idx];
+      book.appendChild(div);
+    });
+    document.getElementById('counter').textContent =
+      String(spread[0]).padStart(2,'0') + (spread[1]!==undefined?'–'+String(spread[1]).padStart(2,'0'):'') +
+      ' / ' + String(LAST_PAGE).padStart(2,'0');
+  }
+}
+
+function next() {
+  if (isMobile()) { if (pageCursor < LAST_PAGE) { pageCursor++; render(); } }
+  else { if (spreadCursor < LAST_SPREAD) { spreadCursor++; render(); } }
+}
+function prev() {
+  if (isMobile()) { if (pageCursor > 0) { pageCursor--; render(); } }
+  else { if (spreadCursor > 0) { spreadCursor--; render(); } }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (dx < -50) next();
+  if (dx > 50) prev();
+}, {passive:true});
+
+function preparePrint() {
+  const container = document.getElementById('printContainer');
+  container.innerHTML = '';
+  pages.forEach(pageHTML => {
+    const div = document.createElement('div');
+    div.className = 'page';
+    div.innerHTML = pageHTML;
+    container.appendChild(div);
+  });
+  setTimeout(() => { window.print(); }, 600);
+}
+
+window.addEventListener('resize', render);
+render();
+</script>
+</body>
+</html>
