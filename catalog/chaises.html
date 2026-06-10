@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AURÉLIS — Collection 2026. Chaises paramétriques sculptées à la main à Casablanca.">
+<meta property="og:title" content="AURÉLIS — Collection 2026 · Chaises">
+<meta property="og:description" content="La géométrie tient le corps. Chaises fabriquées à la main à Casablanca.">
+<meta property="og:type" content="website">
+<title>AURÉLIS — Collection 2026 · Chaises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:#1a1a1a; font-family:'Inter',sans-serif; overflow:hidden; }
+  .viewer { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:30px 20px 70px; }
+  .book {
+    display:flex; gap:0; height:100%; max-height:92vh;
+    aspect-ratio: 1588 / 1123;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    transition: aspect-ratio 0.2s;
+  }
+  .book.single { aspect-ratio: 794 / 1123; }
+  .page { flex:1; height:100%; background:#fff; overflow:hidden; position:relative; }
+  .page svg { width:100%; height:100%; display:block; }
+  .page.left { box-shadow: inset -8px 0 20px -10px rgba(0,0,0,0.25); }
+  .page.right { box-shadow: inset 8px 0 20px -10px rgba(0,0,0,0.25); }
+  .nav-zone { position:fixed; top:0; bottom:70px; width:15%; cursor:pointer; z-index:10; }
+  .nav-zone.left { left:0; }
+  .nav-zone.right { right:0; }
+  .nav-zone:hover::after { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:36px; opacity:0.5; font-family:serif; }
+  .nav-zone.left:hover::after { content:'‹'; left:25px; }
+  .nav-zone.right:hover::after { content:'›'; right:25px; }
+  .toolbar {
+    position:fixed; bottom:0; left:0; right:0; height:55px; background:#0d0d0d;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    color:#888; font-size:11px; letter-spacing:2px; z-index:20;
+  }
+  .toolbar button {
+    background:none; border:1px solid #444; color:#ccc;
+    padding:8px 14px; cursor:pointer; font-family:'Inter',sans-serif;
+    font-size:10px; letter-spacing:2px;
+  }
+  .toolbar button:hover { border-color:#fff; color:#fff; }
+  .counter { font-family:'JetBrains Mono',monospace; min-width:90px; text-align:center; }
+  @media (max-width: 768px) {
+    .viewer { padding:15px 10px 60px; }
+    .book { aspect-ratio: 794 / 1123 !important; max-height:88vh; }
+    .page.left, .page.right { box-shadow:none; }
+    .book .page:not(.mobile-show) { display:none; }
+    .nav-zone { width:40%; }
+    .nav-zone:hover::after { display:none; }
+    .toolbar { gap:10px; height:50px; }
+    .toolbar button { padding:6px 10px; font-size:9px; }
+  }
+  .print-container { display:none; }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { background:#fff !important; height:auto; overflow:visible; }
+    .viewer, .toolbar, .nav-zone { display:none !important; }
+    .print-container { display:block !important; }
+    .print-container .page { width:210mm; height:297mm; page-break-after: always; box-shadow:none !important; overflow:hidden; }
+    .print-container .page:last-child { page-break-after:auto; }
+    .print-container .page svg { width:100%; height:100%; display:block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="viewer"><div class="book" id="book"></div></div>
+<div class="print-container" id="printContainer"></div>
+
+<div class="nav-zone left" onclick="prev()"></div>
+<div class="nav-zone right" onclick="next()"></div>
+
+<div class="toolbar">
+  <button onclick="prev()">←</button>
+  <span class="counter" id="counter">00 / 43</span>
+  <button onclick="next()">→</button>
+  <button onclick="preparePrint()">PDF</button>
+</div>
+
+<script>
+const IMG = {
+  alma_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/aide_dining_hero_phllpp.webp',
+  alma_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/aide_dining_photshoot_backeside_lkhsmd.webp',
+  alma_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074132/aide_dining_inuse_model_zt5soj.webp',
+
+  cygne_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074164/dining_s_hero_njbgrd.webp',
+  cygne_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074163/dining_s_front_whitebg_ksqjfp.webp',
+  cygne_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/dining_s_lifestyle_next_to_torison_sameimage_fjqyvj.webp',
+
+  vasque_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780075542/palm_dining_chair_hero_ylfnuc.webp',
+  vasque_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780075543/palm_dining_chair_whitebg_ah7ods.webp',
+  vasque_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780075542/palm_dining_chair_lifestyle_ts7djh.webp',
+
+  nora_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074125/pipa_dining_hero_bls53f.webp',
+  nora_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/pipa_dining_front_whitebg_nwran3.webp',
+  nora_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074122/pipa_dining_back_whitebg_sr8vzv.webp',
+  nora_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/pipa_dining_lifestyle_ac81pv.webp',
+
+  lira_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074162/lina_counter_stool_hero_ogtgkv.webp',
+  lira_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074158/lina_counter_stool_whitebg_ylp2cw.webp',
+  lira_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074163/lina_counter_stool_close_up_m7r8gx.webp',
+  lira_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074157/lina_counter_stool_lifestyle_rjj3pr.webp',
+  lira_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074164/lina_counter_stool_inuse_model_dbtbki.webp',
+
+  perche_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074148/papagayo_counter_stool_hero_tzos1w.webp',
+  perche_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/papagayo_counter_stool_whitebg_llbdfv.webp',
+  perche_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/papagayo_counter_stool_lifestyle_vn8h7o.webp',
+
+  enigme_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_hero_buxjn5.webp',
+  enigme_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074186/riddle_rest_lifestyle_iraxng.webp',
+  enigme_back_shot:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_photoshoot_backwards_dhim71.webp',
+  enigme_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_front_whitebg_fhpxpd.webp',
+  enigme_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074180/riddle_rest_model_qrsicc.webp',
+  enigme_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074177/riddle_rest_backside_whitebg_a5o0fu.webp',
+
+  estive_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780408686/relax_hero_image_gtcs2i.png',
+  estive_product:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780409756/Premium_product_photography_of_sculptural_lounge_c-1780409733694_vireb1.png',
+
+  moka_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074132/coffee_rest_hero_demeym.webp',
+  moka_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074134/coffe_rest_chair_alone_whitebg_fcgztb.webp',
+  moka_photoshoot:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074134/coffee_rest_photoshoot_chair_alone_ecgebc.webp',
+  moka_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074133/coffe_rest._from_behind_close_upwebp_xnxtxc.webp',
+  moka_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp',
+  moka_curves:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074131/coffe_rest_curves_close_up_rou0bo.webp',
+
+  feuille_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074165/fogli_chair_hero_d9nrox.webp',
+  feuille_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074178/fogli_chair_front_whitebg_avcp4r.webp',
+  feuille_life1:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074177/fogli_chair_lifestyle1_b5pu3a.webp',
+  feuille_life2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/fogli_chair_lifestyle2_wlofl4.webp',
+  feuille_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074167/fogli_chair_backside_model_wdlilc.webp',
+
+  dune_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074160/soave_chair_hero_tgt0qa.webp',
+  dune_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074151/soave_chair_lifestyle_azyi2h.webp',
+  dune_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074150/soave_chair_backside_whitebg_rbfnsh.webp',
+  dune_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074150/soave_chair_closeup_pt16jr.webp',
+  dune_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074149/soave_chair_front_whitebg_gskgxd.webp',
+
+  oasis_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074184/palm_rest_hero_dwr6lg.webp',
+  oasis_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074184/palm_rest_alone_whitebg_drwjg7.webp',
+  oasis_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074192/palm_rest_lifestyke_yhirxr.webp',
+  oasis_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074188/palm_rest_backside_withmodel_tpivt5.webp',
+
+  lido_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074120/lola_chair_hero_qasggk.webp',
+  lido_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074124/lola_chair_frontside_whitebg_rvsjjf.webp',
+  lido_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074117/lola_chair_backside_whitebg_bgibcr.webp',
+  lido_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074123/lola_chair_lifestyle_ebhkqy.webp',
+
+  liane_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/neca_chair_hero_model_dshss3.webp',
+  liane_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/neca_chair_lifestyle_w71yvi.webp',
+  liane_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/neca_chair_backside_zfbpo2.webp',
+  liane_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074137/neca_chair_closeup_s4t34z.webp',
+
+  aile_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074154/pipo_rest_hero_mygtnj.webp',
+  aile_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074154/pipo_rest_front_whitebg_r7d9nu.webp',
+  aile_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074155/pipo_rest_backside_whitebg_mduh8t.webp',
+  aile_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074155/pipo_rest_closeup_kyzk02.webp',
+  aile_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074152/pipo_rest_inuse_model_ebvvgj.webp',
+
+  terre_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074192/uma_rest_hero_xqkcid.webp',
+  terre_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074193/uma_rest_lifestyle_kt7jzf.webp',
+  terre_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074191/uma_rest_front_whitebg_rljzai.webp',
+  terre_nature:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074190/uma_rest_in_nature_ivabj5.jpg',
+  terre_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074185/uma_rest_backside_whitebg_icp3fi.webp',
+
+  anse_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/hold_me_hero_mrn49e.webp',
+  anse_white:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/hold_me_whitebg_hxbnch.webp',
+  anse_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/hold_me_lifestyle_botwc7.webp',
+
+  berceau_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/soave_rocking_hero_photoshoot_byitself_f9licu.webp',
+  berceau_life:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/soave_rocking_lifestyle_xbqyfd.webp',
+  berceau_life2:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074118/soave_rocking_lifestyle2_cnm7af.webp',
+  berceau_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074121/soave_rocking_alone_withmodel_idmzkf.webp',
+  berceau_close:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074127/soave_rocking_closeup_back_hbi1gf.webp',
+
+  balan_hero:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074145/vic_rocking_hero_wc8m38.webp',
+  balan_front:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/vic_rocking_frontside_whitebg_zr2kiy.webp',
+  balan_back:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074145/vic_rocking_backside_whitebf_bnfsp7.webp',
+  balan_model:'https://res.cloudinary.com/dlo4exspj/image/upload/v1780074147/vic_rocking_inuse_model_kqkwbf.webp'
+};
+
+const VB = 'viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"';
+const header = (label) => `
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS — CHAISES</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">${label}</text>`;
+const folio = (n, label='', light=false) => {
+  const fill = light ? 'fill="#fff" opacity="0.8"' : '';
+  const lfill = light ? 'fill="#fff" opacity="0.6"' : 'opacity="0.5"';
+  return `<text x="60" y="1080" font-family="Inter" font-size="9" font-weight="500" letter-spacing="2" ${fill}>${String(n).padStart(3,'0')}</text>
+  ${label?`<text x="734" y="1080" font-family="Inter" font-size="9" letter-spacing="2" text-anchor="end" ${lfill}>${label}</text>`:''}`;
+};
+
+const layoutA = ({n,name,voice,desc,img,label,align='xMidYMid'}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="640" preserveAspectRatio="${align} slice"/>
+  <text x="60" y="820" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="852" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="880" x2="160" y2="880" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${920+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  ${folio(n,label)}
+</svg>`;
+
+const layoutB = ({n,name,voice,desc,img,label,align='xMidYMid'}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <text x="60" y="180" font-family="Inter" font-size="64" font-weight="300" letter-spacing="2">${name}</text>
+  <text x="60" y="212" font-family="Inter" font-size="10" letter-spacing="3" opacity="0.6">${voice}</text>
+  <line x1="60" y1="240" x2="160" y2="240" stroke="#000"/>
+  ${desc.map((l,i)=>`<text x="60" y="${280+i*18}" font-family="Inter" font-size="10.5" font-weight="300">${l}</text>`).join('')}
+  <image href="${img}" x="60" y="420" width="674" height="620" preserveAspectRatio="${align} slice"/>
+  ${folio(n,label)}
+</svg>`;
+
+const layoutSpecs = ({n,img,dims,materials,label,align='xMidYMid'}) => {
+  const dimRows = dims.map((d,i)=>`
+    <text x="60" y="${755+i*22}" font-family="Inter" font-size="10" opacity="0.6">${d.label}</text>
+    <text x="280" y="${755+i*22}" font-family="JetBrains Mono" font-size="10">${d.value}</text>`).join('');
+  const tolY = 755 + dims.length*22 + 10;
+  const matY = 755 + dims.length*22 + 45;
+  return `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="580" preserveAspectRatio="${align} slice"/>
+  <line x1="60" y1="720" x2="734" y2="720" stroke="#000" stroke-width="0.5"/>
+  <text x="60" y="745" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">DIMENSIONS</text>
+  ${dimRows}
+  <text x="60" y="${tolY}" font-family="Inter" font-size="9" font-style="italic" opacity="0.5">Tolérance ±5 mm</text>
+  <text x="60" y="${matY}" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">MATÉRIAUX</text>
+  <text x="60" y="${matY+25}" font-family="JetBrains Mono" font-size="10">${materials}</text>
+  <text x="60" y="1020" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3">FABRIQUÉ À CASABLANCA</text>
+  <text x="60" y="1040" font-family="Inter" font-size="9" letter-spacing="2" opacity="0.6">Sur commande · Délai 6–8 semaines · <tspan font-weight="600" opacity="1">Prix sur demande</tspan></text>
+  ${folio(n,label)}
+</svg>`;
+};
+
+const layoutSpecsLira = ({n,img,label,materials}) => `
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  ${header(label)}
+  <image href="${img}" x="60" y="100" width="674" height="520" preserveAspectRatio="xMidYMid slice"/>
+  <line x1="60" y1="660" x2="734" y2="660" stroke="#000" stroke-width="0.5"/>
+  <text x="60" y="685" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">DIMENSIONS</text>
+
+  <text x="60" y="715" font-family="Inter" font-size="9" font-weight="500" letter-spacing="2" opacity="0.7">VERSION COMPTOIR</text>
+  <text x="60" y="740" font-family="Inter" font-size="10" opacity="0.6">Largeur</text><text x="280" y="740" font-family="JetBrains Mono" font-size="10">45 cm</text>
+  <text x="60" y="758" font-family="Inter" font-size="10" opacity="0.6">Hauteur</text><text x="280" y="758" font-family="JetBrains Mono" font-size="10">96 cm</text>
+  <text x="60" y="776" font-family="Inter" font-size="10" opacity="0.6">Profondeur</text><text x="280" y="776" font-family="JetBrains Mono" font-size="10">58 cm</text>
+  <text x="60" y="794" font-family="Inter" font-size="10" opacity="0.6">Assise</text><text x="280" y="794" font-family="JetBrains Mono" font-size="10">67 cm</text>
+  <text x="60" y="812" font-family="Inter" font-size="10" opacity="0.6">Repose-pieds</text><text x="280" y="812" font-family="JetBrains Mono" font-size="10">21 cm</text>
+
+  <text x="60" y="850" font-family="Inter" font-size="9" font-weight="500" letter-spacing="2" opacity="0.7">VERSION BAR</text>
+  <text x="60" y="875" font-family="Inter" font-size="10" opacity="0.6">Largeur</text><text x="280" y="875" font-family="JetBrains Mono" font-size="10">45 cm</text>
+  <text x="60" y="893" font-family="Inter" font-size="10" opacity="0.6">Hauteur</text><text x="280" y="893" font-family="JetBrains Mono" font-size="10">106 cm</text>
+  <text x="60" y="911" font-family="Inter" font-size="10" opacity="0.6">Profondeur</text><text x="280" y="911" font-family="JetBrains Mono" font-size="10">58 cm</text>
+  <text x="60" y="929" font-family="Inter" font-size="10" opacity="0.6">Assise</text><text x="280" y="929" font-family="JetBrains Mono" font-size="10">77 cm</text>
+  <text x="60" y="947" font-family="Inter" font-size="10" opacity="0.6">Repose-pieds</text><text x="280" y="947" font-family="JetBrains Mono" font-size="10">31 cm</text>
+
+  <text x="60" y="970" font-family="Inter" font-size="9" font-style="italic" opacity="0.5">Tolérance ±5 mm</text>
+  <text x="60" y="990" font-family="Inter" font-size="10" font-weight="600" letter-spacing="3">MATÉRIAUX</text>
+  <text x="280" y="990" font-family="JetBrains Mono" font-size="10">${materials}</text>
+  <text x="60" y="1020" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3">FABRIQUÉ À CASABLANCA</text>
+  <text x="60" y="1040" font-family="Inter" font-size="9" letter-spacing="2" opacity="0.6">Sur commande · Délai 6–8 semaines · <tspan font-weight="600" opacity="1">Prix sur demande</tspan></text>
+  ${folio(n,label)}
+</svg>`;
+
+const layoutFullBleed = ({n,img,label}) => `
+<svg ${VB}>
+  <image href="${img}" x="0" y="0" width="794" height="1123" preserveAspectRatio="xMidYMid slice"/>
+  ${folio(n,label,true)}
+</svg>`;
+
+const pages = [];
+
+// 0 — COVER
+pages.push(`
+<svg ${VB}>
+  <rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">CASABLANCA</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MMXXVI</text>
+  <image href="${IMG.enigme_hero}" x="60" y="120" width="674" height="700" preserveAspectRatio="xMidYMid slice"/>
+  <text x="60" y="920" font-family="Inter" font-size="88" font-weight="300" letter-spacing="6">AURÉLIS</text>
+  <text x="60" y="960" font-family="Inter" font-size="11" letter-spacing="4" opacity="0.7">L'ART DE LA FORME</text>
+  <line x1="60" y1="1010" x2="200" y2="1010" stroke="#000"/>
+  <text x="60" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">COLLECTION 2026 · VOLUME II · CHAISES</text>
+</svg>`);
+
+// SPREAD 1 — Manifesto
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MANIFESTE</text>
+  <text x="60" y="200" font-family="Inter" font-size="36" font-weight="300">Le nombre, la</text>
+  <text x="60" y="240" font-family="Inter" font-size="36" font-weight="300">courbe, le corps.</text>
+  <line x1="60" y1="285" x2="160" y2="285" stroke="#000"/>
+  <text x="60" y="335" font-family="Inter" font-size="11" font-weight="300">Chaque chaise commence par une équation.</text>
+  <text x="60" y="353" font-family="Inter" font-size="11" font-weight="300">Chaque courbe est calculée avant d'être sculptée.</text>
+  <text x="60" y="395" font-family="Inter" font-size="11" font-weight="300">Le bois suit la mathématique,</text>
+  <text x="60" y="413" font-family="Inter" font-size="11" font-weight="300">la main suit le bois,</text>
+  <text x="60" y="431" font-family="Inter" font-size="11" font-weight="300">le corps suit la chaise.</text>
+  <text x="60" y="475" font-family="Inter" font-size="11" font-weight="300">Ici, rien n'est arbitraire. La forme est précise</text>
+  <text x="60" y="493" font-family="Inter" font-size="11" font-weight="300">parce que le confort l'est aussi.</text>
+  ${folio(1)}
+</svg>`);
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="561" font-family="Inter" font-size="16" font-style="italic" font-weight="300" text-anchor="middle">Une géométrie pour s'asseoir.</text>
+  ${folio(2)}
+</svg>`);
+
+// ===== CHAPTER I =====
+
+pages.push(layoutA({
+  n:3, name:'ALMA', voice:'CHAISE DE SALLE À MANGER', label:'ALMA',
+  img:IMG.alma_hero,
+  desc:[
+    'Une chaise droite, calculée pour le dos.',
+    'Le dossier suit la colonne, l\'assise tient le corps.',
+    'Précision et confort, sans compromis.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:4, label:'ALMA', img:IMG.alma_back,
+  dims:[
+    {label:'Largeur', value:'65 cm'},
+    {label:'Hauteur', value:'88 cm'},
+    {label:'Profondeur', value:'76 cm'},
+    {label:'Assise', value:'46 cm'},
+    {label:'Accoudoirs', value:'62 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:5, name:'CYGNE', voice:'CHAISE DE SALLE À MANGER', label:'CYGNE',
+  img:IMG.cygne_hero, align:'xMinYMid',
+  desc:[
+    'Une courbe en S, dessinée par le calcul.',
+    'Pas d\'accoudoirs, pas de superflu.',
+    'La ligne fait tout le travail.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:6, label:'CYGNE', img:IMG.cygne_front,
+  dims:[
+    {label:'Largeur', value:'42 cm'},
+    {label:'Hauteur', value:'90 cm'},
+    {label:'Profondeur', value:'60 cm'},
+    {label:'Assise', value:'46 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:7, name:'VASQUE', voice:'CHAISE DE SALLE À MANGER', label:'VASQUE',
+  img:IMG.vasque_hero, align:'xMaxYMid',
+  desc:[
+    'Le dossier creusé comme une main ouverte.',
+    'L\'assise enveloppe sans contraindre.',
+    'Une chaise qui retient, sans serrer.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:8, label:'VASQUE', img:IMG.vasque_white,
+  dims:[
+    {label:'Largeur', value:'64 cm'},
+    {label:'Hauteur', value:'86 cm'},
+    {label:'Profondeur', value:'80 cm'},
+    {label:'Assise', value:'46 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutB({
+  n:9, name:'NORA', voice:'CHAISE DE SALLE À MANGER', label:'NORA',
+  img:IMG.nora_hero, align:'xMaxYMid',
+  desc:[
+    'Assise carrée, dossier dressé.',
+    'Une chaise compacte, presque architecturale.',
+    'La géométrie au plus net.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:10, label:'NORA', img:IMG.nora_front,
+  dims:[
+    {label:'Largeur', value:'61 cm'},
+    {label:'Hauteur', value:'90 cm'},
+    {label:'Profondeur', value:'61 cm'},
+    {label:'Assise', value:'47 cm'},
+    {label:'Accoudoirs', value:'65 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:11, name:'LIRA', voice:'TABOURET', label:'LIRA',
+  img:IMG.lira_hero,
+  desc:[
+    'Tabouret haut, structuré, précis.',
+    'Disponible en hauteur comptoir et hauteur bar.',
+    'Le repose-pieds suit l\'assise, calculé.'
+  ]
+}));
+pages.push(layoutSpecsLira({n:12, label:'LIRA', img:IMG.lira_white, materials:'Bois massif · Finition huilée'}));
+
+pages.push(layoutA({
+  n:13, name:'PERCHE', voice:'TABOURET', label:'PERCHE',
+  img:IMG.perche_hero,
+  desc:[
+    'Un perchoir précis.',
+    'Tabouret compact pour comptoir,',
+    'pensé pour les espaces ouverts.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:14, label:'PERCHE', img:IMG.perche_white,
+  dims:[
+    {label:'Largeur', value:'45 cm'},
+    {label:'Hauteur', value:'96 cm'},
+    {label:'Profondeur', value:'58 cm'},
+    {label:'Assise', value:'67 cm'},
+    {label:'Repose-pieds', value:'21 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+// ===== CHAPTER OPENER =====
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">CHAPITRE II</text>
+  <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">POUR HABITER</text>
+  <text x="60" y="380" font-family="Inter" font-size="120" font-weight="300" letter-spacing="2">II</text>
+  <text x="60" y="480" font-family="Inter" font-size="36" font-weight="300">Pour habiter</text>
+  <text x="60" y="520" font-family="Inter" font-size="36" font-weight="300">la forme.</text>
+  <line x1="60" y1="565" x2="160" y2="565" stroke="#000"/>
+  <text x="60" y="615" font-family="Inter" font-size="11" font-weight="300">Treize chaises pour s'asseoir, s'étendre, se bercer.</text>
+  <text x="60" y="633" font-family="Inter" font-size="11" font-weight="300">Chacune calculée, chacune sculptée à la main.</text>
+  ${folio(15)}
+</svg>`);
+pages.push(layoutFullBleed({n:16, img:IMG.moka_curves, label:''}));
+
+// ===== CHAPTER II =====
+
+// ÉNIGME
+pages.push(layoutA({
+  n:17, name:'ÉNIGME', voice:'CHAISE LOUNGE', label:'ÉNIGME',
+  img:IMG.enigme_hero,
+  desc:[
+    'Une géométrie qui ne se livre pas d\'emblée.',
+    'Le bois retient sa propre logique,',
+    'l\'assise répond au corps en silence.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:18, label:'ÉNIGME', img:IMG.enigme_front,
+  dims:[
+    {label:'Largeur', value:'76 cm'},
+    {label:'Hauteur', value:'70 cm'},
+    {label:'Profondeur', value:'75 cm'},
+    {label:'Assise', value:'38 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+// ESTIVE — pool lounge, seasonal placement
+pages.push(layoutA({
+  n:19, name:'ESTIVE', voice:'TRANSAT DE PISCINE', label:'ESTIVE',
+  img:IMG.estive_hero, align:'xMinYMid',
+  desc:[
+    'Une longue inclinaison, calculée pour le soleil.',
+    'Le bois épouse l\'eau et la chaleur,',
+    'sans céder à l\'une ni à l\'autre.'
+  ]
+}));
+
+ 
+pages.push(layoutSpecs({
+  n:20, label:'ESTIVE', img:IMG.estive_product,
+  dims:[
+    {label:'Largeur', value:'195 cm'},
+    {label:'Hauteur', value:'66 cm'},
+    {label:'Profondeur', value:'74 cm'}
+  ],
+  materials:'Bois massif traité · Finition extérieure'
+}));
+
+pages.push(layoutA({
+  n:21, name:'MOKA', voice:'CHAISE LOUNGE', label:'MOKA',
+  img:IMG.moka_hero,
+  desc:[
+    'L\'accoudoir reçoit la tasse.',
+    'Le geste du café trouve sa place,',
+    'inscrit dans la forme avant l\'usage.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:22, label:'MOKA', img:IMG.moka_white,
+  dims:[
+    {label:'Largeur', value:'84 cm'},
+    {label:'Hauteur', value:'85 cm'},
+    {label:'Profondeur', value:'78 cm'},
+    {label:'Assise', value:'39 cm'},
+    {label:'Accoudoirs', value:'62 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:23, name:'FEUILLE', voice:'CHAISE LOUNGE', label:'FEUILLE',
+  img:IMG.feuille_hero,
+  desc:[
+    'Le dossier en feuilles superposées.',
+    'Chaque lamelle suit la précédente.',
+    'La lumière passe entre.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:24, label:'FEUILLE', img:IMG.feuille_front,
+  dims:[
+    {label:'Largeur', value:'77 cm'},
+    {label:'Hauteur', value:'91 cm'},
+    {label:'Profondeur', value:'97 cm'},
+    {label:'Assise', value:'36 cm'},
+    {label:'Accoudoirs', value:'60 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutB({
+  n:25, name:'DUNE', voice:'MÉRIDIENNE', label:'DUNE',
+  img:IMG.dune_hero,
+  desc:[
+    'Large comme une dune.',
+    'L\'assise s\'étend, le corps s\'allonge.',
+    'Le bois porte sans demander d\'attention.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:26, label:'DUNE', img:IMG.dune_front,
+  dims:[
+    {label:'Largeur', value:'170 cm'},
+    {label:'Hauteur', value:'73 cm'},
+    {label:'Profondeur', value:'98 cm'},
+    {label:'Assise', value:'40 cm'},
+    {label:'Accoudoirs', value:'66 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:27, name:'OASIS', voice:'CHAISE LOUNGE', label:'OASIS',
+  img:IMG.oasis_hero,
+  desc:[
+    'Le dossier creusé, profond.',
+    'Une chaise pour s\'arrêter, longtemps.',
+    'La main de la palme, ouverte.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:28, label:'OASIS', img:IMG.oasis_white,
+  dims:[
+    {label:'Largeur', value:'89 cm'},
+    {label:'Hauteur', value:'85 cm'},
+    {label:'Profondeur', value:'83 cm'},
+    {label:'Assise', value:'39 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:29, name:'LIDO', voice:'CHAISE LOUNGE BASSE', label:'LIDO',
+  img:IMG.lido_hero, align:'xMaxYMid',
+  desc:[
+    'Posée au sol, longue, basse.',
+    'Une chaise pour s\'étendre,',
+    'pour regarder le plafond.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:30, label:'LIDO', img:IMG.lido_front,
+  dims:[
+    {label:'Largeur', value:'69 cm'},
+    {label:'Hauteur', value:'86 cm'},
+    {label:'Profondeur', value:'145 cm'},
+    {label:'Assise', value:'26 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:31, name:'LIANE', voice:'CHAISE LOUNGE ÉTENDUE', label:'LIANE',
+  img:IMG.liane_hero,
+  desc:[
+    'Une courbe étendue, posée au sol.',
+    'Le bois s\'allonge, porte le corps,',
+    'suit la ligne sans la rompre.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:32, label:'LIANE', img:IMG.liane_back,
+  dims:[
+    {label:'Largeur', value:'74 cm'},
+    {label:'Hauteur', value:'99 cm'},
+    {label:'Profondeur', value:'140 cm'},
+    {label:'Assise', value:'39 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:33, name:'AILE', voice:'CHAISE LOUNGE', label:'AILE',
+  img:IMG.aile_hero,
+  desc:[
+    'Les accoudoirs s\'ouvrent comme des ailes.',
+    'La forme paramétrique se déploie,',
+    'le dossier reste droit, le corps est tenu.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:34, label:'AILE', img:IMG.aile_front,
+  dims:[
+    {label:'Largeur', value:'69 cm'},
+    {label:'Hauteur', value:'85 cm'},
+    {label:'Profondeur', value:'79 cm'},
+    {label:'Assise', value:'40 cm'},
+    {label:'Accoudoirs', value:'64 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutB({
+  n:35, name:'TERRE', voice:'CHAISE LOUNGE', label:'TERRE',
+  img:IMG.terre_hero, align:'xMaxYMid',
+  desc:[
+    'Une chaise qui appartient au dehors.',
+    'Le bois prend la lumière, le grain s\'ouvre.',
+    'Pour la terrasse, le jardin, le seuil.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:36, label:'TERRE', img:IMG.terre_front,
+  dims:[
+    {label:'Largeur', value:'63 cm'},
+    {label:'Hauteur', value:'81 cm'},
+    {label:'Profondeur', value:'78 cm'},
+    {label:'Assise', value:'39 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:37, name:'ANSE', voice:'CHAISE LOUNGE', label:'ANSE',
+  img:IMG.anse_hero, align:'xMinYMid',
+  desc:[
+    'Une chaise qui tient le corps.',
+    'Les accoudoirs ferment la prise,',
+    'le dossier accompagne le dos.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:38, label:'ANSE', img:IMG.anse_white,
+  dims:[
+    {label:'Largeur', value:'77 cm'},
+    {label:'Hauteur', value:'92 cm'},
+    {label:'Profondeur', value:'100 cm'},
+    {label:'Assise', value:'36 cm'},
+    {label:'Accoudoirs', value:'62 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:39, name:'BERCEAU', voice:'CHAISE BERÇANTE', label:'BERCEAU',
+  img:IMG.berceau_hero,
+  desc:[
+    'La courbe du berceau, calculée pour le rythme.',
+    'Chaque mouvement suit le bois,',
+    'le bois suit le corps qui s\'incline.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:40, label:'BERCEAU', img:IMG.berceau_close,
+  dims:[
+    {label:'Largeur', value:'76 cm'},
+    {label:'Hauteur', value:'82 cm'},
+    {label:'Profondeur', value:'80 cm'},
+    {label:'Assise', value:'43 cm'},
+    {label:'Accoudoirs', value:'68 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+pages.push(layoutA({
+  n:41, name:'BALAN', voice:'CHAISE BERÇANTE', label:'BALAN',
+  img:IMG.balan_hero,
+  desc:[
+    'Le mouvement comme géométrie.',
+    'Une chaise berçante haute, droite,',
+    'pensée pour le repos actif.'
+  ]
+}));
+pages.push(layoutSpecs({
+  n:42, label:'BALAN', img:IMG.balan_front,
+  dims:[
+    {label:'Largeur', value:'70 cm'},
+    {label:'Hauteur', value:'97 cm'},
+    {label:'Profondeur', value:'103 cm'},
+    {label:'Assise', value:'36 cm'},
+    {label:'Accoudoirs', value:'60 cm'}
+  ],
+  materials:'Bois massif · Finition huilée'
+}));
+
+// 43 — Back cover
+pages.push(`
+<svg ${VB}><rect width="794" height="1123" fill="#fff"/>
+  <text x="397" y="380" font-family="Inter" font-size="48" font-weight="300" letter-spacing="4" text-anchor="middle">AURÉLIS</text>
+  <line x1="347" y1="420" x2="447" y2="420" stroke="#000"/>
+  <text x="397" y="460" font-family="Inter" font-size="10" letter-spacing="3" text-anchor="middle" opacity="0.6">L'ART DE LA FORME</text>
+  <text x="397" y="600" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">ATELIER</text>
+  <text x="397" y="625" font-family="JetBrains Mono" font-size="10" text-anchor="middle">Casablanca, Maroc</text>
+  <text x="397" y="680" font-family="Inter" font-size="9" font-weight="600" letter-spacing="3" text-anchor="middle">CONTACT</text>
+  <text x="397" y="705" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 61 42 09 39</text>
+  <text x="397" y="722" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+212 6 61 65 65 32</text>
+  <text x="397" y="745" font-family="JetBrains Mono" font-size="10" text-anchor="middle">www.aurelis.ma</text>
+  <text x="397" y="762" font-family="JetBrains Mono" font-size="10" text-anchor="middle">@aurelis.maroc</text>
+  <text x="397" y="850" font-family="Inter" font-size="10" font-style="italic" font-weight="300" text-anchor="middle">Sur commande · Délai 6–8 semaines</text>
+  <text x="397" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="middle">COLLECTION 2026 · VOLUME II · CHAISES</text>
+</svg>`);
+
+// === SPREAD LOGIC ===
+const isMobile = () => window.innerWidth <= 768;
+let pageCursor = 0;
+let spreadCursor = 0;
+const LAST_SPREAD = 22;
+
+function getSpread(s) {
+  if (s === 0) return [0];
+  if (s === LAST_SPREAD) return [43];
+  return [2*s - 1, 2*s];
+}
+
+function render() {
+  const book = document.getElementById('book');
+  book.innerHTML = '';
+  if (isMobile()) {
+    book.className = 'book single';
+    const div = document.createElement('div');
+    div.className = 'page mobile-show';
+    div.innerHTML = pages[pageCursor];
+    book.appendChild(div);
+    document.getElementById('counter').textContent =
+      String(pageCursor).padStart(2,'0') + ' / ' + String(pages.length-1).padStart(2,'0');
+  } else {
+    const spread = getSpread(spreadCursor);
+    book.className = 'book' + (spread.length===1 ? ' single' : '');
+    spread.forEach((idx,i) => {
+      const div = document.createElement('div');
+      div.className = 'page ' + (spread.length===1 ? '' : (i===0?'left':'right'));
+      div.innerHTML = pages[idx];
+      book.appendChild(div);
+    });
+    document.getElementById('counter').textContent =
+      String(spread[0]).padStart(2,'0') + (spread[1]!==undefined?'–'+String(spread[1]).padStart(2,'0'):'') +
+      ' / ' + String(pages.length-1).padStart(2,'0');
+  }
+}
+
+function next() {
+  if (isMobile()) { if (pageCursor < pages.length-1) { pageCursor++; render(); } }
+  else { if (spreadCursor < LAST_SPREAD) { spreadCursor++; render(); } }
+}
+function prev() {
+  if (isMobile()) { if (pageCursor > 0) { pageCursor--; render(); } }
+  else { if (spreadCursor > 0) { spreadCursor--; render(); } }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (dx < -50) next();
+  if (dx > 50) prev();
+}, {passive:true});
+
+function preparePrint() {
+  const container = document.getElementById('printContainer');
+  container.innerHTML = '';
+  pages.forEach(pageHTML => {
+    const div = document.createElement('div');
+    div.className = 'page';
+    div.innerHTML = pageHTML;
+    container.appendChild(div);
+  });
+  setTimeout(() => { window.print(); }, 600);
+}
+
+window.addEventListener('resize', render);
+render();
+</script>
+</body>
+</html>
