@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AURÉLIS — L'art de la forme</title>
 <meta name="description" content="AURÉLIS — Mobilier et sculptures paramétriques. Atelier à Casablanca. Sur commande.">
+
+<!-- Favicon : « A » Cormorant, noir, sans fond -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffffff'/%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -161,11 +166,14 @@
   }
   .hero-image {
     position: absolute; inset: 0;
-    background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/forest_table_lifestyle_khshyj.webp');
+    background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_2400,c_fill/v1771621730/candy_hero_iocopp.webp');
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     transform: scale(1.04);
     animation: heroIn 1.8s var(--ease) 0.2s forwards;
+  }
+  @media (max-width: 900px) {
+    .hero-image { background-position: center; }
   }
   @keyframes heroIn { to { transform: scale(1); } }
   .hero::after {
@@ -229,6 +237,8 @@
     transition: background 0.4s var(--ease), color 0.4s var(--ease);
     display: inline-flex; align-items: center; gap: 12px;
     white-space: nowrap;
+    border: none;
+    cursor: pointer;
   }
   .btn-primary:hover { background: var(--accent); color: var(--paper); }
   .btn-outline {
@@ -401,20 +411,6 @@
     color: var(--ink);
     margin-bottom: 16px;
   }
-  .signature-text .specs {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .signature-text .specs div { display: flex; flex-direction: column; gap: 4px; }
-  .signature-text .specs .k { color: var(--mute); }
-  .signature-text .specs .v {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-  }
   .signature-text .link {
     margin-top: 36px;
     display: inline-flex; align-items: center; gap: 12px;
@@ -440,7 +436,6 @@
     .signature-text { padding: 0; max-width: 100%; }
     .signature-text h3 { margin-bottom: 22px; }
     .signature-text p { font-size: 17px; }
-    .signature-text .specs { grid-template-columns: repeat(2, 1fr); gap: 18px 20px; }
   }
 
   /* ─────────── ATELIER ─────────── */
@@ -452,7 +447,7 @@
     color: var(--paper);
   }
   .atelier-image {
-    background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg');
+    background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1600,c_fill/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -677,6 +672,16 @@
     border-radius: 0;
   }
   .submit:hover { background: var(--accent); }
+  .submit:disabled { opacity: 0.5; cursor: wait; }
+  .form-status {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    min-height: 24px;
+  }
+  .form-status.success { color: var(--accent); }
+  .form-status.error { color: #a04040; }
   .contact-info {
     display: flex; flex-direction: column; gap: 36px;
     padding-left: 48px;
@@ -731,17 +736,6 @@
     font-size: 17px;
     max-width: 360px;
     line-height: 1.5;
-    margin-bottom: 28px;
-  }
-  .footer-signature {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.55;
-    max-width: 360px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.12);
   }
   .footer-col h5 {
     font-size: 10px;
@@ -818,8 +812,8 @@
 <section class="hero" id="top">
   <div class="hero-image"></div>
   <div class="hero-credit">
-    <div class="pname">Sylve</div>
-    <div class="micro">Table de salle à manger · Vol. I</div>
+    <div class="pname">Miel</div>
+    <div class="micro">Table sculptée · Vol. I</div>
   </div>
   <div class="hero-content">
     <div class="hero-eyebrow micro">Édition MMXXVI — Collection paramétrique</div>
@@ -848,7 +842,7 @@
   </div>
   <div class="collections-grid">
     <a href="catalog/tables.html" class="col-card col-feature reveal">
-      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/forest_table_lifestyle_khshyj.webp');"></div>
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1600,c_fill/v1779392874/twisted_table_hero_qmewze.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume I · Dix pièces</div>
         <div class="name">Tables</div>
@@ -856,14 +850,14 @@
       </div>
     </a>
     <a href="catalog/chaises.html" class="col-card col-secondary reveal">
-      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp');"></div>
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume II · Dix-huit pièces</div>
         <div class="name">Chaises</div>
       </div>
     </a>
     <a href="catalog/murales.html" class="col-card col-secondary reveal">
-      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1771621734/walking-horse-different_setting_ci8pcb.webp');"></div>
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1771621734/walking-horse-different_setting_ci8pcb.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume III · Neuf pièces</div>
         <div class="name">Sculptures murales</div>
@@ -886,46 +880,31 @@
   <div style="max-width:1320px;margin:0 auto;">
 
     <div class="signature-row reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1771621730/candy_hero_iocopp.webp');"></div>
+      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1780074175/forest_table_lifestyle_khshyj.webp');"></div>
       <div class="signature-text">
         <div class="label micro">Volume I — Tables</div>
-        <h3>Miel<br><em>la table sculptée.</em></h3>
-        <p>Un disque de bois massif suspendu sur trois pieds tressés. Une courbe dessinée sur mesure, polie à la main jusqu'à la lumière. Disponible en deux diamètres, sur commande.</p>
-        <div class="specs">
-          <div><span class="k micro">Diamètre</span><span class="v">110 / 172 cm</span></div>
-          <div><span class="k micro">Hauteur</span><span class="v">72 cm</span></div>
-          <div><span class="k micro">Délai</span><span class="v">6 à 8 semaines</span></div>
-        </div>
+        <h3>Sylve<br><em>la table de salle à manger.</em></h3>
+        <p>Un plateau de bois massif posé sur une structure dessinée pour disparaître. Une pièce calme, taillée pour les longues tablées. Sur commande, dans les essences de votre choix.</p>
         <a href="catalog/tables.html" class="link">Découvrir la pièce <span>→</span></a>
       </div>
     </div>
 
     <div class="signature-row reverse reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_hero_buxjn5.webp');"></div>
+      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1780074183/riddle_rest_hero_buxjn5.webp');"></div>
       <div class="signature-text">
         <div class="label micro">Volume II — Chaises</div>
         <h3>Énigme<br><em>la chaise lounge.</em></h3>
         <p>Une géométrie pour s'asseoir, une autre pour s'oublier. Le dossier épouse la colonne, le siège accueille le repos. Chaque exemplaire est numéroté à la main.</p>
-        <div class="specs">
-          <div><span class="k micro">Largeur</span><span class="v">78 cm</span></div>
-          <div><span class="k micro">Profondeur</span><span class="v">82 cm</span></div>
-          <div><span class="k micro">Hauteur</span><span class="v">94 cm</span></div>
-        </div>
         <a href="catalog/chaises.html" class="link">Découvrir la pièce <span>→</span></a>
       </div>
     </div>
 
     <div class="signature-row reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/v1771621721/walking-horse_huge_akbjo8.webp');"></div>
+      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1771621721/walking-horse_huge_akbjo8.webp');"></div>
       <div class="signature-text">
         <div class="label micro">Volume III — Sculptures murales</div>
         <h3>Cavale<br><em>le cheval en mouvement.</em></h3>
         <p>Une centaine de lamelles assemblées, dessinées pour suggérer le galop. Format sur mesure, du petit panneau de bureau jusqu'à la pièce d'apparat de cinq mètres.</p>
-        <div class="specs">
-          <div><span class="k micro">Format</span><span class="v">Sur mesure</span></div>
-          <div><span class="k micro">Finitions</span><span class="v">Bois naturel · Bois teinté</span></div>
-          <div><span class="k micro">Installation</span><span class="v">Comprise</span></div>
-        </div>
         <a href="catalog/murales.html" class="link">Découvrir la pièce <span>→</span></a>
       </div>
     </div>
@@ -942,7 +921,7 @@
       Aurélis est un atelier installé à Casablanca. Chaque pièce est dessinée pour un lieu, un usage, un client — puis sculptée dans le bois massif par un seul artisan, du début à la fin.
     </p>
     <p>
-      Rien n'est produit en série. Rien n'attend en stock. Chaque commande est un dialogue entre vous et l'atelier, et chaque pièce porte le nom de la main qui l'a faite.
+      Rien n'est produit en série. Rien n'attend en stock. Chaque commande est un dialogue entre vous et l'atelier.
     </p>
     <div class="atelier-meta">
       <div><span class="k micro">Lieu</span><span class="v">Casablanca, Maroc</span></div>
@@ -1001,18 +980,19 @@
     <div class="aside">Nous répondons à chaque demande sous 48 heures. Toujours par la même main.</div>
   </div>
   <div class="contact-grid">
-    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mbdeaweb" method="POST">
+      <input type="hidden" name="_subject" value="Demande Aurélis — Nouveau contact">
       <div class="form-row">
-        <div class="field"><label class="micro">Prénom</label><input type="text" name="prenom" required></div>
-        <div class="field"><label class="micro">Nom</label><input type="text" name="nom" required></div>
+        <div class="field"><label class="micro" for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" required></div>
+        <div class="field"><label class="micro" for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
       </div>
       <div class="form-row">
-        <div class="field"><label class="micro">Email</label><input type="email" name="email" required></div>
-        <div class="field"><label class="micro">Téléphone</label><input type="tel" name="tel"></div>
+        <div class="field"><label class="micro" for="email">Email</label><input type="email" id="email" name="email" required></div>
+        <div class="field"><label class="micro" for="tel">Téléphone</label><input type="tel" id="tel" name="tel"></div>
       </div>
       <div class="field">
-        <label class="micro">Votre intérêt</label>
-        <select name="interet">
+        <label class="micro" for="interet">Votre intérêt</label>
+        <select id="interet" name="interet">
           <option>Tables</option>
           <option>Chaises</option>
           <option>Sculptures murales</option>
@@ -1021,10 +1001,11 @@
         </select>
       </div>
       <div class="field">
-        <label class="micro">Votre projet</label>
-        <textarea name="message" rows="4" placeholder="Lieu, usage, intention…"></textarea>
+        <label class="micro" for="message">Votre projet</label>
+        <textarea id="message" name="message" rows="4" placeholder="Lieu, usage, intention…"></textarea>
       </div>
-      <button type="submit" class="submit">Envoyer la demande</button>
+      <button type="submit" class="submit" id="submitBtn">Envoyer la demande</button>
+      <div class="form-status" id="formStatus"></div>
     </form>
     <div class="contact-info reveal">
       <div class="info-block">
@@ -1035,7 +1016,7 @@
         <div class="k micro">Téléphone</div>
         <div class="v">
           <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
-          <a href="tel:+212607597526">+212 6 07 59 75 26</a>
+          <a href="tel:+212661656532">+212 6 61 65 65 32</a>
         </div>
       </div>
       <div class="info-block">
@@ -1055,9 +1036,6 @@
     <div>
       <div class="footer-brand">Aurélis</div>
       <div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div>
-      <div class="footer-signature">
-        « Chaque pièce porte le nom de son artisan. Il en reste responsable. »
-      </div>
     </div>
     <div class="footer-col">
       <h5>Collections</h5>
@@ -1081,6 +1059,7 @@
       <h5>Contact</h5>
       <ul>
         <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
+        <li><a href="tel:+212661656532">+212 6 61 65 65 32</a></li>
         <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
         <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
         <li>Casablanca, Maroc</li>
@@ -1111,12 +1090,44 @@
     });
   });
 
-  function handleSubmit(e) {
+  // Formspree AJAX submission
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const f = e.target;
-    const body = `Prénom: ${f.prenom.value}%0D%0ANom: ${f.nom.value}%0D%0AEmail: ${f.email.value}%0D%0ATéléphone: ${f.tel.value}%0D%0AIntérêt: ${f.interet.value}%0D%0A%0D%0A${f.message.value}`;
-    window.location.href = `mailto:contact@aurelis.ma?subject=Demande%20Aurélis&body=${body}`;
-  }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    status.className = 'form-status';
+    status.textContent = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.className = 'form-status success';
+        status.textContent = 'Demande envoyée. Nous vous répondons sous 48 heures.';
+        form.reset();
+        submitBtn.textContent = 'Envoyer la demande';
+      } else {
+        const data = await response.json();
+        status.className = 'form-status error';
+        status.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Une erreur est survenue. Merci de réessayer.';
+        submitBtn.textContent = 'Envoyer la demande';
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = 'Une erreur est survenue. Merci de réessayer ou de nous écrire directement.';
+      submitBtn.textContent = 'Envoyer la demande';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
 </script>
 
 </body>
