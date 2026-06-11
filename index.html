@@ -1233,6 +1233,21 @@
       submitBtn.disabled = false;
     }
   });
+    // Pre-select interest chip from URL parameter (catalog deep-link)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get('interet');
+    if (!interest) return;
+    const chip = document.querySelector(`input[name="interet"][value="${interest}"]`);
+    if (chip) {
+      chip.checked = true;
+      // Scroll to contact section after a brief delay to let the page settle
+      setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 400);
+    }
+  })();
+
 </script>
 
 </body>
