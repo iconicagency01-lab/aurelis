@@ -268,41 +268,6 @@
     .hero-eyebrow { margin-bottom: 20px; font-size: 9px; letter-spacing: 0.24em; }
   }
 
-  /* ─────────── INTRO BAR ─────────── */
-  .intro-bar {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 28px 60px;
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 60px;
-    flex-wrap: wrap;
-  }
-  .intro-bar .statement {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(18px, 1.8vw, 26px);
-    font-weight: 300;
-    line-height: 1.4;
-    max-width: 720px;
-  }
-  .intro-bar .pillars {
-    display: flex; gap: 48px;
-    flex-shrink: 0;
-  }
-  .intro-bar .pillar { display: flex; flex-direction: column; gap: 6px; }
-  .intro-bar .pillar .k { color: rgba(255,255,255,0.5); font-size: 9px; }
-  .intro-bar .pillar .v {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px; font-weight: 400;
-  }
-  @media (max-width: 900px) {
-    .intro-bar { padding: 32px 22px; flex-direction: column; align-items: flex-start; gap: 28px; }
-    .intro-bar .statement { font-size: 18px; }
-    .intro-bar .pillars { gap: 24px; flex-wrap: wrap; width: 100%; }
-    .intro-bar .pillar { flex: 1 1 calc(50% - 12px); min-width: 130px; }
-    .intro-bar .pillar .v { font-size: 16px; }
-  }
-
   /* ─────────── COLLECTIONS ─────────── */
   .collections { padding: 120px 60px 80px; }
   .section-head {
@@ -412,6 +377,7 @@
   .signature-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
   .signature-row.reverse > * { direction: ltr; }
   .signature-img {
+    width: 100%;
     aspect-ratio: 4/5;
     background-size: cover;
     background-position: center;
@@ -460,16 +426,21 @@
   .signature-text .link:hover { gap: 20px; }
   @media (max-width: 900px) {
     .signature { padding: 70px 22px; }
-    .signature-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 70px; }
-    .signature-row.reverse { direction: ltr; }
-    .signature-img { aspect-ratio: 4/5; }
-    .signature-text { padding: 0; }
+    .signature-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 70px;
+      direction: ltr;
+    }
+    .signature-row.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+    .signature-img { aspect-ratio: 4/5; width: 100%; }
+    .signature-text { padding: 0; max-width: 100%; }
     .signature-text h3 { margin-bottom: 22px; }
     .signature-text p { font-size: 17px; }
     .signature-text .specs { grid-template-columns: repeat(2, 1fr); gap: 18px 20px; }
-  }
-  @media (max-width: 380px) {
-    .signature-text .specs { grid-template-columns: 1fr 1fr; }
   }
 
   /* ─────────── ATELIER ─────────── */
@@ -638,61 +609,6 @@
     .commander-coda .btn-dark { justify-content: center; }
   }
 
-  /* ─────────── EDITORIAL ─────────── */
-  .editorial {
-    position: relative;
-    min-height: 90vh;
-    background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/v1771621744/walking-horse-behind_office_ylg5fa.webp');
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
-  .editorial::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.4) 100%);
-  }
-  .editorial-content {
-    position: relative;
-    min-height: 90vh;
-    display: flex; align-items: flex-end;
-    padding: 80px 60px;
-    color: var(--paper);
-    z-index: 2;
-  }
-  .editorial-inner {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    gap: 40px;
-    width: 100%;
-  }
-  .editorial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(22px, 3vw, 44px);
-    font-weight: 300;
-    line-height: 1.3;
-    max-width: 760px;
-  }
-  .editorial-credit {
-    text-align: right;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.8;
-    flex-shrink: 0;
-  }
-  .editorial-credit .pname {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--paper);
-  }
-  @media (max-width: 900px) {
-    .editorial { min-height: 75vh; }
-    .editorial-content { min-height: 75vh; padding: 60px 22px; }
-    .editorial-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
-    .editorial-credit { text-align: left; }
-  }
-
   /* ─────────── CONTACT ─────────── */
   .contact {
     padding: 140px 60px 80px;
@@ -815,26 +731,17 @@
     font-size: 17px;
     max-width: 360px;
     line-height: 1.5;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
-  .footer-engagement {
+  .footer-signature {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
     max-width: 360px;
-  }
-  .footer-engagement .k {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 8px;
-    font-weight: 500;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.12);
   }
   .footer-col h5 {
     font-size: 10px;
@@ -919,7 +826,7 @@
     <h1 class="hero-title">L'art<br><em>de la forme.</em></h1>
     <div class="hero-bottom">
       <p class="hero-blurb">
-        Trois volumes. Tables, chaises, sculptures murales. Chaque pièce est dessinée par le calcul, sculptée à la main, et fabriquée sur commande à Casablanca.
+        Trois volumes. Tables, chaises, sculptures murales. Dessinés sur mesure, sculptés à la main, fabriqués à Casablanca.
       </p>
       <div class="hero-cta-group">
         <a href="#collections" class="btn-primary">Découvrir les collections</a>
@@ -928,26 +835,6 @@
     </div>
   </div>
 </section>
-
-<div class="intro-bar">
-  <div class="statement">
-    « Une maison marocaine fondée en MMXXVI. Un atelier paramétrique où la machine calcule, et où la main décide. »
-  </div>
-  <div class="pillars">
-    <div class="pillar">
-      <span class="k micro">Trente-sept</span>
-      <span class="v">Pièces signature</span>
-    </div>
-    <div class="pillar">
-      <span class="k micro">Six à huit</span>
-      <span class="v">Semaines de fabrication</span>
-    </div>
-    <div class="pillar">
-      <span class="k micro">À vie</span>
-      <span class="v">Entretien et réparations</span>
-    </div>
-  </div>
-</div>
 
 <section class="collections" id="collections">
   <div class="section-head reveal">
@@ -1003,7 +890,7 @@
       <div class="signature-text">
         <div class="label micro">Volume I — Tables</div>
         <h3>Miel<br><em>la table sculptée.</em></h3>
-        <p>Un disque de bois massif suspendu sur trois pieds tressés. La courbe vient du calcul ; l'âme vient de la main qui l'a polie. Disponible en deux diamètres, sur commande.</p>
+        <p>Un disque de bois massif suspendu sur trois pieds tressés. Une courbe dessinée sur mesure, polie à la main jusqu'à la lumière. Disponible en deux diamètres, sur commande.</p>
         <div class="specs">
           <div><span class="k micro">Diamètre</span><span class="v">110 / 172 cm</span></div>
           <div><span class="k micro">Hauteur</span><span class="v">72 cm</span></div>
@@ -1033,10 +920,10 @@
       <div class="signature-text">
         <div class="label micro">Volume III — Sculptures murales</div>
         <h3>Cavale<br><em>le cheval en mouvement.</em></h3>
-        <p>Une centaine de lamelles assemblées, calculées pour suggérer le galop. Format sur mesure, du petit panneau de bureau jusqu'à la pièce d'apparat de cinq mètres.</p>
+        <p>Une centaine de lamelles assemblées, dessinées pour suggérer le galop. Format sur mesure, du petit panneau de bureau jusqu'à la pièce d'apparat de cinq mètres.</p>
         <div class="specs">
           <div><span class="k micro">Format</span><span class="v">Sur mesure</span></div>
-          <div><span class="k micro">Finitions</span><span class="v">Bois · Métallique</span></div>
+          <div><span class="k micro">Finitions</span><span class="v">Bois naturel · Bois teinté</span></div>
           <div><span class="k micro">Installation</span><span class="v">Comprise</span></div>
         </div>
         <a href="aurelis-murales.html" class="link">Découvrir la pièce <span>→</span></a>
@@ -1050,12 +937,12 @@
   <div class="atelier-image"></div>
   <div class="atelier-text reveal">
     <div class="label micro">L'atelier — Casablanca</div>
-    <h2>La machine calcule.<br><em>La main tranche.</em></h2>
+    <h2>Dessiné sur mesure.<br><em>Sculpté à la main.</em></h2>
     <p class="lead">
-      Aurélis est un atelier paramétrique installé à Casablanca. Chaque pièce naît d'une équation, prend forme dans le bois massif, et porte la signature d'une seule main du début à la fin.
+      Aurélis est un atelier installé à Casablanca. Chaque pièce est dessinée pour un lieu, un usage, un client — puis sculptée dans le bois massif par un seul artisan, du début à la fin.
     </p>
     <p>
-      Rien n'est produit en série. Rien n'attend en stock. Chaque commande est un dialogue — entre vous, le calcul, et le geste de l'artisan.
+      Rien n'est produit en série. Rien n'attend en stock. Chaque commande est un dialogue entre vous et l'atelier, et chaque pièce porte le nom de la main qui l'a faite.
     </p>
     <div class="atelier-meta">
       <div><span class="k micro">Lieu</span><span class="v">Casablanca, Maroc</span></div>
@@ -1108,20 +995,6 @@
   </div>
 </section>
 
-<section class="editorial">
-  <div class="editorial-content">
-    <div class="editorial-inner">
-      <div class="editorial-quote">
-        « Une forme n'est jamais neutre. Le nombre dessine, la main décide — et l'objet, finalement, devient ce qu'il était. »
-      </div>
-      <div class="editorial-credit">
-        <div class="pname">Cavale</div>
-        <div class="micro">Sculpture murale · Vol. III</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="contact" id="contact">
   <div class="contact-head reveal">
     <h2>Dites-nous ce que<br><em>vous imaginez.</em></h2>
@@ -1162,7 +1035,7 @@
         <div class="k micro">Téléphone</div>
         <div class="v">
           <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
-          <a href="tel:+212607597526">+212 6 61 65 65 32</a>
+          <a href="tel:+212661656532">+212 6 61 65 65 32</a>
         </div>
       </div>
       <div class="info-block">
@@ -1181,11 +1054,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand">Aurélis</div>
-      <div class="footer-tagline">L'art de la forme. Mobilier et sculptures paramétriques, fabriqués à la main à Casablanca.</div>
-      <div class="footer-engagement">
-        <span class="k">Engagement de la maison</span>
-        Garantie de deux ans. Entretien et réparations assurés à vie, par la main qui a fabriqué la pièce.
-      </div>
+      <div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div>
     </div>
     <div class="footer-col">
       <h5>Collections</h5>
@@ -1234,7 +1103,6 @@
     else nav.classList.remove('scrolled');
   }, { passive: true });
 
-  // Close mobile menu when a link is tapped
   document.querySelectorAll('nav a').forEach(a => {
     a.addEventListener('click', () => {
       if (nav.classList.contains('open')) nav.classList.remove('open');
