@@ -7,15 +7,41 @@
 <meta property="og:title" content="AURÉLIS — Collection 2026">
 <meta property="og:description" content="L'art de la forme. Tables fabriquées à la main à Casablanca.">
 <meta property="og:type" content="website">
-<title>AURÉLIS — Collection 2026</title>
+<title>AURÉLIS — Collection 2026 · Tables</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html, body { height:100%; background:#1a1a1a; font-family:'Inter',sans-serif; overflow:hidden; }
-  .viewer { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:30px 20px 70px; }
+
+  /* ─── Catalog header strip ─── */
+  .cat-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 44px; background: #0d0d0d;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; z-index: 30;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .cat-header .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 4px; font-weight: 500;
+    color: #fff; text-decoration: none;
+  }
+  .cat-header .vols { display: flex; gap: 22px; }
+  .cat-header .vols a {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 2.5px; font-weight: 500;
+    color: #888; text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+  .cat-header .vols a:hover { color: #fff; }
+  .cat-header .vols a.active { color: #fff; border-bottom: 1px solid #fff; padding-bottom: 2px; }
+
+  .viewer { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding:64px 20px 70px; }
   .book {
-    display:flex; gap:0; height:100%; max-height:92vh;
+    display:flex; gap:0; height:100%; max-height:88vh;
     aspect-ratio: 1588 / 1123;
     box-shadow: 0 30px 80px rgba(0,0,0,0.6);
     transition: aspect-ratio 0.2s;
@@ -26,7 +52,7 @@
   .page.left { box-shadow: inset -8px 0 20px -10px rgba(0,0,0,0.25); }
   .page.right { box-shadow: inset 8px 0 20px -10px rgba(0,0,0,0.25); }
 
-  .nav-zone { position:fixed; top:0; bottom:70px; width:15%; cursor:pointer; z-index:10; }
+  .nav-zone { position:fixed; top:44px; bottom:70px; width:15%; cursor:pointer; z-index:10; }
   .nav-zone.left { left:0; }
   .nav-zone.right { right:0; }
   .nav-zone:hover::after { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:36px; opacity:0.5; font-family:serif; }
@@ -35,71 +61,164 @@
 
   .toolbar {
     position:fixed; bottom:0; left:0; right:0; height:55px; background:#0d0d0d;
-    display:flex; align-items:center; justify-content:center; gap:20px;
+    display:flex; align-items:center; justify-content:center; gap:14px;
     color:#888; font-size:11px; letter-spacing:2px; z-index:20;
   }
-  .toolbar button {
+  .toolbar button, .toolbar .icon-btn {
     background:none; border:1px solid #444; color:#ccc;
     padding:8px 14px; cursor:pointer; font-family:'Inter',sans-serif;
     font-size:10px; letter-spacing:2px;
+    display:inline-flex; align-items:center; justify-content:center;
+    transition: all 0.2s ease;
   }
-  .toolbar button:hover { border-color:#fff; color:#fff; }
+  .toolbar button:hover, .toolbar .icon-btn:hover { border-color:#fff; color:#fff; }
+  .toolbar .cta { border-color:#fff; color:#fff; padding:8px 20px; letter-spacing:2.5px; }
+  .toolbar .cta:hover { background:#fff; color:#0d0d0d; }
+  .toolbar .wa { padding:6px 10px; }
+  .toolbar .wa svg { width:16px; height:16px; }
   .counter { font-family:'JetBrains Mono',monospace; min-width:90px; text-align:center; }
-/* ─── Catalog header strip ─── */
-.cat-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 44px; background: #0d0d0d;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; z-index: 30;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.cat-header .brand {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px; letter-spacing: 4px; font-weight: 500;
-  color: #fff; text-decoration: none;
-}
-.cat-header .vols { display: flex; gap: 22px; }
-.cat-header .vols a {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px; letter-spacing: 2.5px; font-weight: 500;
-  color: #888; text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.25s ease;
-}
-.cat-header .vols a:hover { color: #fff; }
-.cat-header .vols a.active { color: #fff; border-bottom: 1px solid #fff; padding-bottom: 2px; }
-.viewer { padding-top: 70px !important; }
-@media (max-width: 768px) {
-  .cat-header { height: 40px; padding: 0 14px; }
-  .cat-header .brand { font-size: 10px; letter-spacing: 3px; }
-  .cat-header .vols { gap: 14px; }
-  .cat-header .vols a { font-size: 9px; letter-spacing: 1.5px; }
-  .viewer { padding-top: 55px !important; }
-}
+
+  /* ─── Overlay form ─── */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(10,8,6,0.78);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 30px 20px;
+  }
+  .overlay.show { display: flex; }
+  .overlay-inner {
+    background: #fff; color: #1a1612;
+    width: 100%; max-width: 540px;
+    max-height: 92vh; overflow-y: auto;
+    padding: 48px 44px;
+    position: relative;
+    animation: oin 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes oin { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .overlay-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    background: none; border: none; cursor: pointer;
+    font-size: 22px; color: #847866; font-family: 'Inter', sans-serif;
+    line-height: 1;
+  }
+  .overlay-close:hover { color: #1a1612; }
+  .overlay h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 300; line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .overlay h3 em { font-style: italic; color: #847866; }
+  .overlay .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 16px; color: #847866;
+    margin-bottom: 28px;
+  }
+  .overlay .piece-badge {
+    display: inline-block;
+    margin-bottom: 28px;
+    padding: 10px 16px;
+    background: #1a1612; color: #fff;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .overlay form { display: flex; flex-direction: column; gap: 18px; }
+  .overlay label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 2.8px; text-transform: uppercase;
+    color: #847866; font-weight: 500;
+    margin-bottom: 6px; display: block;
+  }
+  .overlay .opt { text-transform: none; letter-spacing: 0; font-size: 11px; color: #b8ad97; margin-left: 6px; }
+  .overlay input, .overlay textarea {
+    width: 100%;
+    background: transparent; border: none;
+    border-bottom: 1px solid rgba(26,22,18,0.15);
+    color: #1a1612; font-family: 'Inter', sans-serif;
+    font-size: 15px; padding: 10px 0;
+    outline: none; border-radius: 0;
+    transition: border-color 0.3s ease;
+  }
+  .overlay input:focus, .overlay textarea:focus { border-bottom-color: #6e5538; }
+  .overlay textarea { resize: vertical; min-height: 72px; }
+  .overlay .submit {
+    margin-top: 10px;
+    background: #1a1612; color: #fff;
+    padding: 16px 32px; font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 2.8px; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; border: none;
+    transition: background 0.3s ease;
+  }
+  .overlay .submit:hover { background: #6e5538; }
+  .overlay .submit:disabled { opacity: 0.5; cursor: wait; }
+  .overlay .status {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px;
+    min-height: 20px; margin-top: 4px;
+  }
+  .overlay .status.error { color: #a04040; }
+  .overlay .alt {
+    margin-top: 18px; padding-top: 18px;
+    border-top: 1px solid rgba(26,22,18,0.1);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: #847866; font-style: italic;
+    text-align: center;
+  }
+  .overlay .alt a {
+    color: #1a1612; border-bottom: 1px solid #1a1612;
+    text-decoration: none; font-style: normal;
+    font-family: 'Inter', sans-serif; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding-bottom: 2px; margin-left: 6px;
+  }
+
+  /* Confirmation state */
+  .overlay-success { display: none; text-align: center; padding: 20px 0; }
+  .overlay-success.show { display: block; }
+  .overlay-success .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; color: #6e5538; line-height: 1;
+    margin-bottom: 18px;
+  }
+  .overlay-success h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .overlay-success h4 em { font-style: italic; color: #847866; }
+  .overlay-success p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: #1a1612; line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
   @media (max-width: 768px) {
-    .viewer { padding:15px 10px 60px; }
-    .book { aspect-ratio: 794 / 1123 !important; max-height:88vh; }
+    .cat-header { height: 40px; padding: 0 14px; }
+    .cat-header .brand { font-size: 10px; letter-spacing: 3px; }
+    .cat-header .vols { gap: 14px; }
+    .cat-header .vols a { font-size: 9px; letter-spacing: 1.5px; }
+    .viewer { padding: 50px 10px 60px; }
+    .book { aspect-ratio: 794 / 1123 !important; max-height: 86vh; }
     .page.left, .page.right { box-shadow:none; }
     .book .page:not(.mobile-show) { display:none; }
-    .nav-zone { width:40%; }
+    .nav-zone { top: 40px; width:40%; }
     .nav-zone:hover::after { display:none; }
-    .toolbar { gap:10px; height:50px; }
-    .toolbar button { padding:6px 10px; font-size:9px; }
+    .toolbar { gap:8px; height:50px; padding: 0 8px; }
+    .toolbar button, .toolbar .icon-btn { padding:6px 10px; font-size:9px; letter-spacing:1.5px; }
+    .toolbar .cta { padding:6px 14px; }
+    .counter { min-width: 70px; font-size: 10px; }
+    .overlay-inner { padding: 36px 24px; max-height: 94vh; }
+    .overlay h3 { font-size: 24px; }
   }
 
   .print-container { display:none; }
-  @media print {
-    @page { size: A4 portrait; margin: 0; }
-    html, body { background:#fff !important; height:auto; overflow:visible; }
-    .viewer, .toolbar, .nav-zone { display:none !important; }
-    .print-container { display:block !important; }
-    .print-container .page { width:210mm; height:297mm; page-break-after: always; box-shadow:none !important; overflow:hidden; }
-    .print-container .page:last-child { page-break-after:auto; }
-    .print-container .page svg { width:100%; height:100%; display:block; }
-  }
 </style>
 </head>
 <body>
+
 <div class="cat-header">
   <a href="../index.html" class="brand">AURÉLIS</a>
   <div class="vols">
@@ -119,8 +238,60 @@
   <button onclick="prev()">←</button>
   <span class="counter" id="counter">00 / 27</span>
   <button onclick="next()">→</button>
-  <button onclick="preparePrint()">PDF</button>
-  <a href="../index.html?interet=Tables#contact" style="text-decoration:none;"><button>DEMANDER</button></a>
+  <button class="cta" onclick="openEnquiry()">DEMANDER</button>
+  <a href="#" class="icon-btn wa" id="waBtn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- Enquiry overlay -->
+<div class="overlay" id="enquiryOverlay" onclick="if(event.target===this) closeEnquiry()">
+  <div class="overlay-inner">
+    <button class="overlay-close" onclick="closeEnquiry()" aria-label="Fermer">×</button>
+
+    <div id="enquiryForm">
+      <h3>Demander<br><em>cette pièce.</em></h3>
+      <div class="sub">Une réponse sous 48 heures, par la même main.</div>
+      <div class="piece-badge" id="pieceBadge">— · Tables</div>
+
+      <form id="catForm" action="https://formspree.io/f/mbdeaweb" method="POST">
+        <input type="hidden" name="_subject" value="Demande Aurélis — Catalogue Tables">
+        <input type="hidden" name="piece" id="pieceField" value="">
+        <input type="hidden" name="catalogue" value="Tables">
+
+        <div>
+          <label>Nom complet</label>
+          <input type="text" name="nom" required>
+        </div>
+        <div>
+          <label>Téléphone</label>
+          <input type="tel" name="tel" required>
+        </div>
+        <div>
+          <label>Email <span class="opt">(optionnel)</span></label>
+          <input type="email" name="email">
+        </div>
+        <div>
+          <label>Votre projet <span class="opt">(optionnel)</span></label>
+          <textarea name="message" rows="3" placeholder="Lieu, usage, intention…"></textarea>
+        </div>
+        <button type="submit" class="submit" id="catSubmit">Envoyer la demande</button>
+        <div class="status" id="catStatus"></div>
+      </form>
+
+      <div class="alt">
+        Vous préférez WhatsApp ?
+        <a href="#" id="waAlt" target="_blank" rel="noopener">Nous écrire</a>
+      </div>
+    </div>
+
+    <div class="overlay-success" id="enquirySuccess">
+      <div class="mark">✓</div>
+      <h4>Merci.<br><em>Votre demande nous est parvenue.</em></h4>
+      <p>Nous revenons vers vous sous quarante-huit heures.</p>
+      <button class="submit" onclick="closeEnquiry()">Continuer le catalogue</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -161,7 +332,6 @@ const folio = (n, label='', light=false) => {
   ${label?`<text x="734" y="1080" font-family="Inter" font-size="9" letter-spacing="2" text-anchor="end" ${lfill}>${label}</text>`:''}`;
 };
 
-// LAYOUT A — image-top + text-bottom
 const layoutA = ({n,name,voice,desc,img,label}) => `
 <svg ${VB}>
   <rect width="794" height="1123" fill="#fff"/>
@@ -174,7 +344,6 @@ const layoutA = ({n,name,voice,desc,img,label}) => `
   ${folio(n,label)}
 </svg>`;
 
-// LAYOUT B — text-top + image-bottom (inverted)
 const layoutB = ({n,name,voice,desc,img,label}) => `
 <svg ${VB}>
   <rect width="794" height="1123" fill="#fff"/>
@@ -187,7 +356,6 @@ const layoutB = ({n,name,voice,desc,img,label}) => `
   ${folio(n,label)}
 </svg>`;
 
-// LAYOUT SPECS — image-top + dimensions/materials/footer
 const layoutSpecs = ({n,img,specs,plateau,label}) => {
   const specRows = specs.map((s,i)=>`
     <text x="60" y="${760+i*22}" font-family="JetBrains Mono" font-size="10">${s.dim}</text>
@@ -209,7 +377,6 @@ const layoutSpecs = ({n,img,specs,plateau,label}) => {
 </svg>`;
 };
 
-// LAYOUT DETAIL — image + quote + body
 const layoutDetail = ({n,img,label,quote,body}) => `
 <svg ${VB}>
   <rect width="794" height="1123" fill="#fff"/>
@@ -222,18 +389,16 @@ const layoutDetail = ({n,img,label,quote,body}) => `
   ${folio(n,label)}
 </svg>`;
 
-// LAYOUT FULL-BLEED
 const layoutFullBleed = ({n,img,label}) => `
 <svg ${VB}>
   <image href="${img}" x="0" y="0" width="794" height="1123" preserveAspectRatio="xMidYMid slice"/>
   ${folio(n,label,true)}
 </svg>`;
 
-// ============ PAGES ============
+// PAGES — each gets a `piece` label for enquiry context (empty = no specific piece)
 const pages = [];
 
-// 0 — COVER
-pages.push(`
+pages.push({piece:'', html:`
 <svg ${VB}>
   <rect width="794" height="1123" fill="#fff"/>
   <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">CASABLANCA</text>
@@ -243,15 +408,14 @@ pages.push(`
   <text x="60" y="960" font-family="Inter" font-size="11" letter-spacing="4" opacity="0.7">L'ART DE LA FORME</text>
   <line x1="60" y1="1010" x2="200" y2="1010" stroke="#000"/>
   <text x="60" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">COLLECTION 2026 · VOLUME I · TABLES</text>
-</svg>`);
+</svg>`});
 
-// SPREAD 1 — Manifesto
-pages.push(`
+pages.push({piece:'', html:`
 <svg ${VB}><rect width="794" height="1123" fill="#fff"/>
   <text x="397" y="561" font-family="Inter" font-size="16" font-style="italic" font-weight="300" text-anchor="middle">Une forme n'est jamais neutre.</text>
   ${folio(1)}
-</svg>`);
-pages.push(`
+</svg>`});
+pages.push({piece:'', html:`
 <svg ${VB}><rect width="794" height="1123" fill="#fff"/>
   <text x="60" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3">AURÉLIS</text>
   <text x="734" y="60" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="end">MANIFESTE</text>
@@ -266,219 +430,43 @@ pages.push(`
   <text x="60" y="456" font-family="Inter" font-size="11" font-weight="300">fait le reste.</text>
   <text x="60" y="500" font-family="Inter" font-size="11" font-weight="300">Ici, rien n'est produit. Tout est fabriqué.</text>
   ${folio(2)}
-</svg>`);
+</svg>`});
 
-// SPREAD 2 — SYLVE part 1
-pages.push(layoutA({
-  n:3, name:'SYLVE', voice:'TABLE DE SALLE À MANGER', label:'SYLVE',
-  img:IMG.sylveHero,
-  desc:[
-    'Le bois porte encore la mémoire de l\'arbre.',
-    'Chaque veine, chaque nœud raconte une saison.',
-    'La forme suit le bois, jamais l\'inverse.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:4, label:'SYLVE', img:IMG.sylveSide,
-  specs:[
-    {dim:'L 170 · P 75,8 · H 72 cm', note:'4 places'},
-    {dim:'L 198 · P 55,5 · H 72 cm', note:'6 places'},
-    {dim:'L 240 · P 75,8 · H 72 cm', note:'8 places'},
-    {dim:'L 280 · P 75,8 · H 72 cm', note:'10 places'}
-  ],
-  plateau:'Bois massif · Plateau marbre ou verre trempé'
-}));
+pages.push({piece:'SYLVE', html:layoutA({n:3,name:'SYLVE',voice:'TABLE DE SALLE À MANGER',label:'SYLVE',img:IMG.sylveHero,desc:["Le bois porte encore la mémoire de l'arbre.","Chaque veine, chaque nœud raconte une saison.","La forme suit le bois, jamais l'inverse."]})});
+pages.push({piece:'SYLVE', html:layoutSpecs({n:4,label:'SYLVE',img:IMG.sylveSide,specs:[{dim:'L 170 · P 75,8 · H 72 cm',note:'4 places'},{dim:'L 198 · P 55,5 · H 72 cm',note:'6 places'},{dim:'L 240 · P 75,8 · H 72 cm',note:'8 places'},{dim:'L 280 · P 75,8 · H 72 cm',note:'10 places'}],plateau:'Bois massif · Plateau marbre ou verre trempé'})});
+pages.push({piece:'SYLVE', html:layoutDetail({n:5,img:IMG.sylveClose,label:'SYLVE',quote:['« Le bois garde la mémoire',"de l'arbre. »"],body:['Bois massif sélectionné pièce par pièce.','Le grain reste visible, tactile, vivant.']})});
+pages.push({piece:'SYLVE', html:layoutFullBleed({n:6,img:IMG.sylveLife,label:'SYLVE'})});
 
-// SPREAD 3 — SYLVE part 2 (Detail + Full-bleed)
-pages.push(layoutDetail({
-  n:5, img:IMG.sylveClose, label:'SYLVE',
-  quote:['« Le bois garde la mémoire','de l\'arbre. »'],
-  body:[
-    'Bois massif sélectionné pièce par pièce.',
-    'Le grain reste visible, tactile, vivant.'
-  ]
-}));
-pages.push(layoutFullBleed({n:6, img:IMG.sylveLife, label:'SYLVE'}));
+pages.push({piece:'MIEL', html:layoutA({n:7,name:'MIEL',voice:'TABLE RONDE',label:'MIEL',img:IMG.mielHero,desc:["Ronde, pleine, généreuse. Une forme qui invite","à s'asseoir, à rester. Le piétement central","libère l'espace pour les jambes."]})});
+pages.push({piece:'MIEL', html:layoutSpecs({n:8,label:'MIEL',img:IMG.mielClose,specs:[{dim:'Ø 110 · H 72 cm',note:'4 places'},{dim:'Ø 172 · H 72 cm',note:'6–8 places'}],plateau:'Bois massif · Plateau verre ou marbre'})});
 
-// SPREAD 4 — MIEL
-pages.push(layoutA({
-  n:7, name:'MIEL', voice:'TABLE RONDE', label:'MIEL',
-  img:IMG.mielHero,
-  desc:[
-    'Ronde, pleine, généreuse. Une forme qui invite',
-    'à s\'asseoir, à rester. Le piétement central',
-    'libère l\'espace pour les jambes.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:8, label:'MIEL', img:IMG.mielClose,
-  specs:[
-    {dim:'Ø 110 · H 72 cm', note:'4 places'},
-    {dim:'Ø 172 · H 72 cm', note:'6–8 places'}
-  ],
-  plateau:'Bois massif · Plateau verre ou marbre'
-}));
+pages.push({piece:'ARACHNÉ', html:layoutA({n:9,name:'ARACHNÉ',voice:'GUÉRIDON',label:'ARACHNÉ',img:IMG.arachneHero,desc:['Une structure fine, presque tendue.','Le piétement rayonne depuis un centre invisible.',"Légère à l'œil, stable à l'usage."]})});
+pages.push({piece:'ARACHNÉ', html:layoutFullBleed({n:10,img:IMG.arachneModel,label:'ARACHNÉ'})});
+pages.push({piece:'ARACHNÉ', html:layoutDetail({n:11,img:IMG.arachneOther,label:'ARACHNÉ',quote:['« Une toile,',"un point d'appui. »"],body:['Disponible en plusieurs finitions.','Adapté aux espaces réduits et aux entrées.']})});
+pages.push({piece:'ARACHNÉ', html:layoutSpecs({n:12,label:'ARACHNÉ',img:IMG.arachneHero,specs:[{dim:'Ø 70 · H 72 cm',note:'guéridon'}],plateau:'Bois massif · Plateau verre ou marbre'})});
 
-// SPREAD 5 — ARACHNÉ part 1 (Hero + Full-bleed model)
-pages.push(layoutA({
-  n:9, name:'ARACHNÉ', voice:'GUÉRIDON', label:'ARACHNÉ',
-  img:IMG.arachneHero,
-  desc:[
-    'Une structure fine, presque tendue.',
-    'Le piétement rayonne depuis un centre invisible.',
-    'Légère à l\'œil, stable à l\'usage.'
-  ]
-}));
-pages.push(layoutFullBleed({n:10, img:IMG.arachneModel, label:'ARACHNÉ'}));
+pages.push({piece:'VEGA', html:layoutA({n:13,name:'VEGA',voice:'TABLE DE SALLE À MANGER',label:'VEGA',img:IMG.vegaHero,desc:['Une géométrie franche. Deux piétements en V,','un plateau qui flotte. La masse devient ligne.']})});
+pages.push({piece:'VEGA', html:layoutSpecs({n:14,label:'VEGA',img:IMG.vegaTop,specs:[{dim:'L 220 · P 120 · H 75 cm',note:'8 places'},{dim:'L 250 · P 120 · H 75 cm',note:'10 places'}],plateau:'Bois massif · Plateau verre trempé ou marbre'})});
 
-// SPREAD 6 — ARACHNÉ part 2 (Detail + Specs)
-pages.push(layoutDetail({
-  n:11, img:IMG.arachneOther, label:'ARACHNÉ',
-  quote:['« Une toile,','un point d\'appui. »'],
-  body:[
-    'Disponible en plusieurs finitions.',
-    'Adapté aux espaces réduits et aux entrées.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:12, label:'ARACHNÉ', img:IMG.arachneHero,
-  specs:[
-    {dim:'Ø 70 · H 72 cm', note:'guéridon'}
-  ],
-  plateau:'Bois massif · Plateau verre ou marbre'
-}));
+pages.push({piece:'APEX', html:layoutB({n:15,name:'APEX',voice:'TABLE DE SALLE À MANGER',label:'APEX',img:IMG.apexHero,desc:['Un piétement renversé, sculptural.','Le plateau repose sur une tension visible.','Force et équilibre.']})});
+pages.push({piece:'APEX', html:layoutSpecs({n:16,label:'APEX',img:IMG.apexLife,specs:[{dim:'L 220 · P 120 · H 75 cm',note:'8 places'},{dim:'L 250 · P 120 · H 75 cm',note:'10 places'}],plateau:'Bois massif · Plateau verre trempé ou marbre'})});
 
-// SPREAD 7 — VEGA
-pages.push(layoutA({
-  n:13, name:'VEGA', voice:'TABLE DE SALLE À MANGER', label:'VEGA',
-  img:IMG.vegaHero,
-  desc:[
-    'Une géométrie franche. Deux piétements en V,',
-    'un plateau qui flotte. La masse devient ligne.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:14, label:'VEGA', img:IMG.vegaTop,
-  specs:[
-    {dim:'L 220 · P 120 · H 75 cm', note:'8 places'},
-    {dim:'L 250 · P 120 · H 75 cm', note:'10 places'}
-  ],
-  plateau:'Bois massif · Plateau verre trempé ou marbre'
-}));
+pages.push({piece:'TORSION', html:layoutA({n:17,name:'TORSION',voice:'TABLE DE SALLE À MANGER',label:'TORSION',img:IMG.torsionHero,desc:['Une torsion continue du bois massif, sculptée','à la main. Chaque lamelle suit le grain.','Chaque courbe est unique.']})});
+pages.push({piece:'TORSION', html:layoutSpecs({n:18,label:'TORSION',img:IMG.torsionSide,specs:[{dim:'L 170 · P 66,6 · H 72 cm',note:'4 places'},{dim:'L 198 · P 66,6 · H 72 cm',note:'6 places'},{dim:'L 220 · P 66,6 · H 72 cm',note:'8 places'}],plateau:'Bois massif · Plateau verre trempé ou marbre'})});
 
-// SPREAD 8 — APEX (inverted hero + Specs) ← variation
-pages.push(layoutB({
-  n:15, name:'APEX', voice:'TABLE DE SALLE À MANGER', label:'APEX',
-  img:IMG.apexHero,
-  desc:[
-    'Un piétement renversé, sculptural.',
-    'Le plateau repose sur une tension visible.',
-    'Force et équilibre.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:16, label:'APEX', img:IMG.apexLife,
-  specs:[
-    {dim:'L 220 · P 120 · H 75 cm', note:'8 places'},
-    {dim:'L 250 · P 120 · H 75 cm', note:'10 places'}
-  ],
-  plateau:'Bois massif · Plateau verre trempé ou marbre'
-}));
+pages.push({piece:'SEUIL', html:layoutA({n:19,name:'SEUIL',voice:"CONSOLE D'ENTRÉE",label:'SEUIL',img:IMG.seuilHero,desc:['Une console étroite, longue, droite.',"Le piétement en V soutient sans s'imposer.",'Une présence qui marque le passage.']})});
+pages.push({piece:'SEUIL', html:layoutSpecs({n:20,label:'SEUIL',img:IMG.seuilSide,specs:[{dim:'L 135 · P 28,8 · H 80 cm',note:'standard'}],plateau:'Bois massif · Plateau verre ou marbre'})});
 
-// SPREAD 9 — TORSION (moved here)
-pages.push(layoutA({
-  n:17, name:'TORSION', voice:'TABLE DE SALLE À MANGER', label:'TORSION',
-  img:IMG.torsionHero,
-  desc:[
-    'Une torsion continue du bois massif, sculptée',
-    'à la main. Chaque lamelle suit le grain.',
-    'Chaque courbe est unique.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:18, label:'TORSION', img:IMG.torsionSide,
-  specs:[
-    {dim:'L 170 · P 66,6 · H 72 cm', note:'4 places'},
-    {dim:'L 198 · P 66,6 · H 72 cm', note:'6 places'},
-    {dim:'L 220 · P 66,6 · H 72 cm', note:'8 places'}
-  ],
-  plateau:'Bois massif · Plateau verre trempé ou marbre'
-}));
+pages.push({piece:'SERPA', html:layoutA({n:21,name:'SERPA',voice:'TABLE BASSE',label:'SERPA',img:IMG.serpaHero,desc:['Une vague figée. Le bois sculpté épouse','le plateau de verre, sans le contraindre.']})});
+pages.push({piece:'SERPA', html:layoutSpecs({n:22,label:'SERPA',img:IMG.serpaUse,specs:[{dim:'H 46 cm',note:'hauteur fixe'},{dim:'Format sur mesure',note:'L · P sur demande'}],plateau:'Bois massif sculpté · Plateau verre trempé'})});
 
-// SPREAD 10 — SEUIL (Hero + Specs, specs restored)
-pages.push(layoutA({
-  n:19, name:'SEUIL', voice:'CONSOLE D\'ENTRÉE', label:'SEUIL',
-  img:IMG.seuilHero,
-  desc:[
-    'Une console étroite, longue, droite.',
-    'Le piétement en V soutient sans s\'imposer.',
-    'Une présence qui marque le passage.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:20, label:'SEUIL', img:IMG.seuilSide,
-  specs:[
-    {dim:'L 135 · P 28,8 · H 80 cm', note:'standard'}
-  ],
-  plateau:'Bois massif · Plateau verre ou marbre'
-}));
+pages.push({piece:'ONDE', html:layoutB({n:23,name:'ONDE',voice:'TABLE BASSE',label:'ONDE',img:IMG.ondeAlone,desc:['Le bois se replie sur lui-même, comme une','vague suspendue. Un plateau, deux courbes,','aucune ligne droite.']})});
+pages.push({piece:'ONDE', html:layoutSpecs({n:24,label:'ONDE',img:IMG.ondeChair,specs:[{dim:'L 110 · P 110 · H 52 cm',note:'standard'}],plateau:'Bois massif · Plateau verre trempé'})});
 
-// SPREAD 11 — SERPA
-pages.push(layoutA({
-  n:21, name:'SERPA', voice:'TABLE BASSE', label:'SERPA',
-  img:IMG.serpaHero,
-  desc:[
-    'Une vague figée. Le bois sculpté épouse',
-    'le plateau de verre, sans le contraindre.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:22, label:'SERPA', img:IMG.serpaUse,
-  specs:[
-    {dim:'H 46 cm', note:'hauteur fixe'},
-    {dim:'Format sur mesure', note:'L · P sur demande'}
-  ],
-  plateau:'Bois massif sculpté · Plateau verre trempé'
-}));
+pages.push({piece:'BASSE', html:layoutA({n:25,name:'BASSE',voice:'TABLE BASSE',label:'BASSE',img:IMG.basseHero,desc:['Compacte, dense, posée.','Le bois massif sculpté en bloc.','Un objet, pas un meuble.']})});
+pages.push({piece:'BASSE', html:layoutSpecs({n:26,label:'BASSE',img:IMG.basseAngle,specs:[{dim:'L 120 · P 62 · H 40 cm',note:'standard'}],plateau:'Bois massif intégré'})});
 
-// SPREAD 12 — ONDE (inverted) ← variation
-pages.push(layoutB({
-  n:23, name:'ONDE', voice:'TABLE BASSE', label:'ONDE',
-  img:IMG.ondeAlone,
-  desc:[
-    'Le bois se replie sur lui-même, comme une',
-    'vague suspendue. Un plateau, deux courbes,',
-    'aucune ligne droite.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:24, label:'ONDE', img:IMG.ondeChair,
-  specs:[
-    {dim:'L 110 · P 110 · H 52 cm', note:'standard'}
-  ],
-  plateau:'Bois massif · Plateau verre trempé'
-}));
-
-// SPREAD 13 — BASSE
-pages.push(layoutA({
-  n:25, name:'BASSE', voice:'TABLE BASSE', label:'BASSE',
-  img:IMG.basseHero,
-  desc:[
-    'Compacte, dense, posée.',
-    'Le bois massif sculpté en bloc.',
-    'Un objet, pas un meuble.'
-  ]
-}));
-pages.push(layoutSpecs({
-  n:26, label:'BASSE', img:IMG.basseAngle,
-  specs:[
-    {dim:'L 120 · P 62 · H 40 cm', note:'standard'}
-  ],
-  plateau:'Bois massif intégré'
-}));
-
-// 27 — Back cover
-pages.push(`
+pages.push({piece:'', html:`
 <svg ${VB}><rect width="794" height="1123" fill="#fff"/>
   <text x="397" y="380" font-family="Inter" font-size="48" font-weight="300" letter-spacing="4" text-anchor="middle">AURÉLIS</text>
   <line x1="347" y1="420" x2="447" y2="420" stroke="#000"/>
@@ -492,18 +480,40 @@ pages.push(`
   <text x="397" y="762" font-family="JetBrains Mono" font-size="10" text-anchor="middle">@aurelis.maroc</text>
   <text x="397" y="850" font-family="Inter" font-size="10" font-style="italic" font-weight="300" text-anchor="middle">Sur commande · Délai 6–8 semaines</text>
   <text x="397" y="1060" font-family="Inter" font-size="9" font-weight="500" letter-spacing="3" text-anchor="middle">COLLECTION 2026 · CASABLANCA · MAROC</text>
-</svg>`);
+</svg>`});
 
 // ====== SPREAD LOGIC ======
+const CATALOG_NAME = 'Tables';
+const WA_NUMBER = '212661420939';
 const isMobile = () => window.innerWidth <= 768;
 let pageCursor = 0;
 let spreadCursor = 0;
-const LAST_SPREAD = 14; // 0=cover, 1..13=spreads, 14=back
+const LAST_PAGE = pages.length - 1;
+const LAST_SPREAD = Math.ceil(LAST_PAGE / 2);
 
 function getSpread(s) {
   if (s === 0) return [0];
-  if (s === LAST_SPREAD) return [27];
+  if (s === LAST_SPREAD) return [LAST_PAGE];
   return [2*s - 1, 2*s];
+}
+
+function currentPiece() {
+  if (isMobile()) return pages[pageCursor].piece;
+  const spread = getSpread(spreadCursor);
+  for (const idx of spread) {
+    if (pages[idx] && pages[idx].piece) return pages[idx].piece;
+  }
+  return '';
+}
+
+function updateWaLink() {
+  const piece = currentPiece();
+  const text = piece
+    ? `Bonjour, je suis intéressé(e) par la pièce ${piece} du catalogue ${CATALOG_NAME} d'Aurélis.`
+    : `Bonjour, je découvre votre catalogue ${CATALOG_NAME} et j'aimerais en savoir plus.`;
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+  document.getElementById('waBtn').href = url;
+  document.getElementById('waAlt').href = url;
 }
 
 function render() {
@@ -513,27 +523,28 @@ function render() {
     book.className = 'book single';
     const div = document.createElement('div');
     div.className = 'page mobile-show';
-    div.innerHTML = pages[pageCursor];
+    div.innerHTML = pages[pageCursor].html;
     book.appendChild(div);
     document.getElementById('counter').textContent =
-      String(pageCursor).padStart(2,'0') + ' / ' + String(pages.length-1).padStart(2,'0');
+      String(pageCursor).padStart(2,'0') + ' / ' + String(LAST_PAGE).padStart(2,'0');
   } else {
     const spread = getSpread(spreadCursor);
     book.className = 'book' + (spread.length===1 ? ' single' : '');
     spread.forEach((idx,i) => {
       const div = document.createElement('div');
       div.className = 'page ' + (spread.length===1 ? '' : (i===0?'left':'right'));
-      div.innerHTML = pages[idx];
+      div.innerHTML = pages[idx].html;
       book.appendChild(div);
     });
     document.getElementById('counter').textContent =
       String(spread[0]).padStart(2,'0') + (spread[1]!==undefined?'–'+String(spread[1]).padStart(2,'0'):'') +
-      ' / ' + String(pages.length-1).padStart(2,'0');
+      ' / ' + String(LAST_PAGE).padStart(2,'0');
   }
+  updateWaLink();
 }
 
 function next() {
-  if (isMobile()) { if (pageCursor < pages.length-1) { pageCursor++; render(); } }
+  if (isMobile()) { if (pageCursor < LAST_PAGE) { pageCursor++; render(); } }
   else { if (spreadCursor < LAST_SPREAD) { spreadCursor++; render(); } }
 }
 function prev() {
@@ -544,27 +555,68 @@ function prev() {
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') next();
   if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'Escape') closeEnquiry();
 });
 
 let touchStartX = 0;
 document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
 document.addEventListener('touchend', e => {
+  if (document.getElementById('enquiryOverlay').classList.contains('show')) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   if (dx < -50) next();
   if (dx > 50) prev();
 }, {passive:true});
 
-function preparePrint() {
-  const container = document.getElementById('printContainer');
-  container.innerHTML = '';
-  pages.forEach(pageHTML => {
-    const div = document.createElement('div');
-    div.className = 'page';
-    div.innerHTML = pageHTML;
-    container.appendChild(div);
-  });
-  setTimeout(() => { window.print(); }, 600);
+// ====== ENQUIRY OVERLAY ======
+function openEnquiry() {
+  const piece = currentPiece();
+  document.getElementById('pieceField').value = piece || '(pièce non spécifiée)';
+  document.getElementById('pieceBadge').textContent =
+    (piece || 'Catalogue') + ' · ' + CATALOG_NAME;
+  document.getElementById('enquiryOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
 }
+function closeEnquiry() {
+  document.getElementById('enquiryOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  // reset to form state for next open
+  setTimeout(() => {
+    document.getElementById('enquiryForm').style.display = 'block';
+    document.getElementById('enquirySuccess').classList.remove('show');
+    document.getElementById('catForm').reset();
+    document.getElementById('catStatus').textContent = '';
+    document.getElementById('catSubmit').disabled = false;
+    document.getElementById('catSubmit').textContent = 'Envoyer la demande';
+  }, 300);
+}
+
+const catForm = document.getElementById('catForm');
+catForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('catSubmit');
+  const status = document.getElementById('catStatus');
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  status.className = 'status'; status.textContent = '';
+  try {
+    const r = await fetch(catForm.action, {
+      method: 'POST',
+      body: new FormData(catForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (r.ok) {
+      document.getElementById('enquiryForm').style.display = 'none';
+      document.getElementById('enquirySuccess').classList.add('show');
+    } else {
+      status.className = 'status error';
+      status.textContent = 'Une erreur est survenue. Merci de réessayer.';
+      btn.disabled = false; btn.textContent = 'Envoyer la demande';
+    }
+  } catch (err) {
+    status.className = 'status error';
+    status.textContent = 'Une erreur est survenue. Réessayez ou écrivez à contact@aurelis.ma.';
+    btn.disabled = false; btn.textContent = 'Envoyer la demande';
+  }
+});
 
 window.addEventListener('resize', render);
 render();
