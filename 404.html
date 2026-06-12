@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page introuvable — AURÉLIS</title>
+<meta name="description" content="Cette page n'existe pas. Retour à l'atelier Aurélis.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1612;
+    --paper: #ffffff;
+    --paper-alt: #f6f4f0;
+    --mute: #847866;
+    --accent: #6e5538;
+    --line: rgba(26,22,18,0.12);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .top-bar {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .top-bar .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .top-bar .micro {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+  }
+
+  .wrap {
+    max-width: 640px;
+    text-align: center;
+  }
+
+  .code {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(96px, 18vw, 200px);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.4s forwards;
+  }
+  h1 em { font-style: italic; color: var(--mute); }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 300;
+    line-height: 1.45;
+    color: var(--mute);
+    margin-bottom: 56px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.6s forwards;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.8s forwards;
+  }
+
+  .btn {
+    padding: 16px 30px;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--ink);
+    transition: background 0.35s var(--ease), color 0.35s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn.outline { background: transparent; color: var(--ink); }
+  .btn.outline:hover { background: var(--ink); color: var(--paper); }
+
+  .volumes {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 1s forwards;
+  }
+  .volumes .label {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 18px;
+  }
+  .volumes-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .volumes-row a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.35s var(--ease), color 0.35s var(--ease);
+  }
+  .volumes-row a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--mute);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 720px) {
+    .top-bar { padding: 16px 22px; }
+    .top-bar .brand { font-size: 18px; letter-spacing: 0.28em; }
+    main { padding: 40px 22px; }
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; width: 100%; }
+    .volumes-row { flex-direction: column; gap: 16px; }
+    footer { flex-direction: column; gap: 8px; padding: 20px 22px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="brand">AURÉLIS</a>
+  <span class="micro">Erreur 404</span>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="code">404</div>
+    <h1>Cette page<br><em>n'existe pas.</em></h1>
+    <p class="lead">
+      Le lien que vous avez suivi mène ailleurs, ou la page a été déplacée. Revenez à l'atelier, ou parcourez l'un des trois volumes de la collection 2026.
+    </p>
+
+    <div class="cta-row">
+      <a href="index.html" class="btn primary">← Retour à l'atelier</a>
+      <a href="index.html#contact" class="btn outline">Nous contacter</a>
+    </div>
+
+    <div class="volumes">
+      <div class="label">Collection 2026</div>
+      <div class="volumes-row">
+        <a href="catalog/tables.html">Volume I — Tables</a>
+        <a href="catalog/chaises.html">Volume II — Chaises</a>
+        <a href="catalog/murales.html">Volume III — Sculptures murales</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© MMXXVI Aurélis — Casablanca</span>
+  <a href="index.html">www.aurelis.ma</a>
+</footer>
+
+</body>
+</html>
