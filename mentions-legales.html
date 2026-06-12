@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mentions légales — AURÉLIS</title>
+<meta name="description" content="Mentions légales et politique de confidentialité d'Aurélis — Atelier de mobilier et sculptures à Casablanca.">
+<meta name="robots" content="noindex, follow">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1612;
+    --paper: #ffffff;
+    --paper-alt: #f6f4f0;
+    --mute: #847866;
+    --accent: #6e5538;
+    --line: rgba(26,22,18,0.12);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 14px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .top-bar {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .top-bar .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .top-bar .back {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: var(--mute);
+    transition: color 0.3s var(--ease);
+  }
+  .top-bar .back:hover { color: var(--accent); }
+
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+  }
+
+  .page-head {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+  .page-head .eyebrow {
+    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--mute); margin-bottom: 18px;
+  }
+  .page-head h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .page-head h1 em { font-style: italic; color: var(--mute); }
+
+  section {
+    margin-bottom: 56px;
+  }
+  section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 22px;
+    color: var(--ink);
+  }
+  section h2 em { font-style: italic; color: var(--mute); }
+  section h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--mute);
+    margin: 28px 0 10px;
+  }
+  section p { margin-bottom: 14px; max-width: 680px; }
+  section p strong { font-weight: 600; }
+  section a.inline {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: opacity 0.3s var(--ease);
+  }
+  section a.inline:hover { opacity: 0.7; }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 14px 32px;
+    margin: 16px 0 8px;
+    max-width: 680px;
+  }
+  .info-grid .k {
+    color: var(--mute);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding-top: 3px;
+  }
+  .info-grid .v { color: var(--ink); }
+  .placeholder {
+    background: var(--paper-alt);
+    color: var(--accent);
+    padding: 1px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-radius: 2px;
+  }
+  .updated {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    color: var(--mute);
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--mute);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer a { transition: color 0.3s var(--ease); }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 720px) {
+    .top-bar { padding: 16px 22px; }
+    .top-bar .brand { font-size: 18px; letter-spacing: 0.28em; }
+    main { padding: 60px 22px 80px; }
+    .info-grid { grid-template-columns: 1fr; gap: 2px 0; margin-bottom: 16px; }
+    .info-grid .k { padding-top: 14px; }
+    .info-grid .k:first-child { padding-top: 0; }
+    footer { flex-direction: column; gap: 12px; padding: 24px 22px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="brand">AURÉLIS</a>
+  <a href="index.html" class="back">← Retour</a>
+</div>
+
+<main>
+
+  <div class="page-head">
+    <div class="eyebrow">Information légale</div>
+    <h1>Mentions<br><em>légales.</em></h1>
+  </div>
+
+  <section>
+    <h2>Éditeur du site</h2>
+    <p>Le présent site <strong>www.aurelis.ma</strong> est édité par :</p>
+    <div class="info-grid">
+      <div class="k">Dénomination</div>
+      <div class="v"><span class="placeholder">[RAISON SOCIALE]</span></div>
+      <div class="k">Forme juridique</div>
+      <div class="v"><span class="placeholder">[SARL / SARL AU / SA / AUTO-ENTREPRENEUR]</span></div>
+      <div class="k">Capital social</div>
+      <div class="v"><span class="placeholder">[MONTANT EN MAD]</span></div>
+      <div class="k">Siège social</div>
+      <div class="v"><span class="placeholder">[ADRESSE COMPLÈTE, CASABLANCA, MAROC]</span></div>
+      <div class="k">RC</div>
+      <div class="v"><span class="placeholder">[NUMÉRO REGISTRE DE COMMERCE]</span> — Casablanca</div>
+      <div class="k">ICE</div>
+      <div class="v"><span class="placeholder">[NUMÉRO ICE]</span></div>
+      <div class="k">IF</div>
+      <div class="v"><span class="placeholder">[IDENTIFIANT FISCAL]</span></div>
+      <div class="k">Patente</div>
+      <div class="v"><span class="placeholder">[NUMÉRO PATENTE]</span></div>
+      <div class="k">CNSS</div>
+      <div class="v"><span class="placeholder">[NUMÉRO CNSS, SI APPLICABLE]</span></div>
+      <div class="k">Téléphone</div>
+      <div class="v"><a href="tel:+212661420939" class="inline">+212 6 61 42 09 39</a></div>
+      <div class="k">Email</div>
+      <div class="v"><a href="mailto:contact@aurelis.ma" class="inline">contact@aurelis.ma</a></div>
+    </div>
+
+    <h3>Directeur de la publication</h3>
+    <p><span class="placeholder">[NOM ET PRÉNOM DU REPRÉSENTANT LÉGAL]</span></p>
+  </section>
+
+  <section>
+    <h2>Hébergement</h2>
+    <p>Le site est hébergé par :</p>
+    <div class="info-grid">
+      <div class="k">Hébergeur</div>
+      <div class="v">Cloudflare, Inc.</div>
+      <div class="k">Adresse</div>
+      <div class="v">101 Townsend Street, San Francisco, CA 94107, États-Unis</div>
+      <div class="k">Site</div>
+      <div class="v"><a href="https://www.cloudflare.com" target="_blank" rel="noopener" class="inline">www.cloudflare.com</a></div>
+    </div>
+    <p style="margin-top:18px;">Les médias (images, vidéos) sont délivrés par <strong>Cloudinary, Inc.</strong> — 3400 Central Expressway, Suite 110, Santa Clara, CA 95051, États-Unis.</p>
+  </section>
+
+  <section>
+    <h2>Propriété intellectuelle</h2>
+    <p>L'ensemble des éléments présents sur ce site — textes, dessins, photographies, rendus, vidéos, marques, logos, structure, code source — est la propriété exclusive d'Aurélis, ou fait l'objet d'une autorisation d'usage.</p>
+    <p>Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, par quelque procédé que ce soit, est interdite sans l'autorisation écrite préalable de l'éditeur, conformément aux dispositions de la <strong>loi n° 2-00 relative aux droits d'auteur et droits voisins</strong> au Maroc.</p>
+    <p>Toute exploitation non autorisée du site ou de l'un quelconque de ses éléments est susceptible d'engager la responsabilité civile et pénale de son auteur.</p>
+  </section>
+
+  <section>
+    <h2>Données personnelles</h2>
+    <p>Conformément à la <strong>loi n° 09-08</strong> relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous êtes informé(e) que les données collectées via le formulaire de contact (nom, prénom, téléphone, email, message) font l'objet d'un traitement par Aurélis.</p>
+
+    <h3>Finalité du traitement</h3>
+    <p>Les données collectées sont utilisées exclusivement pour répondre à vos demandes d'information et de commande, et pour assurer le suivi de la relation client. Elles ne sont en aucun cas cédées, louées ou échangées avec des tiers à des fins commerciales.</p>
+
+    <h3>Sous-traitants</h3>
+    <p>Le formulaire de contact est traité par <strong>Formspree, Inc.</strong> (États-Unis), qui agit comme sous-traitant et transmet les messages à l'adresse interne d'Aurélis. Aucune donnée n'est stockée durablement chez ce prestataire au-delà du transit.</p>
+
+    <h3>Durée de conservation</h3>
+    <p>Les données sont conservées pendant la durée nécessaire au traitement de la demande, et au maximum trois ans après le dernier contact, sauf engagement contractuel impliquant une durée légale plus longue.</p>
+
+    <h3>Vos droits</h3>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression sur vos données personnelles. Pour exercer ces droits, écrivez à <a href="mailto:contact@aurelis.ma" class="inline">contact@aurelis.ma</a>, en précisant l'objet de votre demande et en joignant un justificatif d'identité.</p>
+    <p>Ce traitement a fait l'objet d'une déclaration auprès de la <strong>Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP)</strong> sous le numéro <span class="placeholder">[NUMÉRO DÉCLARATION CNDP — À OBTENIR]</span>.</p>
+  </section>
+
+  <section>
+    <h2>Cookies</h2>
+    <p>Le site <strong>www.aurelis.ma</strong> n'utilise pas de cookies de traçage publicitaire, ni d'outils d'analyse comportementale tiers (type Google Analytics, Meta Pixel, etc.).</p>
+    <p>Seuls les cookies techniques strictement nécessaires au fonctionnement du site peuvent être déposés. Aucune information personnelle identifiable n'est collectée à des fins de profilage.</p>
+  </section>
+
+  <section>
+    <h2>Conditions d'utilisation</h2>
+    <p>L'utilisation du site implique l'acceptation pleine et entière des présentes mentions. Aurélis se réserve le droit de modifier à tout moment le contenu du site, sans préavis.</p>
+    <p>Les visuels présentés (photographies, rendus, sculptures) sont fournis à titre indicatif. Les pièces étant fabriquées à la main, chaque exemplaire est unique et peut présenter de légères variations par rapport aux visuels — variations qui font partie intégrante du caractère de l'objet.</p>
+    <p>Les prix sont communiqués sur demande et confirmés par devis signé avant toute fabrication. Les délais annoncés (6 à 8 semaines) sont indicatifs et peuvent varier selon la complexité de la pièce et la disponibilité des matériaux.</p>
+  </section>
+
+  <section>
+    <h2>Droit applicable et juridiction</h2>
+    <p>Les présentes mentions légales sont régies par le <strong>droit marocain</strong>. Tout litige relatif à l'utilisation du site, à défaut de résolution amiable, sera de la compétence exclusive des <strong>tribunaux de Casablanca</strong>.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Pour toute question relative aux présentes mentions légales ou à l'exercice de vos droits :</p>
+    <div class="info-grid">
+      <div class="k">Email</div>
+      <div class="v"><a href="mailto:contact@aurelis.ma" class="inline">contact@aurelis.ma</a></div>
+      <div class="k">Téléphone</div>
+      <div class="v"><a href="tel:+212661420939" class="inline">+212 6 61 42 09 39</a></div>
+      <div class="k">Adresse</div>
+      <div class="v">Aurélis — Atelier de Casablanca, Maroc</div>
+    </div>
+  </section>
+
+  <div class="updated">Dernière mise à jour — <span class="placeholder">[DATE]</span></div>
+
+</main>
+
+<footer>
+  <span>© MMXXVI Aurélis</span>
+  <a href="index.html">www.aurelis.ma</a>
+</footer>
+
+</body>
+</html>
