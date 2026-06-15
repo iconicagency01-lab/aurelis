@@ -85,7 +85,10 @@
     .viewer{position:static;padding:0;background:#fff;display:block}
     .book{box-shadow:none;width:100%;height:auto;aspect-ratio:auto;page-break-after:always;break-after:page}
     .book:last-child{page-break-after:auto}
+    .print-all .book{display:block!important;page-break-after:always;break-after:page}
   }
+  .print-all .viewer{position:static;height:auto;padding:0;background:#fff;display:block}
+  .print-all .book{display:block;width:100%;max-width:148mm;height:auto;aspect-ratio:148/210;margin:0 auto;box-shadow:none}
 </style>
 </head>
 <body>
@@ -95,7 +98,7 @@
   <nav><a href="../index.html">Accueil</a></nav>
 </header>
 
-<div class="viewer">
+<div class="viewer" id="viewer">
   <div class="book" id="book"></div>
 </div>
 
@@ -107,13 +110,13 @@
   <div class="ctrls">
     <button onclick="prev()">◀</button>
     <button onclick="next()">▶</button>
-    <a class="btn" href="contract.pdf" download>PDF</a>
+    <button onclick="printAll()">PDF</button>
     <a class="btn primary" href="mailto:projets@aurelis.ma">CONTACT</a>
   </div>
 </div>
 
 <script>
-/* AURÉLIS Contract — A5 leave-behind */
+/* AURÉLIS Contract — A5 leave-behind, 16 pages */
 
 const IMG = {
   atlas:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104231/luxurious_reception_white_o0d6kn.png',
@@ -127,19 +130,16 @@ const IMG = {
   gharb:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104116/yellow_desk_n2cbti.jpg',
   mogador:  'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104162/beauty_reception_1_whakt9.png',
   aourir:   'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104104/back_reception_desk_yndvgo.jpg',
-  // Figural beauty receptions
   face_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290256/reception_with_face_trdmxm.jpg',
   hair_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290255/reception_with_long_hair_vn0zye.jpg',
   lips_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290254/recpetion_with_lips_obcimr.webp',
 
-  // Walls / Sculptural pieces
   tanger:   'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781287626/car_wall_panel_pnxnk1.webp',
   rif:      'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781287626/logo_wall_panel_rztpuy.webp',
   melya:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104110/lips_for_salon_beauty_center_tkatzs.jpg',
   moulouya: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781288197/tooth_table_dentist_zpa8tg.jpg',
   moulouya2:'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104190/parametric_tooth_dentist_fd9maq.jpg',
 
-  // Benches
   erg:      'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104207/sitting_wall_bench_cxu4pb.png',
   erg2:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104095/parametric_bench_i854to.jpg',
   erg3:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104096/big_bench_table_khmbh1.jpg',
@@ -249,26 +249,6 @@ function pGrid4(images, pn, total){
   `);
 }
 
-function pGrid3(images, pn, total){
-  const margin = 40;
-  const gutter = 12;
-  const fullW = W - margin*2;
-  const topH = 380;
-  const botCellW = (fullW - gutter) / 2;
-  const botCellH = 260;
-
-  return svg(`
-    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
-
-    <image href="${images[0]}" x="${margin}" y="120" width="${fullW}" height="${topH}" preserveAspectRatio="xMidYMid slice"/>
-    <image href="${images[1]}" x="${margin}" y="${120+topH+gutter}" width="${botCellW}" height="${botCellH}" preserveAspectRatio="xMidYMid slice"/>
-    <image href="${images[2]}" x="${margin+botCellW+gutter}" y="${120+topH+gutter}" width="${botCellW}" height="${botCellH}" preserveAspectRatio="xMidYMid slice"/>
-
-    ${pageNum(pn, total)}
-    <text x="${W-40}" y="${H-50}" text-anchor="end" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#8A8478">AURÉLIS</text>
-  `);
-}
-
 function pCapabilities(pn, total){
   return svg(`
     <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
@@ -318,6 +298,14 @@ function pContact(pn, total){
   `);
 }
 
+function pBack(){
+  return svg(`
+    <text x="${W/2}" y="${H/2-20}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" letter-spacing="8" fill="#1A1A1A" font-weight="500">AURÉLIS</text>
+    <line x1="${W/2-30}" y1="${H/2}" x2="${W/2+30}" y2="${H/2}" stroke="#1A1A1A" stroke-width="0.5" opacity="0.5"/>
+    <text x="${W/2}" y="${H/2+24}" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" letter-spacing="4" fill="#8A8478">CONTRACT · MMXXVI</text>
+  `);
+}
+
 /* ============================================================ */
 
 const TOTAL = 16;
@@ -326,19 +314,19 @@ const pages = [
   pCover(),                                                                                  // 01
   pIntro(TOTAL),                                                                             // 02
   pSection('I', "Banques d'accueil", "Hôtellerie · Beauté · Santé · Corporate · Retail", 3, TOTAL), // 03
-  pHero(IMG.atlas, 4, TOTAL),                                                                // 04 — white luxurious
-  pHero(IMG.aourir, 5, TOTAL),                                                               // 05 — BLACK reception (back-name file)
-  pGrid4([IMG.draa, IMG.ifni, IMG.safi, IMG.tamri], 6, TOTAL),                               // 06 — variety, now with tamri (small)
-  pGrid4([IMG.mogador, IMG.face_rec, IMG.hair_rec, IMG.lips_rec], 7, TOTAL),                 // 07 — 4 beauty receptions together
-  pGrid4([IMG.ziz, IMG.sebou, IMG.souss, IMG.gharb], 8, TOTAL),                              // 08 — colour palette
+  pHero(IMG.atlas, 4, TOTAL),                                                                // 04
+  pHero(IMG.aourir, 5, TOTAL),                                                               // 05
+  pGrid4([IMG.draa, IMG.ifni, IMG.safi, IMG.tamri], 6, TOTAL),                               // 06
+  pGrid4([IMG.mogador, IMG.face_rec, IMG.hair_rec, IMG.lips_rec], 7, TOTAL),                 // 07
+  pGrid4([IMG.ziz, IMG.sebou, IMG.souss, IMG.gharb], 8, TOTAL),                              // 08
   pSection('II', "Pièces murales", "Sculptures et reliefs en bois. Pose comprise.", 9, TOTAL), // 09
-  pHero(IMG.tanger, 10, TOTAL),                                                              // 10 — single car panel hero (flat, not zoomed)
-  pGrid3([IMG.rif, IMG.melya, IMG.moulouya], 11, TOTAL),                                     // 11 — logo wall hero + lips wall + dental
-  pGrid3([IMG.moulouya2, IMG.melya, IMG.rif], 12, TOTAL),                                    // 12 — see note below
-  pSection('III', "Assises", "Bancs paramétriques. Usage commercial.", 13, TOTAL),           // 13
-  pGrid4([IMG.erg, IMG.erg2, IMG.erg3, IMG.erg4], 14, TOTAL),                                // 14
-  pCapabilities(15, TOTAL),                                                                  // 15
-  pContact(16, TOTAL),                                                                       // 16
+  pHero(IMG.tanger, 10, TOTAL),                                                              // 10
+  pGrid4([IMG.rif, IMG.melya, IMG.moulouya, IMG.moulouya2], 11, TOTAL),                      // 11
+  pSection('III', "Assises", "Bancs paramétriques. Usage commercial.", 12, TOTAL),           // 12
+  pGrid4([IMG.erg, IMG.erg2, IMG.erg3, IMG.erg4], 13, TOTAL),                                // 13
+  pCapabilities(14, TOTAL),                                                                  // 14
+  pContact(15, TOTAL),                                                                       // 15
+  pBack(),                                                                                   // 16
 ];
 
 let currentPage = 0;
@@ -351,6 +339,33 @@ function render(){
 }
 function next(){ if (currentPage < TOTAL - 1){ currentPage++; render(); } }
 function prev(){ if (currentPage > 0){ currentPage--; render(); } }
+
+/* ===== PRINT: render ALL pages stacked, then trigger print ===== */
+function printAll(){
+  const viewer = document.getElementById('viewer');
+  // Save state
+  const originalHTML = viewer.innerHTML;
+
+  // Build all pages stacked
+  const allPages = pages.map(p => `<div class="book">${p}</div>`).join('');
+  viewer.innerHTML = allPages;
+  document.body.classList.add('print-all');
+
+  // Give browser a moment to lay out, then print
+  setTimeout(() => {
+    window.print();
+    // Restore after print dialog closes
+    setTimeout(() => {
+      document.body.classList.remove('print-all');
+      viewer.innerHTML = '<div class="book" id="book"></div>';
+      // Re-acquire reference and re-render current page
+      const newBook = document.getElementById('book');
+      newBook.innerHTML = pages[currentPage];
+      // Update module-level book variable
+      window._book = newBook;
+    }, 500);
+  }, 300);
+}
 
 document.getElementById('navLeft').addEventListener('click', prev);
 document.getElementById('navRight').addEventListener('click', next);
