@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AURÉLIS Contract — Mobilier paramétrique sur mesure. Casablanca.">
+<title>AURÉLIS — Contract</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='serif'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#2A2620;
+    color:#1A1A1A;
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  .cat-header{
+    position:fixed;top:0;left:0;right:0;height:44px;
+    background:#1A1612;color:#D9D2C4;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;z-index:50;
+    border-bottom:1px solid #3A332A;
+    font-family:'Inter',sans-serif;font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;
+  }
+  .cat-header .brand{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.3em}
+  .cat-header a{color:#D9D2C4;text-decoration:none;margin-left:24px}
+  .cat-header a:hover{color:#fff}
+  .viewer{
+    position:fixed;top:44px;bottom:56px;left:0;right:0;
+    background:#2A2620;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .book{
+    position:relative;
+    height:min(100%,900px);
+    aspect-ratio:148/210;
+    background:#FFFFFF;
+    box-shadow:0 30px 80px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.3);
+    overflow:hidden;
+  }
+  .book svg{width:100%;height:100%;display:block}
+  .nav-zone{position:fixed;top:44px;bottom:56px;width:18%;cursor:pointer;z-index:10}
+  .nav-zone.left{left:0}
+  .nav-zone.right{right:0}
+  .toolbar{
+    position:fixed;bottom:0;left:0;right:0;height:56px;
+    background:#1A1612;border-top:1px solid #3A332A;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;z-index:50;
+  }
+  .toolbar .counter{font-family:'Inter',monospace;font-size:11px;color:#8A8478;letter-spacing:.15em}
+  .toolbar .ctrls{display:flex;gap:12px;align-items:center}
+  .toolbar button, .toolbar a.btn{
+    background:transparent;border:1px solid #4A4338;color:#D9D2C4;
+    font-family:'Inter',sans-serif;font-size:10px;
+    letter-spacing:.2em;text-transform:uppercase;
+    padding:8px 16px;cursor:pointer;text-decoration:none;
+    transition:all .2s ease;
+  }
+  .toolbar button:hover, .toolbar a.btn:hover{background:#D9D2C4;color:#1A1612;border-color:#D9D2C4}
+  .toolbar a.btn.primary{background:#D9D2C4;color:#1A1612;border-color:#D9D2C4}
+  .toolbar a.btn.primary:hover{background:#fff;border-color:#fff}
+  @media (max-width:768px){
+    .cat-header{height:40px;padding:0 12px}
+    .cat-header .brand{font-size:13px;letter-spacing:.25em}
+    .cat-header a{margin-left:12px;font-size:10px}
+    .viewer{top:40px;bottom:48px;padding:8px}
+    .nav-zone{top:40px;bottom:48px;width:22%}
+    .toolbar{height:48px;padding:0 12px}
+    .toolbar button, .toolbar a.btn{padding:6px 10px;font-size:9px;letter-spacing:.15em}
+    .toolbar .ctrls{gap:6px}
+  }
+  @media print{
+    @page{size:A5 portrait;margin:0}
+    body{background:#fff;overflow:visible}
+    .cat-header,.toolbar,.nav-zone{display:none!important}
+    .viewer{position:static;padding:0;background:#fff;display:block}
+    .book{box-shadow:none;width:100%;height:auto;aspect-ratio:auto;page-break-after:always;break-after:page}
+    .book:last-child{page-break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="cat-header">
+  <div class="brand">AURÉLIS</div>
+  <nav><a href="../index.html">Accueil</a></nav>
+</header>
+
+<div class="viewer">
+  <div class="book" id="book"></div>
+</div>
+
+<div class="nav-zone left" id="navLeft"></div>
+<div class="nav-zone right" id="navRight"></div>
+
+<div class="toolbar">
+  <div class="counter" id="counter">01 / 16</div>
+  <div class="ctrls">
+    <button onclick="prev()">◀</button>
+    <button onclick="next()">▶</button>
+    <a class="btn" href="contract.pdf" download>PDF</a>
+    <a class="btn primary" href="mailto:projets@aurelis.ma">CONTACT</a>
+  </div>
+</div>
+
+<script>
+/* AURÉLIS Contract — A5 leave-behind */
+
+const IMG = {
+  atlas:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104231/luxurious_reception_white_o0d6kn.png',
+  draa:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104223/dark_brown_reception_desk_x4my9e.png',
+  ifni:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104217/light_reception_jq9v3g.png',
+  safi:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104125/brown_desk_qtbwtb.jpg',
+  tamri:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104178/small_reception_tgfotg.jpg',
+  ziz:      'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104120/green_desk_idgsfx.jpg',
+  sebou:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104118/blue_desk_wzue0d.jpg',
+  souss:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104102/orange_desk_bwnc3t.jpg',
+  gharb:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104116/yellow_desk_n2cbti.jpg',
+  mogador:  'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104162/beauty_reception_1_whakt9.png',
+  aourir:   'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104104/back_reception_desk_yndvgo.jpg',
+  // Figural beauty receptions
+  face_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290256/reception_with_face_trdmxm.jpg',
+  hair_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290255/reception_with_long_hair_vn0zye.jpg',
+  lips_rec: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781290254/recpetion_with_lips_obcimr.webp',
+
+  // Walls / Sculptural pieces
+  tanger:   'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781287626/car_wall_panel_pnxnk1.webp',
+  rif:      'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781287626/logo_wall_panel_rztpuy.webp',
+  melya:    'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104110/lips_for_salon_beauty_center_tkatzs.jpg',
+  moulouya: 'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781288197/tooth_table_dentist_zpa8tg.jpg',
+  moulouya2:'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104190/parametric_tooth_dentist_fd9maq.jpg',
+
+  // Benches
+  erg:      'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104207/sitting_wall_bench_cxu4pb.png',
+  erg2:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104095/parametric_bench_i854to.jpg',
+  erg3:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104096/big_bench_table_khmbh1.jpg',
+  erg4:     'https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781104172/bench_3_khoiqy.png',
+};
+
+const VB = '0 0 592 840';
+const W = 592;
+const H = 840;
+
+function svg(content){
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${VB}" preserveAspectRatio="xMidYMid meet">
+    <rect width="${W}" height="${H}" fill="#FFFFFF"/>
+    ${content}
+  </svg>`;
+}
+
+function pageNum(n, total){
+  return `<text x="40" y="${H-50}" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#8A8478">${String(n).padStart(2,'0')} · ${String(total).padStart(2,'0')}</text>`;
+}
+
+function pCover(){
+  return svg(`
+    <image href="${IMG.atlas}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="#1A1612" opacity="0.42"/>
+
+    <text x="${W/2}" y="370" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="44" letter-spacing="10" fill="#FFFFFF" font-weight="500">AURÉLIS</text>
+    <line x1="${W/2-50}" y1="395" x2="${W/2+50}" y2="395" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7"/>
+    <text x="${W/2}" y="425" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" letter-spacing="8" fill="#FFFFFF" opacity="0.9">CONTRACT</text>
+
+    <text x="${W/2}" y="${H-50}" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#FFFFFF" opacity="0.7">CASABLANCA · MMXXVI</text>
+  `);
+}
+
+function pIntro(total){
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+
+    <text x="40" y="240" font-family="Cormorant Garamond, serif" font-size="30" fill="#1A1A1A" font-weight="500">Mobilier paramétrique</text>
+    <text x="40" y="276" font-family="Cormorant Garamond, serif" font-size="30" fill="#1A1A1A" font-weight="500">sur mesure.</text>
+
+    <line x1="40" y1="320" x2="100" y2="320" stroke="#1A1A1A" stroke-width="0.8"/>
+
+    <text x="40" y="380" font-family="Inter, sans-serif" font-size="10" fill="#4A4A4A" letter-spacing="0.3">
+      <tspan x="40" dy="0">Atelier établi à Casablanca.</tspan>
+      <tspan x="40" dy="36">Mobilier sculpté pour les espaces</tspan>
+      <tspan x="40" dy="18">commerciaux.</tspan>
+      <tspan x="40" dy="36">Banques d'accueil. Pièces murales.</tspan>
+      <tspan x="40" dy="18">Assises.</tspan>
+      <tspan x="40" dy="36">Hôtellerie. Beauté. Santé. Retail.</tspan>
+      <tspan x="40" dy="36">Toute pièce dimensionnée, teintée</tspan>
+      <tspan x="40" dy="18">et finie selon le projet.</tspan>
+    </text>
+
+    ${pageNum(2, total)}
+  `);
+}
+
+function pSection(num, title, sub, pn, total){
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+
+    <text x="40" y="${H/2-60}" font-family="Inter, sans-serif" font-size="10" letter-spacing="4" fill="#8A8478">— ${num} —</text>
+    <text x="40" y="${H/2-10}" font-family="Cormorant Garamond, serif" font-size="42" fill="#1A1A1A" font-weight="500">${title}</text>
+    <line x1="40" y1="${H/2+20}" x2="120" y2="${H/2+20}" stroke="#1A1A1A" stroke-width="0.8"/>
+    <text x="40" y="${H/2+55}" font-family="Inter, sans-serif" font-size="10" letter-spacing="1" fill="#4A4A4A">${sub}</text>
+
+    ${pageNum(pn, total)}
+  `);
+}
+
+function pHero(image, pn, total){
+  return svg(`
+    <image href="${image}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="0" y="${H-90}" width="${W}" height="90" fill="url(#g${pn})"/>
+    <defs>
+      <linearGradient id="g${pn}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#000" stop-opacity="0"/>
+        <stop offset="1" stop-color="#000" stop-opacity="0.5"/>
+      </linearGradient>
+    </defs>
+    <text x="40" y="${H-50}" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#FFFFFF" opacity="0.85">${String(pn).padStart(2,'0')} · ${String(total).padStart(2,'0')}</text>
+    <text x="${W-40}" y="${H-50}" text-anchor="end" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#FFFFFF" opacity="0.85">AURÉLIS</text>
+  `);
+}
+
+function pGrid4(images, pn, total){
+  const margin = 40;
+  const gutter = 12;
+  const cellW = (W - margin*2 - gutter) / 2;
+  const cellH = cellW;
+  const startY = 120;
+
+  const cells = images.map((img, i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const x = margin + col * (cellW + gutter);
+    const y = startY + row * (cellH + gutter);
+    return `<image href="${img}" x="${x}" y="${y}" width="${cellW}" height="${cellH}" preserveAspectRatio="xMidYMid slice"/>`;
+  }).join('');
+
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+    ${cells}
+    ${pageNum(pn, total)}
+    <text x="${W-40}" y="${H-50}" text-anchor="end" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#8A8478">AURÉLIS</text>
+  `);
+}
+
+function pGrid3(images, pn, total){
+  const margin = 40;
+  const gutter = 12;
+  const fullW = W - margin*2;
+  const topH = 380;
+  const botCellW = (fullW - gutter) / 2;
+  const botCellH = 260;
+
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+
+    <image href="${images[0]}" x="${margin}" y="120" width="${fullW}" height="${topH}" preserveAspectRatio="xMidYMid slice"/>
+    <image href="${images[1]}" x="${margin}" y="${120+topH+gutter}" width="${botCellW}" height="${botCellH}" preserveAspectRatio="xMidYMid slice"/>
+    <image href="${images[2]}" x="${margin+botCellW+gutter}" y="${120+topH+gutter}" width="${botCellW}" height="${botCellH}" preserveAspectRatio="xMidYMid slice"/>
+
+    ${pageNum(pn, total)}
+    <text x="${W-40}" y="${H-50}" text-anchor="end" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#8A8478">AURÉLIS</text>
+  `);
+}
+
+function pCapabilities(pn, total){
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+
+    <text x="40" y="180" font-family="Cormorant Garamond, serif" font-size="28" fill="#1A1A1A" font-weight="500">Sur mesure.</text>
+    <line x1="40" y1="215" x2="80" y2="215" stroke="#1A1A1A" stroke-width="0.6"/>
+
+    <text x="40" y="290" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">DIMENSIONS</text>
+    <text x="40" y="312" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Toute pièce dimensionnée selon l'espace.</text>
+
+    <text x="40" y="370" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">MATIÈRES</text>
+    <text x="40" y="392" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Bois massif. Compactmel. HDF.</text>
+    <text x="40" y="410" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">MDF. Contreplaqué.</text>
+
+    <text x="40" y="468" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">INTÉGRATION</text>
+    <text x="40" y="490" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Logo. Éclairage. Plateaux pierre ou verre.</text>
+
+    <text x="40" y="548" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">DÉLAI</text>
+    <text x="40" y="570" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Quatre à six semaines selon projet.</text>
+
+    <text x="40" y="628" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">DEVIS</text>
+    <text x="40" y="650" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Sur demande. Réponse sous 48 heures.</text>
+
+    ${pageNum(pn, total)}
+    <text x="${W-40}" y="${H-50}" text-anchor="end" font-family="Inter, sans-serif" font-size="8" letter-spacing="2" fill="#8A8478">AURÉLIS</text>
+  `);
+}
+
+function pContact(pn, total){
+  return svg(`
+    <text x="40" y="80" font-family="Inter, sans-serif" font-size="8" letter-spacing="3" fill="#8A8478">AURÉLIS</text>
+
+    <text x="40" y="${H/2-100}" font-family="Cormorant Garamond, serif" font-size="32" fill="#1A1A1A" font-weight="500">Contact</text>
+    <line x1="40" y1="${H/2-70}" x2="100" y2="${H/2-70}" stroke="#1A1A1A" stroke-width="0.8"/>
+
+    <text x="40" y="${H/2-10}" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">PROJETS</text>
+    <text x="40" y="${H/2+14}" font-family="Cormorant Garamond, serif" font-size="18" fill="#1A1A1A">projets@aurelis.ma</text>
+
+    <text x="40" y="${H/2+62}" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">TÉLÉPHONE</text>
+    <text x="40" y="${H/2+86}" font-family="Cormorant Garamond, serif" font-size="18" fill="#1A1A1A">+212 661 420 939</text>
+
+    <text x="40" y="${H/2+134}" font-family="Inter, sans-serif" font-size="9" letter-spacing="2.5" fill="#8A8478">ATELIER</text>
+    <text x="40" y="${H/2+158}" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">Casablanca, Maroc</text>
+    <text x="40" y="${H/2+178}" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1A">aurelis.ma</text>
+
+    ${pageNum(pn, total)}
+  `);
+}
+
+/* ============================================================ */
+
+const TOTAL = 16;
+
+const pages = [
+  pCover(),                                                                                  // 01
+  pIntro(TOTAL),                                                                             // 02
+  pSection('I', "Banques d'accueil", "Hôtellerie · Beauté · Santé · Corporate · Retail", 3, TOTAL), // 03
+  pHero(IMG.atlas, 4, TOTAL),                                                                // 04 — white luxurious
+  pHero(IMG.aourir, 5, TOTAL),                                                               // 05 — BLACK reception (back-name file)
+  pGrid4([IMG.draa, IMG.ifni, IMG.safi, IMG.tamri], 6, TOTAL),                               // 06 — variety, now with tamri (small)
+  pGrid4([IMG.mogador, IMG.face_rec, IMG.hair_rec, IMG.lips_rec], 7, TOTAL),                 // 07 — 4 beauty receptions together
+  pGrid4([IMG.ziz, IMG.sebou, IMG.souss, IMG.gharb], 8, TOTAL),                              // 08 — colour palette
+  pSection('II', "Pièces murales", "Sculptures et reliefs en bois. Pose comprise.", 9, TOTAL), // 09
+  pHero(IMG.tanger, 10, TOTAL),                                                              // 10 — single car panel hero (flat, not zoomed)
+  pGrid3([IMG.rif, IMG.melya, IMG.moulouya], 11, TOTAL),                                     // 11 — logo wall hero + lips wall + dental
+  pGrid3([IMG.moulouya2, IMG.melya, IMG.rif], 12, TOTAL),                                    // 12 — see note below
+  pSection('III', "Assises", "Bancs paramétriques. Usage commercial.", 13, TOTAL),           // 13
+  pGrid4([IMG.erg, IMG.erg2, IMG.erg3, IMG.erg4], 14, TOTAL),                                // 14
+  pCapabilities(15, TOTAL),                                                                  // 15
+  pContact(16, TOTAL),                                                                       // 16
+];
+
+let currentPage = 0;
+const book = document.getElementById('book');
+const counter = document.getElementById('counter');
+
+function render(){
+  book.innerHTML = pages[currentPage];
+  counter.textContent = `${String(currentPage+1).padStart(2,'0')} / ${String(TOTAL).padStart(2,'0')}`;
+}
+function next(){ if (currentPage < TOTAL - 1){ currentPage++; render(); } }
+function prev(){ if (currentPage > 0){ currentPage--; render(); } }
+
+document.getElementById('navLeft').addEventListener('click', prev);
+document.getElementById('navRight').addEventListener('click', next);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+});
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  if (dx > 50) prev();
+  if (dx < -50) next();
+}, {passive:true});
+
+render();
+</script>
+
+</body>
+</html>
