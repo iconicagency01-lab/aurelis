@@ -9,6 +9,24 @@
 <meta property="og:description" content="Trois collections, une signature. Murs sculptés, chaises et tables — fabriqués à la main à Casablanca.">
 <meta property="og:type" content="website">
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '860595880458458');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffffff'/%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
@@ -51,7 +69,6 @@
   }
   a { color: inherit; text-decoration: none; }
 
-  /* ─────────── UTILITY BAR ─────────── */
   .utility {
     position: fixed; top: 0; left: 0; right: 0;
     background: var(--ink); color: var(--paper);
@@ -64,7 +81,6 @@
   .utility a { transition: opacity 0.3s var(--ease); }
   .utility a:hover { opacity: 0.6; }
 
-  /* ─────────── NAV ─────────── */
   nav {
     position: fixed; top: 32px; left: 0; right: 0;
     padding: 22px 40px;
@@ -151,7 +167,6 @@
     nav.open .burger span:nth-child(2) { transform: translateY(-7px) rotate(-45deg); }
   }
 
-  /* ─────────── PAGE HEADER ─────────── */
   .page-header {
     margin-top: 112px;
     padding: 100px 60px 60px;
@@ -188,7 +203,6 @@
     }
   }
 
-  /* ─────────── CATALOGUE GRID ─────────── */
   .catalogues {
     padding: 80px 60px 100px;
     display: grid;
@@ -281,7 +295,6 @@
   .cat-card:hover .cta { color: var(--ink); gap: 18px; }
   .cat-card:hover .cta .arrow { transform: translateX(4px); }
 
-  /* ─────────── CONTACT STRIP ─────────── */
   .contact-strip {
     background: var(--paper-alt);
     padding: 80px 60px;
@@ -324,7 +337,6 @@
     .contact-strip { padding: 50px 22px; }
   }
 
-  /* ─────────── FOOTER ─────────── */
   footer {
     background: var(--ink);
     color: var(--paper);
@@ -359,7 +371,6 @@
     footer .row { flex-direction: column; align-items: flex-start; gap: 18px; }
   }
 
-  /* ─────────── REVEAL ─────────── */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
   .reveal.in { opacity: 1; transform: translateY(0); }
   .reveal.d1 { transition-delay: 0.08s; }
@@ -399,17 +410,15 @@
   </div>
 </nav>
 
-<!-- ─────────── PAGE HEADER ─────────── -->
 <header class="page-header">
   <div class="micro eyebrow reveal">Nos collections</div>
   <h1 class="reveal d1">Trois <em>collections</em>, une signature.</h1>
   <p class="reveal d2">Murs sculptés, chaises et tables — chaque pièce est conçue et fabriquée à la main dans notre atelier à Casablanca.</p>
 </header>
 
-<!-- ─────────── CATALOGUE CARDS ─────────── -->
 <section class="catalogues">
 
-  <a href="catalog/murales.html" class="cat-card reveal">
+  <a href="catalog/murales.html" class="cat-card reveal" data-cat="murales">
     <div class="img-wrap">
       <span class="number micro">01</span>
       <img src="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1200,c_fill/v1771621734/walking-horse-different_setting_ci8pcb.webp" alt="Sculptures murales AURÉLIS">
@@ -422,7 +431,7 @@
     </div>
   </a>
 
-  <a href="catalog/chaises.html" class="cat-card reveal d1">
+  <a href="catalog/chaises.html" class="cat-card reveal d1" data-cat="chaises">
     <div class="img-wrap">
       <span class="number micro">02</span>
       <img src="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1200,c_fill/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp" alt="Chaises sculptées AURÉLIS">
@@ -435,7 +444,7 @@
     </div>
   </a>
 
-  <a href="catalog/tables.html" class="cat-card reveal d2">
+  <a href="catalog/tables.html" class="cat-card reveal d2" data-cat="tables">
     <div class="img-wrap">
       <span class="number micro">03</span>
       <img src="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1200,c_fill/v1779392874/twisted_table_hero_qmewze.webp" alt="Tables sculptées AURÉLIS">
@@ -450,17 +459,15 @@
 
 </section>
 
-<!-- ─────────── CONTACT STRIP ─────────── -->
 <section class="contact-strip">
   <div class="micro eyebrow">Sur mesure</div>
   <h3>Une pièce qui n'existe <em>nulle part ailleurs.</em></h3>
   <p>Parlez-nous de votre projet — particulier, architecte ou hôtellerie. Nous concevons sur mesure.</p>
-  <a href="https://wa.me/212661420939" target="_blank" rel="noopener" class="btn-primary">
+  <a href="https://wa.me/212661420939" target="_blank" rel="noopener" class="btn-primary" id="ctaWhatsapp">
     Nous écrire <span>→</span>
   </a>
 </section>
 
-<!-- ─────────── FOOTER ─────────── -->
 <footer>
   <div class="row">
     <div class="mark-foot">AURÉLIS</div>
@@ -491,6 +498,34 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ─── Meta Pixel event tracking ───
+  // Track which catalog card is clicked
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const cat = card.getAttribute('data-cat');
+      if (window.fbq) {
+        fbq('track', 'ViewContent', {
+          content_name: cat,
+          content_category: 'catalog',
+          content_type: 'product_group'
+        });
+      }
+    });
+  });
+
+  // Track WhatsApp CTA click as a Lead event
+  const wa = document.getElementById('ctaWhatsapp');
+  if (wa) {
+    wa.addEventListener('click', () => {
+      if (window.fbq) {
+        fbq('track', 'Contact', {
+          content_name: 'whatsapp_cta',
+          content_category: 'contact'
+        });
+      }
+    });
+  }
 </script>
 
 </body>
