@@ -1,30 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '860595880458458');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AURÉLIS — Catalogues</title>
-<meta name="description" content="Découvrez les trois collections AURÉLIS : sculptures murales, chaises et tables. Pièces sur mesure, fabriquées à la main à Casablanca.">
-<meta property="og:title" content="AURÉLIS — Catalogues">
-<meta property="og:description" content="Trois collections, une signature. Murs sculptés, chaises et tables — fabriqués à la main à Casablanca.">
-<meta property="og:type" content="website">
 
 <!-- Meta Pixel Code -->
 <script>
@@ -43,6 +21,12 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+
+<title>AURÉLIS — Catalogues</title>
+<meta name="description" content="Découvrez les trois collections AURÉLIS : sculptures murales, chaises et tables. Pièces sur mesure, fabriquées à la main à Casablanca.">
+<meta property="og:title" content="AURÉLIS — Catalogues">
+<meta property="og:description" content="Trois collections, une signature. Murs sculptés, chaises et tables — fabriqués à la main à Casablanca.">
+<meta property="og:type" content="website">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
@@ -517,7 +501,6 @@ src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // ─── Meta Pixel event tracking ───
-  // Track which catalog card is clicked
   document.querySelectorAll('.cat-card').forEach(card => {
     card.addEventListener('click', () => {
       const cat = card.getAttribute('data-cat');
@@ -531,7 +514,6 @@ src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"
     });
   });
 
-  // Track WhatsApp CTA click as a Lead event
   const wa = document.getElementById('ctaWhatsapp');
   if (wa) {
     wa.addEventListener('click', () => {
