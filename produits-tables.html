@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '860595880458458');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+
+<title>AURÉLIS — Tables</title>
+<meta name="description" content="Découvrez la collection AURÉLIS de tables sculptées à la main à Casablanca. Tables de salle à manger, basses, consoles et guéridons.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1612; --paper: #ffffff; --paper-alt: #f6f4f0; --bone: #eeeae3;
+    --mute: #847866; --soft: #b8ad97; --accent: #6e5538;
+    --line: rgba(26,22,18,0.12);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; font-weight: 400; background: var(--paper); color: var(--ink); overflow-x: hidden; line-height: 1.55; font-size: 14px; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .micro { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+
+  .utility { position: fixed; top: 0; left: 0; right: 0; background: var(--ink); color: var(--paper); padding: 8px 40px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; z-index: 101; }
+  .utility .left, .utility .right { display: flex; gap: 28px; }
+
+  nav { position: fixed; top: 32px; left: 0; right: 0; padding: 22px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); transition: padding 0.4s var(--ease); }
+  nav.scrolled { padding: 16px 40px; }
+  nav .links-left, nav .links-right { display: flex; gap: 36px; }
+  nav .links-right { justify-content: flex-end; }
+  nav .links-left a, nav .links-right a { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; transition: color 0.3s var(--ease); }
+  nav .links-left a:hover, nav .links-right a:hover { color: var(--accent); }
+  nav .mark { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.32em; text-align: center; text-transform: uppercase; line-height: 1; transition: font-size 0.4s var(--ease); }
+  nav.scrolled .mark { font-size: 22px; }
+  nav .mark .tag { display: block; font-family: 'Inter', sans-serif; font-size: 8px; letter-spacing: 0.4em; font-weight: 500; color: var(--mute); margin-top: 4px; }
+  nav.scrolled .mark .tag { display: none; }
+  .burger { display: none; }
+  @media (max-width: 900px) {
+    .utility { display: none; }
+    nav { top: 0; padding: 14px 20px; grid-template-columns: auto 1fr auto; }
+    nav .links-left, nav .links-right { display: none; }
+    nav .mark { font-size: 20px; text-align: left; grid-column: 2; justify-self: start; padding-left: 8px; }
+    nav .mark .tag { display: none; }
+    .burger { display: flex; width: 26px; height: 14px; flex-direction: column; justify-content: space-between; cursor: pointer; grid-column: 3; }
+    .burger span { display: block; height: 1px; background: var(--ink); transition: transform 0.3s; width: 100%; }
+    nav.open .links-left, nav.open .links-right { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--paper); justify-content: center; align-items: center; gap: 28px; z-index: 99; padding: 80px 22px; }
+    nav.open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    nav.open .burger span:nth-child(2) { opacity: 0; }
+    nav.open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  }
+
+  .page-header { margin-top: 112px; padding: 90px 60px 50px; text-align: center; border-bottom: 1px solid var(--line); }
+  .page-header .eyebrow { color: var(--mute); margin-bottom: 22px; }
+  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 1; letter-spacing: -0.01em; margin-bottom: 22px; }
+  .page-header h1 em { font-style: italic; color: var(--accent); }
+  .page-header p { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 1.5vw, 21px); font-style: italic; color: var(--mute); max-width: 620px; margin: 0 auto 28px; line-height: 1.5; }
+  .page-header .magazine-link { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 3px; transition: gap 0.4s var(--ease); }
+  .page-header .magazine-link:hover { gap: 16px; }
+  @media (max-width: 900px) { .page-header { margin-top: 50px; padding: 50px 22px 36px; } }
+
+  .filters { padding: 30px 60px; display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+  .filter { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; color: var(--mute); cursor: pointer; padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.3s var(--ease), border-color 0.3s var(--ease); background: none; border-left: 0; border-right: 0; border-top: 0; font-family: 'Inter', sans-serif; }
+  .filter:hover, .filter.active { color: var(--ink); border-bottom-color: var(--ink); }
+  @media (max-width: 900px) { .filters { padding: 22px 16px; gap: 14px; } .filter { font-size: 10px; letter-spacing: 0.2em; } }
+
+  .grid { padding: 60px 60px 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 32px; max-width: 1600px; margin: 0 auto; }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); padding: 40px 22px 70px; gap: 36px 18px; } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .product { display: block; position: relative; }
+  .product .img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--bone); margin-bottom: 18px; }
+  .product .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease), opacity 0.6s var(--ease); }
+  .product .img-wrap img.alt { position: absolute; inset: 0; opacity: 0; }
+  .product:hover .img-wrap img.main { opacity: 0; }
+  .product:hover .img-wrap img.alt { opacity: 1; }
+  .product:hover .img-wrap img { transform: scale(1.03); }
+  .product .category { color: var(--mute); margin-bottom: 6px; }
+  .product .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; letter-spacing: 0.06em; line-height: 1.1; margin-bottom: 10px; }
+  .product .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--mute); line-height: 1.4; }
+
+  .empty { padding: 80px 60px; text-align: center; color: var(--mute); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; display: none; }
+
+  .contact-strip { background: var(--paper-alt); padding: 80px 60px; text-align: center; border-top: 1px solid var(--line); }
+  .contact-strip .eyebrow { color: var(--mute); margin-bottom: 20px; }
+  .contact-strip h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .contact-strip h3 em { font-style: italic; color: var(--accent); }
+  .contact-strip p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--mute); margin-bottom: 34px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .btn-primary { background: var(--ink); color: var(--paper); padding: 18px 36px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease); border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--accent); }
+  @media (max-width: 900px) { .contact-strip { padding: 50px 22px; } }
+
+  footer { background: var(--ink); color: var(--paper); padding: 50px 60px 30px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+  footer .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 26px; margin-bottom: 26px; }
+  footer .mark-foot { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.32em; text-transform: uppercase; }
+  footer .links { display: flex; gap: 26px; flex-wrap: wrap; }
+  footer .legal { text-align: center; color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 0.2em; }
+  @media (max-width: 900px) { footer { padding: 36px 22px 24px; } footer .row { flex-direction: column; align-items: flex-start; gap: 18px; } }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="left">
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="right">
+    <span>Atelier Casablanca</span>
+    <span>Sur commande</span>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="links-left">
+    <a href="index.html">Accueil</a>
+    <a href="catalogues.html">Catalogues</a>
+    <a href="produits-tables.html">Tables</a>
+  </div>
+  <a href="index.html" class="mark">
+    AURÉLIS
+    <span class="tag">L'art de la forme</span>
+  </a>
+  <div class="links-right">
+    <a href="catalog/tables.html">Voir le catalogue</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">Contact</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="micro reveal" style="color:var(--mute); margin-bottom:22px;">Volume I · Collection 2026</div>
+  <h1 class="reveal">Tables.</h1>
+  <p class="reveal">De la table basse à la salle à manger. Bois massif, courbes calculées — dix pièces sculptées à la main à Casablanca.</p>
+  <a href="catalog/tables.html" class="magazine-link reveal">Voir le catalogue complet <span>→</span></a>
+</header>
+
+<div class="filters reveal" id="filters"></div>
+
+<section class="grid" id="grid"></section>
+<div class="empty" id="empty">Aucune pièce dans cette catégorie.</div>
+
+<section class="contact-strip">
+  <div class="micro" style="color:var(--mute); margin-bottom:20px;">Sur mesure</div>
+  <h3>Toutes les pièces existent <em>aussi</em> sur mesure.</h3>
+  <p>Dimensions, finition, matériau — parlez-nous de votre projet.</p>
+  <a href="https://wa.me/212661420939" target="_blank" rel="noopener" class="btn-primary" id="ctaWhatsapp">Nous écrire <span>→</span></a>
+</section>
+
+<footer>
+  <div class="row">
+    <div class="mark-foot">AURÉLIS</div>
+    <div class="links">
+      <a href="index.html">Accueil</a>
+      <a href="catalogues.html">Catalogues</a>
+      <a href="produits-tables.html">Tables</a>
+      <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </div>
+  <div class="legal">© AURÉLIS — Atelier Casablanca</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  let allProducts = [];
+  let activeFilter = 'Tout';
+
+  fetch('products.json').then(r => r.json()).then(data => {
+    allProducts = data.tables.items;
+    buildFilters();
+    renderGrid();
+  });
+
+  function buildFilters() {
+    const cats = ['Tout', ...new Set(allProducts.map(p => p.category))];
+    const filters = document.getElementById('filters');
+    filters.innerHTML = cats.map(c =>
+      `<button class="filter ${c === activeFilter ? 'active' : ''}" data-cat="${c}">${c}</button>`
+    ).join('');
+    filters.querySelectorAll('.filter').forEach(b => {
+      b.addEventListener('click', () => {
+        activeFilter = b.dataset.cat;
+        buildFilters();
+        renderGrid();
+      });
+    });
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const filtered = activeFilter === 'Tout' ? allProducts : allProducts.filter(p => p.category === activeFilter);
+    if (!filtered.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.map(p => `
+      <a href="produit.html?collection=tables&id=${p.id}" class="product reveal" data-id="${p.id}">
+        <div class="img-wrap">
+          <img class="main" src="${p.hero}" alt="${p.name}" loading="lazy">
+          ${p.gallery && p.gallery.length ? `<img class="alt" src="${p.gallery[0]}" alt="" loading="lazy">` : ''}
+        </div>
+        <div class="category micro">${p.category}</div>
+        <div class="name">${p.name}</div>
+        <div class="quote">${p.quote}</div>
+      </a>
+    `).join('');
+    document.querySelectorAll('.product.reveal').forEach(el => io.observe(el));
+    // Pixel event on click
+    document.querySelectorAll('.product').forEach(card => {
+      card.addEventListener('click', () => {
+        if (window.fbq) fbq('track', 'ViewContent', { content_name: card.dataset.id, content_category: 'tables', content_type: 'product' });
+      });
+    });
+  }
+
+  const wa = document.getElementById('ctaWhatsapp');
+  if (wa) wa.addEventListener('click', () => { if (window.fbq) fbq('track', 'Contact', { content_name: 'whatsapp_cta', content_category: 'tables_list' }); });
+</script>
+
+</body>
+</html>
