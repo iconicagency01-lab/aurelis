@@ -3,265 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<!-- Meta Pixel -->
+<!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '860595880458458');
-fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','860595880458458');fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
-
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 <title>AURÉLIS — Pièce</title>
-<meta name="description" content="Pièce AURÉLIS — fabriquée à la main à Casablanca. Sur commande.">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1a1612; --paper: #ffffff; --paper-alt: #f6f4f0; --bone: #eeeae3;
-    --mute: #847866; --soft: #b8ad97; --accent: #6e5538;
-    --line: rgba(26,22,18,0.12);
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; font-weight: 400; background: var(--paper); color: var(--ink); overflow-x: hidden; line-height: 1.55; font-size: 14px; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; text-decoration: none; }
-  .micro { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+:root{
+  --ink:#1a1612; --paper:#ffffff; --bone:#eeeae3; --soft:#f6f4f0;
+  --accent:#6e5538; --line:rgba(26,22,18,.12);
+  --serif:'Cormorant Garamond',serif; --sans:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.micro{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:400}
 
-  .utility { position: fixed; top: 0; left: 0; right: 0; background: var(--ink); color: var(--paper); padding: 8px 40px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; z-index: 101; }
-  .utility .left, .utility .right { display: flex; gap: 28px; }
+.utility{background:var(--ink);color:#e8e2d6;padding:8px 24px;display:flex;justify-content:flex-end;gap:18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.utility a{opacity:.75}
+.utility a:hover{opacity:1}
 
-  nav { position: fixed; top: 32px; left: 0; right: 0; padding: 22px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); transition: padding 0.4s var(--ease); }
-  nav.scrolled { padding: 16px 40px; }
-  nav .links-left, nav .links-right { display: flex; gap: 36px; }
-  nav .links-right { justify-content: flex-end; }
-  nav .links-left a, nav .links-right a { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
-  nav .links-left a:hover, nav .links-right a:hover { color: var(--accent); }
-  nav .mark { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.32em; text-align: center; text-transform: uppercase; line-height: 1; }
-  nav.scrolled .mark { font-size: 22px; }
-  nav .mark .tag { display: block; font-size: 8px; letter-spacing: 0.4em; color: var(--mute); margin-top: 4px; }
-  nav.scrolled .mark .tag { display: none; }
-  .burger { display: none; }
-  @media (max-width: 900px) {
-    .utility { display: none; }
-    nav { top: 0; padding: 14px 20px; grid-template-columns: auto 1fr auto; }
-    nav .links-left, nav .links-right { display: none; }
-    nav .mark { font-size: 20px; text-align: left; grid-column: 2; justify-self: start; padding-left: 8px; }
-    nav .mark .tag { display: none; }
-    .burger { display: flex; width: 26px; height: 14px; flex-direction: column; justify-content: space-between; cursor: pointer; grid-column: 3; }
-    .burger span { display: block; height: 1px; background: var(--ink); width: 100%; transition: transform 0.3s; }
-    nav.open .links-left, nav.open .links-right { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--paper); justify-content: center; align-items: center; gap: 28px; z-index: 99; padding: 80px 22px; }
-    nav.open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    nav.open .burger span:nth-child(2) { opacity: 0; }
-    nav.open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-  }
+.nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 32px;display:flex;justify-content:space-between;align-items:center}
+.nav .brand{font-family:var(--serif);font-size:22px;letter-spacing:.32em}
+.nav .links{display:flex;gap:28px}
+.nav .links a{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
 
-  .crumbs { margin-top: 112px; padding: 30px 60px 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
-  .crumbs a:hover { color: var(--ink); }
-  .crumbs .sep { margin: 0 12px; opacity: 0.4; }
-  @media (max-width: 900px) { .crumbs { margin-top: 50px; padding: 20px 22px 0; font-size: 10px; } }
+.breadcrumb{padding:24px 32px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.breadcrumb a{margin-right:8px}
+.breadcrumb span{margin-right:8px}
 
-  .product-top { padding: 40px 60px 80px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; max-width: 1500px; margin: 0 auto; }
-  @media (max-width: 1000px) { .product-top { grid-template-columns: 1fr; padding: 24px 22px 50px; gap: 40px; } }
+/* Product layout */
+.product{display:grid;grid-template-columns:1.2fr 1fr;gap:0;min-height:80vh}
+.product .hero{
+  background:var(--bone);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px;
+}
+.product .hero img{
+  max-width:100%;
+  max-height:70vh;
+  object-fit:contain;
+}
+.product .details{padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.product .cat{margin-bottom:18px;opacity:.6}
+.product h1{font-family:var(--serif);font-size:clamp(40px,5vw,60px);font-weight:300;letter-spacing:.02em;margin-bottom:14px}
+.product .quote{font-family:var(--serif);font-style:italic;font-size:20px;opacity:.75;margin-bottom:32px}
+.product .desc{font-size:15px;line-height:1.8;opacity:.8;margin-bottom:36px;max-width:480px}
 
-  .hero-wrap { aspect-ratio: 4/5; overflow: hidden; background: var(--bone); }
-  .hero-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.specs{border-top:1px solid var(--line);padding-top:24px;margin-bottom:32px}
+.spec-row{display:flex;padding:10px 0;font-size:13px;border-bottom:1px solid var(--line)}
+.spec-row .label{flex:0 0 130px;opacity:.55;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding-top:2px}
+.spec-row .value{flex:1;line-height:1.6}
 
-  .info .category { color: var(--mute); margin-bottom: 14px; }
-  .info h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 64px); font-weight: 300; letter-spacing: 0.02em; line-height: 1; margin-bottom: 18px; text-transform: uppercase; }
-  .info .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--mute); line-height: 1.35; margin-bottom: 32px; }
-  .info .description { font-size: 14px; line-height: 1.7; color: var(--ink); margin-bottom: 40px; max-width: 460px; }
+.meta{margin-bottom:32px;font-size:13px;opacity:.7;line-height:1.8}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.cta-row a{display:inline-block;padding:14px 28px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--ink);transition:all .2s}
+.cta-row a.primary{background:var(--ink);color:var(--paper)}
+.cta-row a.primary:hover{background:var(--accent);border-color:var(--accent)}
+.cta-row a.ghost:hover{background:var(--ink);color:var(--paper)}
 
-  .specs { border-top: 1px solid var(--line); padding-top: 28px; margin-bottom: 36px; }
-  .specs h3 { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; color: var(--ink); }
-  .specs .row { display: flex; justify-content: space-between; padding: 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px dotted var(--line); }
-  .specs .row .note { color: var(--mute); }
-  .specs .materials { margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink); }
+/* Gallery */
+.gallery{padding:80px 32px;background:var(--soft)}
+.gallery h2{font-family:var(--serif);font-size:32px;font-weight:300;text-align:center;margin-bottom:40px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;max-width:1300px;margin:0 auto}
+.gallery-grid .img-wrap{aspect-ratio:4/5;background:var(--bone);overflow:hidden}
+.gallery-grid img{width:100%;height:100%;object-fit:contain;background:var(--bone)}
 
-  .meta-block { background: var(--paper-alt); padding: 22px 24px; margin-bottom: 28px; }
-  .meta-block .line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 12px; }
-  .meta-block .line .k { color: var(--mute); letter-spacing: 0.1em; text-transform: uppercase; font-size: 10px; }
-  .meta-block .line .v { font-family: 'JetBrains Mono', monospace; }
+/* Related */
+.related{padding:80px 32px;border-top:1px solid var(--line)}
+.related h2{font-family:var(--serif);font-size:32px;font-weight:300;text-align:center;margin-bottom:40px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:1100px;margin:0 auto}
+.related .card{cursor:pointer}
+.related .card .img-wrap{aspect-ratio:4/5;background:var(--bone);overflow:hidden}
+.related .card img{width:100%;height:100%;object-fit:contain;background:var(--bone)}
+.related .card .name{font-family:var(--serif);font-size:20px;margin-top:14px;text-align:center}
+.related .card .cat{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;text-align:center;margin-top:4px}
 
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { background: var(--ink); color: var(--paper); padding: 18px 32px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease); border: none; cursor: pointer; }
-  .btn-primary:hover { background: var(--accent); }
-  .btn-outline { background: transparent; color: var(--ink); padding: 18px 32px; border: 1px solid var(--ink); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease), color 0.4s var(--ease); }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+footer{padding:48px 32px;border-top:1px solid var(--line);text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
+footer a{margin:0 12px}
 
-  .gallery { padding: 0 60px 100px; max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  @media (max-width: 900px) { .gallery { padding: 0 22px 70px; grid-template-columns: 1fr; gap: 16px; } }
-  .gallery .g { aspect-ratio: 4/5; overflow: hidden; background: var(--bone); }
-  .gallery .g img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
-  .gallery .g:hover img { transform: scale(1.04); }
-
-  .related { background: var(--paper-alt); padding: 80px 60px; border-top: 1px solid var(--line); }
-  .related h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; text-align: center; margin-bottom: 50px; }
-  .related h2 em { font-style: italic; color: var(--accent); }
-  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1300px; margin: 0 auto; }
-  @media (max-width: 900px) { .related { padding: 50px 22px; } .related-grid { grid-template-columns: 1fr; gap: 30px; } }
-  .related-grid .r { display: block; }
-  .related-grid .r .img-wrap { aspect-ratio: 4/5; overflow: hidden; background: var(--bone); margin-bottom: 14px; }
-  .related-grid .r img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
-  .related-grid .r:hover img { transform: scale(1.05); }
-  .related-grid .r .cat { color: var(--mute); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 6px; }
-  .related-grid .r .nm { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; letter-spacing: 0.06em; }
-
-  footer { background: var(--ink); color: var(--paper); padding: 50px 60px 30px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
-  footer .row-f { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 26px; margin-bottom: 26px; }
-  footer .mark-foot { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.32em; text-transform: uppercase; }
-  footer .links { display: flex; gap: 26px; flex-wrap: wrap; }
-  footer .legal { text-align: center; color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 0.2em; }
-  @media (max-width: 900px) { footer { padding: 36px 22px 24px; } footer .row-f { flex-direction: column; align-items: flex-start; gap: 18px; } }
+@media(max-width:900px){
+  .product{grid-template-columns:1fr}
+  .product .hero{padding:40px 20px;min-height:60vh}
+  .product .details{padding:50px 24px}
+  .gallery, .related{padding:60px 18px}
+}
 </style>
 </head>
 <body>
 
 <div class="utility">
-  <div class="left">
-    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
-  <div class="right">
-    <span>Atelier Casablanca</span>
-    <span>Sur commande</span>
-  </div>
+  <a href="https://www.instagram.com/aurelis.maroc" target="_blank">Instagram</a>
+  <a href="https://wa.me/212661420939" target="_blank">WhatsApp</a>
 </div>
 
-<nav id="nav">
-  <div class="links-left">
+<nav class="nav">
+  <a href="index.html" class="brand">AURÉLIS</a>
+  <div class="links">
     <a href="index.html">Accueil</a>
     <a href="catalogues.html">Catalogues</a>
     <a href="produits-tables.html">Tables</a>
   </div>
-  <a href="index.html" class="mark">
-    AURÉLIS
-    <span class="tag">L'art de la forme</span>
-  </a>
-  <div class="links-right">
-    <a href="catalog/tables.html">Voir le catalogue</a>
-    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">Contact</a>
-  </div>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="crumbs">
-  <a href="index.html">Accueil</a>
-  <span class="sep">·</span>
-  <a href="produits-tables.html" id="crumbCollection">Tables</a>
-  <span class="sep">·</span>
-  <span id="crumbName">—</span>
-</div>
+<div class="breadcrumb" id="breadcrumb"></div>
 
-<main id="main"></main>
+<section class="product" id="product"></section>
 
-<section class="related" id="relatedSection" style="display:none">
-  <h2>Voir <em>aussi</em></h2>
+<section class="gallery" id="gallery" style="display:none">
+  <h2>Galerie</h2>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<section class="related" id="related" style="display:none">
+  <h2>Voir aussi</h2>
   <div class="related-grid" id="relatedGrid"></div>
 </section>
 
 <footer>
-  <div class="row-f">
-    <div class="mark-foot">AURÉLIS</div>
-    <div class="links">
-      <a href="index.html">Accueil</a>
-      <a href="catalogues.html">Catalogues</a>
-      <a href="produits-tables.html">Tables</a>
-      <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
-      <a href="mentions-legales.html">Mentions légales</a>
-    </div>
-  </div>
-  <div class="legal">© AURÉLIS — Atelier Casablanca</div>
+  <a href="index.html">Accueil</a>
+  <a href="catalogues.html">Catalogues</a>
+  <a href="https://www.instagram.com/aurelis.maroc" target="_blank">Instagram</a>
+  <span>© AURÉLIS Casablanca</span>
 </footer>
 
 <script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
-  document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
+const params = new URLSearchParams(window.location.search);
+const collection = params.get('collection') || 'tables';
+const id = params.get('id');
 
-  const params = new URLSearchParams(location.search);
-  const collection = params.get('collection') || 'tables';
-  const id = params.get('id');
+const listPages = {
+  tables: 'produits-tables.html',
+  chaises: 'produits-chaises.html',
+  murales: 'produits-murales.html'
+};
+const listLabels = {
+  tables: 'Tables',
+  chaises: 'Chaises',
+  murales: 'Murales'
+};
 
-  fetch('products.json').then(r => r.json()).then(data => {
-    const coll = data[collection];
-    if (!coll) { renderMissing(); return; }
-    const product = coll.items.find(p => p.id === id);
-    if (!product) { renderMissing(); return; }
-    renderProduct(product, coll);
+fetch('products.json')
+  .then(r => r.json())
+  .then(data => {
+    const items = data[collection] || [];
+    const p = items.find(x => x.id === id);
+    if(!p){
+      document.getElementById('product').innerHTML = '<div style="padding:80px;text-align:center;font-family:Cormorant Garamond,serif;font-style:italic;opacity:.5">Pièce introuvable.</div>';
+      return;
+    }
+    document.title = `AURÉLIS — ${p.name}`;
+    renderBreadcrumb(p);
+    renderProduct(p);
+    renderGallery(p);
+    renderRelated(items, p);
+
+    if(window.fbq){
+      fbq('track','ViewContent',{
+        content_name: p.id,
+        content_category: collection,
+        content_type: 'product'
+      });
+    }
+  })
+  .catch(err => {
+    document.getElementById('product').innerHTML = '<div style="padding:80px;text-align:center;opacity:.5">Erreur de chargement.</div>';
+    console.error(err);
   });
 
-  function renderMissing() {
-    document.getElementById('main').innerHTML = '<div style="padding:120px 60px;text-align:center;font-family:Cormorant Garamond,serif;font-style:italic;color:var(--mute);font-size:22px;">Pièce introuvable. <a href="produits-tables.html" style="text-decoration:underline;">Voir toutes les tables</a>.</div>';
-  }
+function renderBreadcrumb(p){
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="index.html">Accueil</a><span>·</span>
+    <a href="${listPages[collection]}">${listLabels[collection]}</a><span>·</span>
+    <span style="opacity:1">${p.name}</span>
+  `;
+}
 
-  function renderProduct(p, coll) {
-    document.title = `AURÉLIS — ${p.name}`;
-    document.getElementById('crumbName').textContent = p.name;
+function renderProduct(p){
+  const waText = encodeURIComponent(`Bonjour AURÉLIS, je suis intéressé(e) par la pièce ${p.name}.`);
+  document.getElementById('product').innerHTML = `
+    <div class="hero">
+      <img src="${p.hero}" alt="${p.name}">
+    </div>
+    <div class="details">
+      <div class="cat micro">${p.category}</div>
+      <h1>${p.name}</h1>
+      <div class="quote">${p.quote}</div>
+      <div class="desc">${p.description}</div>
+      <div class="specs">
+        <div class="spec-row"><div class="label">Dimensions</div><div class="value">${p.dimensions}</div></div>
+        <div class="spec-row"><div class="label">Matériaux</div><div class="value">${p.materials}</div></div>
+      </div>
+      <div class="meta">
+        Fabriqué à Casablanca · Sur commande<br>
+        Délai 6 à 8 semaines · Prix sur demande
+      </div>
+      <div class="cta-row">
+        <a class="primary" href="https://wa.me/212661420939?text=${waText}" target="_blank" id="ctaProduct">Demander un devis</a>
+        <a class="ghost" href="catalogues.html">Voir les catalogues</a>
+      </div>
+    </div>
+  `;
 
-    const specRows = p.dimensions.map(d => `<div class="row"><span>${d.size}</span><span class="note">${d.note}</span></div>`).join('');
-    const galleryHTML = (p.gallery && p.gallery.length)
-      ? `<section class="gallery">${p.gallery.map(g => `<div class="g"><img src="${g}" alt="${p.name}" loading="lazy"></div>`).join('')}</section>`
-      : '';
-
-    document.getElementById('main').innerHTML = `
-      <section class="product-top">
-        <div class="hero-wrap"><img src="${p.hero}" alt="${p.name}"></div>
-        <div class="info">
-          <div class="category micro">${p.category}</div>
-          <h1>${p.name}</h1>
-          <div class="quote">« ${p.quote} »</div>
-          <div class="description">${p.description}</div>
-          <div class="specs">
-            <h3>Dimensions</h3>
-            ${specRows}
-            <div class="materials">${p.materials}</div>
-          </div>
-          <div class="meta-block">
-            <div class="line"><span class="k">Fabrication</span><span class="v">Casablanca</span></div>
-            <div class="line"><span class="k">Délai</span><span class="v">6–8 semaines</span></div>
-            <div class="line"><span class="k">Tarif</span><span class="v">Sur demande</span></div>
-          </div>
-          <div class="cta-row">
-            <a href="https://wa.me/212661420939?text=${encodeURIComponent('Bonjour, je suis intéressé(e) par la pièce ' + p.name + '.')}" target="_blank" rel="noopener" class="btn-primary" id="ctaWA">Demander un devis <span>→</span></a>
-            <a href="catalog/tables.html" class="btn-outline">Voir le catalogue</a>
-          </div>
-        </div>
-      </section>
-      ${galleryHTML}
-    `;
-
-    // Pixel events
-    if (window.fbq) fbq('track', 'ViewContent', { content_name: p.id, content_category: collection, content_type: 'product', content_ids: [p.id] });
-    document.getElementById('ctaWA').addEventListener('click', () => {
-      if (window.fbq) fbq('track', 'Lead', { content_name: p.id, content_category: collection });
+  const cta = document.getElementById('ctaProduct');
+  if(cta){
+    cta.addEventListener('click', () => {
+      if(window.fbq){
+        fbq('track','Lead',{content_name:p.id,content_category:collection});
+      }
     });
-
-    // Related — 3 other pieces from the same collection
-    const others = coll.items.filter(x => x.id !== p.id);
-    const picks = [];
-    while (picks.length < 3 && others.length) {
-      const i = Math.floor(Math.random() * others.length);
-      picks.push(others.splice(i, 1)[0]);
-    }
-    if (picks.length) {
-      document.getElementById('relatedSection').style.display = 'block';
-      document.getElementById('relatedGrid').innerHTML = picks.map(r => `
-        <a href="produit.html?collection=${collection}&id=${r.id}" class="r">
-          <div class="img-wrap"><img src="${r.hero}" alt="${r.name}" loading="lazy"></div>
-          <div class="cat">${r.category}</div>
-          <div class="nm">${r.name}</div>
-        </a>
-      `).join('');
-    }
   }
+}
+
+function renderGallery(p){
+  if(!p.gallery || p.gallery.length === 0) return;
+  document.getElementById('gallery').style.display = 'block';
+  document.getElementById('galleryGrid').innerHTML = p.gallery.map(url =>
+    `<div class="img-wrap"><img src="${url}" alt="${p.name}" loading="lazy"></div>`
+  ).join('');
+}
+
+function renderRelated(items, current){
+  const others = items.filter(x => x.id !== current.id);
+  if(others.length === 0) return;
+  // pick up to 3 random others
+  const picks = others.sort(() => Math.random() - 0.5).slice(0, 3);
+  document.getElementById('related').style.display = 'block';
+  document.getElementById('relatedGrid').innerHTML = picks.map(p => `
+    <a href="produit.html?collection=${collection}&id=${p.id}" class="card">
+      <div class="img-wrap"><img src="${p.hero}" alt="${p.name}" loading="lazy"></div>
+      <div class="name">${p.name}</div>
+      <div class="cat">${p.category}</div>
+    </a>
+  `).join('');
+}
 </script>
 
 </body>
