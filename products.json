@@ -1,136 +1,170 @@
 {
-  "tables": [
-    {
-      "id": "sylve",
-      "name": "SYLVE",
-      "category": "Table de salle à manger",
-      "quote": "Le bois garde la mémoire de l'arbre.",
-      "description": "Une table de salle à manger sculptée à la main, où la base évoque les racines d'un arbre ancien. Le plateau, en marbre ou en verre trempé, repose sur une structure organique aux courbes calculées.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/forest_table_hero_wrwfql.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/forest_table_2_xyz123.webp",
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/forest_table_3_abc456.webp"
-      ],
-      "dimensions": "L 170 × P 75,8 × H 72 cm · 4 places",
-      "materials": "Bois sculpté à la main · Plateau marbre ou verre trempé"
-    },
-    {
-      "id": "miel",
-      "name": "MIEL",
-      "category": "Table ronde",
-      "quote": "Le cercle tient le repas.",
-      "description": "Table ronde sculptée, conçue pour rassembler. La base s'élève en une forme fluide, comme un nid qui soutient le plateau.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/miel_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/miel_2.webp"
-      ],
-      "dimensions": "Ø 130 × H 74 cm · 4 à 6 places",
-      "materials": "Bois sculpté à la main · Plateau verre ou marbre"
-    },
-    {
-      "id": "arachne",
-      "name": "ARACHNÉ",
-      "category": "Table d'appoint",
-      "quote": "Fine comme un fil tendu.",
-      "description": "Petite table d'appoint aux pieds élancés, inspirée de la légèreté d'une toile. Pour le salon, l'entrée, ou à côté d'un fauteuil.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/arachne_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/arachne_2.webp"
-      ],
-      "dimensions": "Ø 55 × H 55 cm",
-      "materials": "Bois sculpté à la main · Plateau verre ou marbre"
-    },
-    {
-      "id": "vega",
-      "name": "VEGA",
-      "category": "Table de salle à manger",
-      "quote": "Une étoile fixe sous le plateau.",
-      "description": "Table de salle à manger à la base étoilée, sculptée dans un seul bloc. Les arêtes captent la lumière comme une constellation.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/vega_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/vega_2.webp"
-      ],
-      "dimensions": "L 200 × P 95 × H 74 cm · 6 à 8 places",
-      "materials": "Bois sculpté à la main · Plateau marbre"
-    },
-    {
-      "id": "apex",
-      "name": "APEX",
-      "category": "Table de salle à manger",
-      "quote": "La pointe porte le poids.",
-      "description": "Une base triangulaire effilée qui semble défier la gravité. Le plateau repose sur trois points de tension précis.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/apex_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/apex_2.webp"
-      ],
-      "dimensions": "L 220 × P 100 × H 74 cm · 8 places",
-      "materials": "Bois sculpté à la main · Plateau verre trempé"
-    },
-    {
-      "id": "torsion",
-      "name": "TORSION",
-      "category": "Table de salle à manger",
-      "quote": "Le bois plié sans se rompre.",
-      "description": "Pièce signature. Le pied central, sculpté en une torsion continue, monte du sol au plateau dans un seul geste.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/twisted_table_hero_qmewze.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/twisted_table_2.webp",
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/twisted_table_3.webp"
-      ],
-      "dimensions": "L 240 × P 100 × H 74 cm · 8 à 10 places",
-      "materials": "Bois sculpté à la main · Plateau marbre ou verre trempé"
-    },
-    {
-      "id": "seuil",
-      "name": "SEUIL",
-      "category": "Console",
-      "quote": "Entre deux pièces, une pause.",
-      "description": "Console d'entrée ou de couloir, longue et basse. La structure ondule comme un seuil entre deux espaces.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/seuil_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/seuil_2.webp"
-      ],
-      "dimensions": "L 180 × P 38 × H 82 cm",
-      "materials": "Bois sculpté à la main"
-    },
-    {
-      "id": "serpa",
-      "name": "SERPA",
-      "category": "Table basse",
-      "quote": "Lente comme une rivière.",
-      "description": "Table basse aux courbes longues et basses. La forme évoque une coulée, un mouvement arrêté juste avant qu'il ne s'achève.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/serpa_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/serpa_2.webp"
-      ],
-      "dimensions": "L 130 × P 70 × H 32 cm",
-      "materials": "Bois sculpté à la main · Plateau verre ou marbre"
-    },
-    {
-      "id": "onde",
-      "name": "ONDE",
-      "category": "Table basse",
-      "quote": "La vague avant le sable.",
-      "description": "Table basse sculptée comme une vague figée. Idéale au centre d'un salon, accompagnée de deux fauteuils bas.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/onde_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/onde_2.webp"
-      ],
-      "dimensions": "L 120 × P 75 × H 35 cm",
-      "materials": "Bois sculpté à la main"
-    },
-    {
-      "id": "basse",
-      "name": "BASSE",
-      "category": "Table basse",
-      "quote": "Au plus près du sol.",
-      "description": "Table basse minimale, presque posée. La base disparaît, le plateau semble flotter au-dessus du tapis.",
-      "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/basse_hero.webp",
-      "gallery": [
-        "https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_1600/v1779392874/basse_2.webp"
-      ],
-      "dimensions": "L 110 × P 60 × H 28 cm",
-      "materials": "Bois sculpté à la main · Plateau verre"
-    }
-  ]
+  "tables": {
+    "label": "Tables",
+    "volume": "Volume I",
+    "items": [
+      {
+        "id": "sylve",
+        "name": "SYLVE",
+        "category": "Table de salle à manger",
+        "quote": "Le bois garde la mémoire de l'arbre.",
+        "description": "Le bois porte encore la mémoire de l'arbre. Chaque veine, chaque nœud raconte une saison. La forme suit le bois, jamais l'inverse.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393131/forest_table_hero_wrwfql.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393130/forest_table_lifestyle_khshyj.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393128/forest_table_side_closeup_mn5t0o.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393124/forest_table_closeup_efgwwo.webp"
+        ],
+        "dimensions": [
+          {"size": "L 170 · P 75,8 · H 72 cm", "note": "4 places"},
+          {"size": "L 198 · P 55,5 · H 72 cm", "note": "6 places"},
+          {"size": "L 240 · P 75,8 · H 72 cm", "note": "8 places"},
+          {"size": "L 280 · P 75,8 · H 72 cm", "note": "10 places"}
+        ],
+        "materials": "Bois massif · Plateau marbre ou verre trempé"
+      },
+      {
+        "id": "miel",
+        "name": "MIEL",
+        "category": "Table ronde",
+        "quote": "Ronde, pleine, généreuse.",
+        "description": "Ronde, pleine, généreuse. Une forme qui invite à s'asseoir, à rester. Le piétement central libère l'espace pour les jambes.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395903/candy_hero_iocopp.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395899/candy_closeup_ur6vhw.webp"
+        ],
+        "dimensions": [
+          {"size": "Ø 110 · H 72 cm", "note": "4 places"},
+          {"size": "Ø 172 · H 72 cm", "note": "6–8 places"}
+        ],
+        "materials": "Bois massif · Plateau verre ou marbre"
+      },
+      {
+        "id": "arachne",
+        "name": "ARACHNÉ",
+        "category": "Guéridon",
+        "quote": "Une toile, un point d'appui.",
+        "description": "Une structure fine, presque tendue. Le piétement rayonne depuis un centre invisible. Légère à l'œil, stable à l'usage.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395971/spider_table_hero_hj3ph2.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395975/spider_table_model_ogse0x.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395963/spider_table_other_color_ruh47m.webp"
+        ],
+        "dimensions": [
+          {"size": "Ø 70 · H 72 cm", "note": "guéridon"}
+        ],
+        "materials": "Bois massif · Plateau verre ou marbre"
+      },
+      {
+        "id": "vega",
+        "name": "VEGA",
+        "category": "Table de salle à manger",
+        "quote": "La masse devient ligne.",
+        "description": "Une géométrie franche. Deux piétements en V, un plateau qui flotte. La masse devient ligne.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379620/v_table_hero_buw0zb.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379636/v_table_top_view_vgwcyw.webp"
+        ],
+        "dimensions": [
+          {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
+          {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
+        ],
+        "materials": "Bois massif · Plateau verre trempé ou marbre"
+      },
+      {
+        "id": "apex",
+        "name": "APEX",
+        "category": "Table de salle à manger",
+        "quote": "Force et équilibre.",
+        "description": "Un piétement renversé, sculptural. Le plateau repose sur une tension visible. Force et équilibre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779389975/a_table_hero_jladkf.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779389973/a_table_life_style_ivvazr.webp"
+        ],
+        "dimensions": [
+          {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
+          {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
+        ],
+        "materials": "Bois massif · Plateau verre trempé ou marbre"
+      },
+      {
+        "id": "torsion",
+        "name": "TORSION",
+        "category": "Table de salle à manger",
+        "quote": "Chaque courbe est unique.",
+        "description": "Une torsion continue du bois massif, sculptée à la main. Chaque lamelle suit le grain. Chaque courbe est unique.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/twisted_table_hero_qmewze.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392873/twisted_table_side_jz9hw2.webp"
+        ],
+        "dimensions": [
+          {"size": "L 170 · P 66,6 · H 72 cm", "note": "4 places"},
+          {"size": "L 198 · P 66,6 · H 72 cm", "note": "6 places"},
+          {"size": "L 220 · P 66,6 · H 72 cm", "note": "8 places"}
+        ],
+        "materials": "Bois massif · Plateau verre trempé ou marbre"
+      },
+      {
+        "id": "seuil",
+        "name": "SEUIL",
+        "category": "Console d'entrée",
+        "quote": "Une présence qui marque le passage.",
+        "description": "Une console étroite, longue, droite. Le piétement en V soutient sans s'imposer. Une présence qui marque le passage.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392794/v_entrance_table_herp_rmbbrt.jpg",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392790/v_entrance_table_side_rveoio.jpg"
+        ],
+        "dimensions": [
+          {"size": "L 135 · P 28,8 · H 80 cm", "note": "standard"}
+        ],
+        "materials": "Bois massif · Plateau verre ou marbre"
+      },
+      {
+        "id": "serpa",
+        "name": "SERPA",
+        "category": "Table basse",
+        "quote": "Une vague figée.",
+        "description": "Une vague figée. Le bois sculpté épouse le plateau de verre, sans le contraindre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379436/snake_table_hero_vjsy3x.jpg",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379443/snake_table_in_use_fx32n1.webp"
+        ],
+        "dimensions": [
+          {"size": "H 46 cm", "note": "hauteur fixe"},
+          {"size": "Format sur mesure", "note": "L · P sur demande"}
+        ],
+        "materials": "Bois massif sculpté · Plateau verre trempé"
+      },
+      {
+        "id": "onde",
+        "name": "ONDE",
+        "category": "Table basse",
+        "quote": "Aucune ligne droite.",
+        "description": "Le bois se replie sur lui-même, comme une vague suspendue. Un plateau, deux courbes, aucune ligne droite.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_alone_y2kwo8.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_with_chair_c5ohps.webp"
+        ],
+        "dimensions": [
+          {"size": "L 110 · P 110 · H 52 cm", "note": "standard"}
+        ],
+        "materials": "Bois massif · Plateau verre trempé"
+      },
+      {
+        "id": "basse",
+        "name": "BASSE",
+        "category": "Table basse",
+        "quote": "Un objet, pas un meuble.",
+        "description": "Compacte, dense, posée. Le bois massif sculpté en bloc. Un objet, pas un meuble.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392414/coffee_table_hero_itnlmg.jpg",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392401/coffee_table_other_angel_v13rna.png"
+        ],
+        "dimensions": [
+          {"size": "L 120 · P 62 · H 40 cm", "note": "standard"}
+        ],
+        "materials": "Bois massif intégré"
+      }
+    ]
+  }
 }
