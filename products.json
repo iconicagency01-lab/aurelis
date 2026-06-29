@@ -2,24 +2,21 @@
   "tables": {
     "label": "Tables",
     "volume": "Volume I",
+    "count": "Dix pièces",
     "items": [
       {
         "id": "sylve",
         "name": "SYLVE",
         "category": "Table de salle à manger",
         "quote": "Le bois garde la mémoire de l'arbre.",
-        "description": "Le bois porte encore la mémoire de l'arbre. Chaque veine, chaque nœud raconte une saison. La forme suit le bois, jamais l'inverse.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393131/forest_table_hero_wrwfql.webp",
-        "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393130/forest_table_lifestyle_khshyj.webp",
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393128/forest_table_side_closeup_mn5t0o.webp",
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779393124/forest_table_closeup_efgwwo.webp"
-        ],
+        "description": "Une table longue, sculptée d'un seul tenant. Le piètement suit le grain, le plateau prolonge la coupe.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/forest_table_hero_wrwfql.webp",
+        "gallery": [],
         "dimensions": [
-          {"size": "L 170 · P 75,8 · H 72 cm", "note": "4 places"},
-          {"size": "L 198 · P 55,5 · H 72 cm", "note": "6 places"},
-          {"size": "L 240 · P 75,8 · H 72 cm", "note": "8 places"},
-          {"size": "L 280 · P 75,8 · H 72 cm", "note": "10 places"}
+          {"label": "Longueur", "value": "170 cm"},
+          {"label": "Profondeur", "value": "75,8 cm"},
+          {"label": "Hauteur", "value": "72 cm"},
+          {"label": "Places", "value": "4"}
         ],
         "materials": "Bois · Plateau marbre ou verre trempé"
       },
@@ -27,15 +24,14 @@
         "id": "miel",
         "name": "MIEL",
         "category": "Table ronde",
-        "quote": "Ronde, pleine, généreuse.",
-        "description": "Ronde, pleine, généreuse. Une forme qui invite à s'asseoir, à rester. Le piétement central libère l'espace pour les jambes.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395903/candy_hero_iocopp.webp",
-        "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395899/candy_closeup_ur6vhw.webp"
-        ],
+        "quote": "Le centre attire le geste.",
+        "description": "Une table ronde calculée pour la conversation. Le piètement sculpté tient le plateau sans le contraindre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/twisted_table_hero_qmewze.webp",
+        "gallery": [],
         "dimensions": [
-          {"size": "Ø 110 · H 72 cm", "note": "4 places"},
-          {"size": "Ø 172 · H 72 cm", "note": "6–8 places"}
+          {"label": "Diamètre", "value": "120 cm"},
+          {"label": "Hauteur", "value": "75 cm"},
+          {"label": "Places", "value": "4-6"}
         ],
         "materials": "Bois · Plateau verre ou marbre"
       },
@@ -43,127 +39,571 @@
         "id": "arachne",
         "name": "ARACHNÉ",
         "category": "Table ronde",
-        "quote": "Une toile, un point d'appui.",
-        "description": "Une structure fine, presque tendue. Le piétement rayonne depuis un centre invisible. Légère à l'œil, stable à l'usage.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395971/spider_table_hero_hj3ph2.webp",
-        "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395975/spider_table_model_ogse0x.webp",
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779395963/spider_table_other_color_ruh47m.webp"
-        ],
+        "quote": "La forme tient par le fil.",
+        "description": "Une table d'appoint ronde. Piètement filant, plateau suspendu. La géométrie portée par presque rien.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/spider_table_hero_pj5gnu.webp",
+        "gallery": [],
         "dimensions": [
-          {"size": "Ø 70 · H 72 cm", "note": "guéridon"}
+          {"label": "Diamètre", "value": "60 cm"},
+          {"label": "Hauteur", "value": "55 cm"}
         ],
         "materials": "Bois · Plateau verre ou marbre"
-      },
+      }
+    ]
+  },
+  "chaises": {
+    "label": "Chaises",
+    "volume": "Volume II",
+    "count": "Dix-neuf pièces",
+    "items": [
       {
-        "id": "vega",
-        "name": "VEGA",
-        "category": "Table de salle à manger",
-        "quote": "La masse devient ligne.",
-        "description": "Une géométrie franche. Deux piétements en V, un plateau qui flotte. La masse devient ligne.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379620/v_table_hero_buw0zb.webp",
+        "id": "alma",
+        "name": "ALMA",
+        "category": "Salle à manger",
+        "quote": "Une chaise droite, calculée pour le dos.",
+        "description": "Une chaise droite, calculée pour le dos. Le dossier suit la colonne, l'assise tient le corps. Précision et confort, sans compromis.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/aide_dining_hero_phllpp.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379636/v_table_top_view_vgwcyw.webp"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/aide_dining_photshoot_backeside_lkhsmd.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074132/aide_dining_inuse_model_zt5soj.webp"
         ],
         "dimensions": [
-          {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
-          {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
+          {"label": "Largeur", "value": "65 cm"},
+          {"label": "Hauteur", "value": "88 cm"},
+          {"label": "Profondeur", "value": "76 cm"},
+          {"label": "Assise", "value": "46 cm"},
+          {"label": "Accoudoirs", "value": "62 cm"}
         ],
-        "materials": "Bois · Plateau verre trempé ou marbre"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "apex",
-        "name": "APEX",
-        "category": "Table de salle à manger",
-        "quote": "Force et équilibre.",
-        "description": "Un piétement renversé, sculptural. Le plateau repose sur une tension visible. Force et équilibre.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779389975/a_table_hero_jladkf.webp",
+        "id": "cygne",
+        "name": "CYGNE",
+        "category": "Salle à manger",
+        "quote": "Une courbe en S, dessinée par le calcul.",
+        "description": "Une courbe en S, dessinée par le calcul. Pas d'accoudoirs, pas de superflu. La ligne fait tout le travail.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074164/dining_s_hero_njbgrd.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779389973/a_table_life_style_ivvazr.webp"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074163/dining_s_front_whitebg_ksqjfp.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/dining_s_lifestyle_next_to_torison_sameimage_fjqyvj.webp"
         ],
         "dimensions": [
-          {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
-          {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
+          {"label": "Largeur", "value": "42 cm"},
+          {"label": "Hauteur", "value": "90 cm"},
+          {"label": "Profondeur", "value": "60 cm"},
+          {"label": "Assise", "value": "46 cm"}
         ],
-        "materials": "Bois · Plateau verre trempé ou marbre"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "torsion",
-        "name": "TORSION",
-        "category": "Table de salle à manger",
-        "quote": "Chaque courbe est unique.",
-        "description": "Une torsion continue du Bois, sculptée à la main. Chaque lamelle suit le grain. Chaque courbe est unique.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/twisted_table_hero_qmewze.webp",
+        "id": "vasque",
+        "name": "VASQUE",
+        "category": "Salle à manger",
+        "quote": "Le dossier creusé comme une main ouverte.",
+        "description": "Le dossier creusé comme une main ouverte. L'assise enveloppe sans contraindre. Une chaise qui retient, sans serrer.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780075542/palm_dining_chair_hero_ylfnuc.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392873/twisted_table_side_jz9hw2.webp"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780075543/palm_dining_chair_whitebg_ah7ods.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780075542/palm_dining_chair_lifestyle_ts7djh.webp"
         ],
         "dimensions": [
-          {"size": "L 170 · P 66,6 · H 72 cm", "note": "4 places"},
-          {"size": "L 198 · P 66,6 · H 72 cm", "note": "6 places"},
-          {"size": "L 220 · P 66,6 · H 72 cm", "note": "8 places"}
+          {"label": "Largeur", "value": "64 cm"},
+          {"label": "Hauteur", "value": "86 cm"},
+          {"label": "Profondeur", "value": "80 cm"},
+          {"label": "Assise", "value": "46 cm"}
         ],
-        "materials": "Bois · Plateau verre trempé ou marbre"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "seuil",
-        "name": "SEUIL",
-        "category": "Console d'entrée",
-        "quote": "Une présence qui marque le passage.",
-        "description": "Une console étroite, longue, droite. Le piétement en V soutient sans s'imposer. Une présence qui marque le passage.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392794/v_entrance_table_herp_rmbbrt.jpg",
+        "id": "nora",
+        "name": "NORA",
+        "category": "Salle à manger",
+        "quote": "Assise carrée, dossier dressé.",
+        "description": "Assise carrée, dossier dressé. Une chaise compacte, presque architecturale. La géométrie au plus net.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074125/pipa_dining_hero_bls53f.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392790/v_entrance_table_side_rveoio.jpg"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/pipa_dining_front_whitebg_nwran3.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074122/pipa_dining_back_whitebg_sr8vzv.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/pipa_dining_lifestyle_ac81pv.webp"
         ],
         "dimensions": [
-          {"size": "L 135 · P 28,8 · H 80 cm", "note": "standard"}
+          {"label": "Largeur", "value": "61 cm"},
+          {"label": "Hauteur", "value": "90 cm"},
+          {"label": "Profondeur", "value": "61 cm"},
+          {"label": "Assise", "value": "47 cm"},
+          {"label": "Accoudoirs", "value": "65 cm"}
         ],
-        "materials": "Bois · Plateau verre ou marbre"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "serpa",
-        "name": "SERPA",
-        "category": "Table basse",
-        "quote": "Une vague figée.",
-        "description": "Une vague figée. Le bois sculpté épouse le plateau de verre, sans le contraindre.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379436/snake_table_hero_vjsy3x.jpg",
+        "id": "lira",
+        "name": "LIRA",
+        "category": "Tabourets",
+        "quote": "Tabouret haut, structuré, précis.",
+        "description": "Tabouret haut, structuré, précis. Disponible en hauteur comptoir et hauteur bar. Le repose-pieds suit l'assise, calculé.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074162/lina_counter_stool_hero_ogtgkv.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779379443/snake_table_in_use_fx32n1.webp"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074158/lina_counter_stool_whitebg_ylp2cw.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074163/lina_counter_stool_close_up_m7r8gx.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074157/lina_counter_stool_lifestyle_rjj3pr.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074164/lina_counter_stool_inuse_model_dbtbki.webp"
         ],
         "dimensions": [
-          {"size": "H 46 cm", "note": "hauteur fixe"},
-          {"size": "Format sur mesure", "note": "L · P sur demande"}
+          {"label": "Version comptoir — H", "value": "96 cm · Assise 67 cm"},
+          {"label": "Version bar — H", "value": "106 cm · Assise 77 cm"},
+          {"label": "Largeur", "value": "45 cm"},
+          {"label": "Profondeur", "value": "58 cm"}
         ],
-        "materials": "Bois sculpté · Plateau verre trempé"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "onde",
-        "name": "ONDE",
-        "category": "Table basse",
-        "quote": "Aucune ligne droite.",
-        "description": "Le bois se replie sur lui-même, comme une vague suspendue. Un plateau, deux courbes, aucune ligne droite.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_alone_y2kwo8.webp",
+        "id": "perche",
+        "name": "PERCHE",
+        "category": "Tabourets",
+        "quote": "Un perchoir précis.",
+        "description": "Un perchoir précis. Tabouret compact pour comptoir, pensé pour les espaces ouverts.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074148/papagayo_counter_stool_hero_tzos1w.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392514/w_table_with_chair_c5ohps.webp"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/papagayo_counter_stool_whitebg_llbdfv.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/papagayo_counter_stool_lifestyle_vn8h7o.webp"
         ],
         "dimensions": [
-          {"size": "L 110 · P 110 · H 52 cm", "note": "standard"}
+          {"label": "Largeur", "value": "45 cm"},
+          {"label": "Hauteur", "value": "96 cm"},
+          {"label": "Profondeur", "value": "58 cm"},
+          {"label": "Assise", "value": "67 cm"},
+          {"label": "Repose-pieds", "value": "21 cm"}
         ],
-        "materials": "Bois · Plateau verre trempé"
+        "materials": "Bois · Finition huilée"
       },
       {
-        "id": "basse",
-        "name": "BASSE",
-        "category": "Table basse",
-        "quote": "Un objet, pas un meuble.",
-        "description": "Compacte, dense, posée. Le Bois sculpté en bloc. Un objet, pas un meuble.",
-        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392414/coffee_table_hero_itnlmg.jpg",
+        "id": "enigme",
+        "name": "ÉNIGME",
+        "category": "Lounge",
+        "quote": "Une géométrie qui ne se livre pas d'emblée.",
+        "description": "Une géométrie qui ne se livre pas d'emblée. Le bois retient sa propre logique, l'assise répond au corps en silence.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_hero_buxjn5.webp",
         "gallery": [
-          "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392401/coffee_table_other_angel_v13rna.png"
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074186/riddle_rest_lifestyle_iraxng.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_photoshoot_backwards_dhim71.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074183/riddle_rest_front_whitebg_fhpxpd.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074180/riddle_rest_model_qrsicc.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074177/riddle_rest_backside_whitebg_a5o0fu.webp"
         ],
         "dimensions": [
-          {"size": "L 120 · P 62 · H 40 cm", "note": "standard"}
+          {"label": "Largeur", "value": "76 cm"},
+          {"label": "Hauteur", "value": "70 cm"},
+          {"label": "Profondeur", "value": "75 cm"},
+          {"label": "Assise", "value": "38 cm"}
         ],
-        "materials": "Bois intégré"
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "estive",
+        "name": "ESTIVE",
+        "category": "Lounge",
+        "quote": "Une longue inclinaison, calculée pour le soleil.",
+        "description": "Une longue inclinaison, calculée pour le soleil. Le bois épouse l'eau et la chaleur, sans céder à l'une ni à l'autre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780408686/relax_hero_image_gtcs2i.png",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780409756/Premium_product_photography_of_sculptural_lounge_c-1780409733694_vireb1.png"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "195 cm"},
+          {"label": "Hauteur", "value": "66 cm"},
+          {"label": "Profondeur", "value": "74 cm"}
+        ],
+        "materials": "Bois traité · Finition extérieure"
+      },
+      {
+        "id": "moka",
+        "name": "MOKA",
+        "category": "Lounge",
+        "quote": "L'accoudoir reçoit la tasse.",
+        "description": "L'accoudoir reçoit la tasse. Le geste du café trouve sa place, inscrit dans la forme avant l'usage.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074132/coffee_rest_hero_demeym.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074134/coffe_rest_chair_alone_whitebg_fcgztb.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074134/coffee_rest_photoshoot_chair_alone_ecgebc.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074133/coffe_rest._from_behind_close_upwebp_xnxtxc.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074131/coffe_rest_curves_close_up_rou0bo.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "84 cm"},
+          {"label": "Hauteur", "value": "85 cm"},
+          {"label": "Profondeur", "value": "78 cm"},
+          {"label": "Assise", "value": "39 cm"},
+          {"label": "Accoudoirs", "value": "62 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "feuille",
+        "name": "FEUILLE",
+        "category": "Lounge",
+        "quote": "Le dossier en feuilles superposées.",
+        "description": "Le dossier en feuilles superposées. Chaque lamelle suit la précédente. La lumière passe entre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074165/fogli_chair_hero_d9nrox.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074178/fogli_chair_front_whitebg_avcp4r.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074177/fogli_chair_lifestyle1_b5pu3a.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074175/fogli_chair_lifestyle2_wlofl4.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074167/fogli_chair_backside_model_wdlilc.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "77 cm"},
+          {"label": "Hauteur", "value": "91 cm"},
+          {"label": "Profondeur", "value": "97 cm"},
+          {"label": "Assise", "value": "36 cm"},
+          {"label": "Accoudoirs", "value": "60 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "dune",
+        "name": "DUNE",
+        "category": "Lounge",
+        "quote": "Large comme une dune.",
+        "description": "Large comme une dune. L'assise s'étend, le corps s'allonge. Le bois porte sans demander d'attention.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074160/soave_chair_hero_tgt0qa.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074151/soave_chair_lifestyle_azyi2h.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074150/soave_chair_backside_whitebg_rbfnsh.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074150/soave_chair_closeup_pt16jr.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074149/soave_chair_front_whitebg_gskgxd.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "170 cm"},
+          {"label": "Hauteur", "value": "73 cm"},
+          {"label": "Profondeur", "value": "98 cm"},
+          {"label": "Assise", "value": "40 cm"},
+          {"label": "Accoudoirs", "value": "66 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "oasis",
+        "name": "OASIS",
+        "category": "Lounge",
+        "quote": "Le dossier creusé, profond.",
+        "description": "Le dossier creusé, profond. Une chaise pour s'arrêter, longtemps. La main de la palme, ouverte.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074184/palm_rest_hero_dwr6lg.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074184/palm_rest_alone_whitebg_drwjg7.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074192/palm_rest_lifestyke_yhirxr.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074188/palm_rest_backside_withmodel_tpivt5.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "89 cm"},
+          {"label": "Hauteur", "value": "85 cm"},
+          {"label": "Profondeur", "value": "83 cm"},
+          {"label": "Assise", "value": "39 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "lido",
+        "name": "LIDO",
+        "category": "Lounge",
+        "quote": "Posée au sol, longue, basse.",
+        "description": "Posée au sol, longue, basse. Une chaise pour s'étendre, pour regarder le plafond.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074120/lola_chair_hero_qasggk.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074124/lola_chair_frontside_whitebg_rvsjjf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074117/lola_chair_backside_whitebg_bgibcr.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074123/lola_chair_lifestyle_ebhkqy.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "69 cm"},
+          {"label": "Hauteur", "value": "86 cm"},
+          {"label": "Profondeur", "value": "145 cm"},
+          {"label": "Assise", "value": "26 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "liane",
+        "name": "LIANE",
+        "category": "Lounge",
+        "quote": "Une courbe étendue, posée au sol.",
+        "description": "Une courbe étendue, posée au sol. Le bois s'allonge, porte le corps, suit la ligne sans la rompre.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/neca_chair_hero_model_dshss3.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/neca_chair_lifestyle_w71yvi.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074139/neca_chair_backside_zfbpo2.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074137/neca_chair_closeup_s4t34z.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "74 cm"},
+          {"label": "Hauteur", "value": "99 cm"},
+          {"label": "Profondeur", "value": "140 cm"},
+          {"label": "Assise", "value": "39 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "aile",
+        "name": "AILE",
+        "category": "Lounge",
+        "quote": "Les accoudoirs s'ouvrent comme des ailes.",
+        "description": "Les accoudoirs s'ouvrent comme des ailes. La forme paramétrique se déploie, le dossier reste droit, le corps est tenu.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074154/pipo_rest_hero_mygtnj.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074154/pipo_rest_front_whitebg_r7d9nu.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074155/pipo_rest_backside_whitebg_mduh8t.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074155/pipo_rest_closeup_kyzk02.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074152/pipo_rest_inuse_model_ebvvgj.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "69 cm"},
+          {"label": "Hauteur", "value": "85 cm"},
+          {"label": "Profondeur", "value": "79 cm"},
+          {"label": "Assise", "value": "40 cm"},
+          {"label": "Accoudoirs", "value": "64 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "terre",
+        "name": "TERRE",
+        "category": "Lounge",
+        "quote": "Une chaise qui appartient au dehors.",
+        "description": "Une chaise qui appartient au dehors. Le bois prend la lumière, le grain s'ouvre. Pour la terrasse, le jardin, le seuil.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074192/uma_rest_hero_xqkcid.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074193/uma_rest_lifestyle_kt7jzf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074191/uma_rest_front_whitebg_rljzai.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074190/uma_rest_in_nature_ivabj5.jpg",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074185/uma_rest_backside_whitebg_icp3fi.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "63 cm"},
+          {"label": "Hauteur", "value": "81 cm"},
+          {"label": "Profondeur", "value": "78 cm"},
+          {"label": "Assise", "value": "39 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "anse",
+        "name": "ANSE",
+        "category": "Lounge",
+        "quote": "Une chaise qui tient le corps.",
+        "description": "Une chaise qui tient le corps. Les accoudoirs ferment la prise, le dossier accompagne le dos.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074141/hold_me_hero_mrn49e.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/hold_me_whitebg_hxbnch.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074146/hold_me_lifestyle_botwc7.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "77 cm"},
+          {"label": "Hauteur", "value": "92 cm"},
+          {"label": "Profondeur", "value": "100 cm"},
+          {"label": "Assise", "value": "36 cm"},
+          {"label": "Accoudoirs", "value": "62 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "berceau",
+        "name": "BERCEAU",
+        "category": "Lounge",
+        "quote": "La courbe du berceau, calculée pour le rythme.",
+        "description": "La courbe du berceau, calculée pour le rythme. Chaque mouvement suit le bois, le bois suit le corps qui s'incline.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/soave_rocking_hero_photoshoot_byitself_f9licu.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074126/soave_rocking_lifestyle_xbqyfd.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074118/soave_rocking_lifestyle2_cnm7af.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074121/soave_rocking_alone_withmodel_idmzkf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074127/soave_rocking_closeup_back_hbi1gf.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "76 cm"},
+          {"label": "Hauteur", "value": "82 cm"},
+          {"label": "Profondeur", "value": "80 cm"},
+          {"label": "Assise", "value": "43 cm"},
+          {"label": "Accoudoirs", "value": "68 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "balan",
+        "name": "BALAN",
+        "category": "Lounge",
+        "quote": "Le mouvement comme géométrie.",
+        "description": "Le mouvement comme géométrie. Une chaise berçante haute, droite, pensée pour le repos actif.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074145/vic_rocking_hero_wc8m38.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074142/vic_rocking_frontside_whitebg_zr2kiy.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074145/vic_rocking_backside_whitebf_bnfsp7.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780074147/vic_rocking_inuse_model_kqkwbf.webp"
+        ],
+        "dimensions": [
+          {"label": "Largeur", "value": "70 cm"},
+          {"label": "Hauteur", "value": "97 cm"},
+          {"label": "Profondeur", "value": "103 cm"},
+          {"label": "Assise", "value": "36 cm"},
+          {"label": "Accoudoirs", "value": "60 cm"}
+        ],
+        "materials": "Bois · Finition huilée"
+      }
+    ]
+  },
+  "murales": {
+    "label": "Sculptures murales",
+    "volume": "Volume III",
+    "count": "Dix pièces",
+    "items": [
+      {
+        "id": "cavale",
+        "name": "CAVALE",
+        "category": "Sculpture murale",
+        "quote": "Un cheval en marche, suspendu au mur.",
+        "description": "Un cheval en marche, suspendu au mur. La crinière calculée, la foulée figée. Le mouvement inscrit dans le bois.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621743/walking-horse-hero_nwgynw.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621724/walking-horse-side_xhueli.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621744/walking-horse-behind_office_ylg5fa.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621734/walking-horse-different_setting_ci8pcb.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621730/walking-horse-close_up_1_gbkjkp.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621713/walking-horse-close_up_2_as4qfv.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621721/walking-horse_huge_akbjo8.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621710/walking-horse-matalic_pgaqvb.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée (variante métallique disponible)"
+      },
+      {
+        "id": "visage",
+        "name": "VISAGE",
+        "category": "Sculpture murale",
+        "quote": "Un visage en relief, dessiné par la courbe.",
+        "description": "Un visage en relief, dessiné par la courbe. Les traits émergent du plan, la lumière fait le reste.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621597/decor-face-hero_fbaqgq.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621611/decor-face-topangle_zhctzf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621603/decor-face-closeup1_hsi2kc.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621601/decore-face-closeup2_xpbvqk.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "terreno",
+        "name": "TERRENO",
+        "category": "Sculpture murale",
+        "quote": "Une carte en relief, paramétrée.",
+        "description": "Une carte en relief, paramétrée. Les courbes du terrain deviennent texture. La géographie tenue par le mur.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621666/map-hero_jdrunx.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621662/map-secon_f08fdz.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621650/map-office_bekpdt.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621648/map-living-room_j8iizk.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621647/map-close-up_mbxqhu.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "gorgone",
+        "name": "GORGONE",
+        "category": "Sculpture murale",
+        "quote": "Le regard qui pétrifie, sculpté en plan.",
+        "description": "Le regard qui pétrifie, sculpté en plan. Les serpents calculés, la chevelure animée. Une présence qui retient celui qui la regarde.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780526561/medusa_hero_msnfzi.png",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780526560/medusa_2_ckwvfu.png"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "revers",
+        "name": "REVERS",
+        "category": "Sculpture murale",
+        "quote": "Une figure qui se détourne.",
+        "description": "Une figure qui se détourne. La nuque, les cheveux, le mouvement du dos. Ce qui se montre en refusant d'être vu.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780526688/girl_back_hero_hluunk.png",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1780526689/girl_back_side_t5jdfa.png"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "sospiro",
+        "name": "SOSPIRO",
+        "category": "Sculpture murale",
+        "quote": "Une bouche ouverte, suspendue.",
+        "description": "Une bouche ouverte, suspendue. Le souffle figé entre l'inspiration et le mot qui ne vient pas.",
+        "hero": "https://res.cloudinary.com/dsh3tzujw/image/upload/v1778672315/Edit_the_supplied_image_into_a_polished_poolside_v-1778671448318_oi3k3j.png",
+        "gallery": [
+          "https://res.cloudinary.com/dsh3tzujw/image/upload/v1778673052/Edit_the_provided_reference_image_by_preserving_th-1778672635191_srrpgi.png"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée (variante teintée sur demande)"
+      },
+      {
+        "id": "primo",
+        "name": "PRIMO",
+        "category": "Sculpture murale",
+        "quote": "Un visage simien, sculpté en plan.",
+        "description": "Un visage simien, sculpté en plan. L'expression contenue dans la géométrie. Le primate, abstrait par le calcul.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621683/monkey-face-hero_rplds2.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621668/monkey-face-closeup-1_gd5cco.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621667/monkey-face-closeup-2_e28ybf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621670/monkey-face-closeup-3_fxemif.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "parole",
+        "name": "PAROLE",
+        "category": "Sculpture murale",
+        "quote": "Une bouche ouverte, en suspens.",
+        "description": "Une bouche ouverte, en suspens. Le geste de la parole, arrêté. La forme entre le son et le silence.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621647/female-open-mouth-hero_uuvbcx.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621641/female-open-mouth-leftsideview_fkkueh.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621641/female-open-mouth-rightsideview_ppun5l.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621617/female-open-mouth-viewup_spztgr.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621617/female-open-mouth-closeup1_fnabnx.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
+      },
+      {
+        "id": "profilo",
+        "name": "PROFILO",
+        "category": "Sculpture murale",
+        "quote": "Un demi-visage, tourné de profil.",
+        "description": "Un demi-visage, tourné de profil. La géométrie révèle ce que le frontal cache. Disponible en bois naturel ou laqué noir.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621630/half-face-hero_neddcl.webp",
+        "gallery": [
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621649/half-face-otherangle_finbvj.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621648/half-face-topangle_v9lsv1.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621623/half-face-closerdistance_voookj.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621620/half-face-closeup1_mhn2tf.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621638/half-face-closeup2_aduyzb.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621624/half-face-black-straightshot_todre2.webp",
+          "https://res.cloudinary.com/dlo4exspj/image/upload/v1771621631/half-face-black-sideview_lje7ej.webp"
+        ],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois naturel ou laqué noir · Finition huilée"
+      },
+      {
+        "id": "aube",
+        "name": "AUBE",
+        "category": "Sculpture murale",
+        "quote": "Un visage tranquille, frontal.",
+        "description": "Un visage tranquille, frontal. La courbe sans tension, le trait sans force. La forme qui se tait.",
+        "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1780526722/girl_face_hero_nhbypa.png",
+        "gallery": [],
+        "dimensions": [{"label": "Format", "value": "Sur mesure"}],
+        "materials": "Bois · Finition huilée"
       }
     ]
   }
