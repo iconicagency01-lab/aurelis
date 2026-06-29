@@ -21,7 +21,7 @@
           {"size": "L 240 · P 75,8 · H 72 cm", "note": "8 places"},
           {"size": "L 280 · P 75,8 · H 72 cm", "note": "10 places"}
         ],
-        "materials": "Bois massif · Plateau marbre ou verre trempé"
+        "materials": "Bois · Plateau marbre ou verre trempé"
       },
       {
         "id": "miel",
@@ -37,7 +37,7 @@
           {"size": "Ø 110 · H 72 cm", "note": "4 places"},
           {"size": "Ø 172 · H 72 cm", "note": "6–8 places"}
         ],
-        "materials": "Bois massif · Plateau verre ou marbre"
+        "materials": "Bois · Plateau verre ou marbre"
       },
       {
         "id": "arachne",
@@ -53,7 +53,7 @@
         "dimensions": [
           {"size": "Ø 70 · H 72 cm", "note": "guéridon"}
         ],
-        "materials": "Bois massif · Plateau verre ou marbre"
+        "materials": "Bois · Plateau verre ou marbre"
       },
       {
         "id": "vega",
@@ -69,7 +69,7 @@
           {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
           {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
         ],
-        "materials": "Bois massif · Plateau verre trempé ou marbre"
+        "materials": "Bois · Plateau verre trempé ou marbre"
       },
       {
         "id": "apex",
@@ -85,14 +85,14 @@
           {"size": "L 220 · P 120 · H 75 cm", "note": "8 places"},
           {"size": "L 250 · P 120 · H 75 cm", "note": "10 places"}
         ],
-        "materials": "Bois massif · Plateau verre trempé ou marbre"
+        "materials": "Bois · Plateau verre trempé ou marbre"
       },
       {
         "id": "torsion",
         "name": "TORSION",
         "category": "Table de salle à manger",
         "quote": "Chaque courbe est unique.",
-        "description": "Une torsion continue du bois massif, sculptée à la main. Chaque lamelle suit le grain. Chaque courbe est unique.",
+        "description": "Une torsion continue du Bois, sculptée à la main. Chaque lamelle suit le grain. Chaque courbe est unique.",
         "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392874/twisted_table_hero_qmewze.webp",
         "gallery": [
           "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392873/twisted_table_side_jz9hw2.webp"
@@ -102,7 +102,7 @@
           {"size": "L 198 · P 66,6 · H 72 cm", "note": "6 places"},
           {"size": "L 220 · P 66,6 · H 72 cm", "note": "8 places"}
         ],
-        "materials": "Bois massif · Plateau verre trempé ou marbre"
+        "materials": "Bois · Plateau verre trempé ou marbre"
       },
       {
         "id": "seuil",
@@ -117,7 +117,7 @@
         "dimensions": [
           {"size": "L 135 · P 28,8 · H 80 cm", "note": "standard"}
         ],
-        "materials": "Bois massif · Plateau verre ou marbre"
+        "materials": "Bois · Plateau verre ou marbre"
       },
       {
         "id": "serpa",
@@ -133,7 +133,7 @@
           {"size": "H 46 cm", "note": "hauteur fixe"},
           {"size": "Format sur mesure", "note": "L · P sur demande"}
         ],
-        "materials": "Bois massif sculpté · Plateau verre trempé"
+        "materials": "Bois sculpté · Plateau verre trempé"
       },
       {
         "id": "onde",
@@ -148,14 +148,14 @@
         "dimensions": [
           {"size": "L 110 · P 110 · H 52 cm", "note": "standard"}
         ],
-        "materials": "Bois massif · Plateau verre trempé"
+        "materials": "Bois · Plateau verre trempé"
       },
       {
         "id": "basse",
         "name": "BASSE",
         "category": "Table basse",
         "quote": "Un objet, pas un meuble.",
-        "description": "Compacte, dense, posée. Le bois massif sculpté en bloc. Un objet, pas un meuble.",
+        "description": "Compacte, dense, posée. Le Bois sculpté en bloc. Un objet, pas un meuble.",
         "hero": "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392414/coffee_table_hero_itnlmg.jpg",
         "gallery": [
           "https://res.cloudinary.com/dlo4exspj/image/upload/v1779392401/coffee_table_other_angel_v13rna.png"
@@ -163,7 +163,7 @@
         "dimensions": [
           {"size": "L 120 · P 62 · H 40 cm", "note": "standard"}
         ],
-        "materials": "Bois massif intégré"
+        "materials": "Bois intégré"
       }
     ]
   }
