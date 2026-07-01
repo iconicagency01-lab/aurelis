@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','860595880458458');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+
+<title>AURÉLIS — Sur commande</title>
+<meta name="description" content="Le processus AURÉLIS — de la première conversation à la pièce installée. Quatre étapes, un seul interlocuteur.">
+<meta property="og:title" content="AURÉLIS — Sur commande">
+<meta property="og:description" content="Quatre étapes. Un seul interlocuteur. De la demande à la livraison.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurelis.ma/commande.html">
+<meta property="og:image" content="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+
+<style>
+  .process { padding: 100px 60px; }
+  .process-inner { max-width: 1200px; margin: 0 auto; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .step { display: flex; flex-direction: column; padding-top: 28px; border-top: 1px solid var(--accent); min-height: 280px; }
+  .step .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 56px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 24px; }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 14px; line-height: 1.2; }
+  .step p { font-size: 14px; line-height: 1.7; color: var(--mute); margin-bottom: 20px; }
+  .step .timing { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); color: var(--accent); }
+  @media (max-width: 900px) {
+    .process { padding: 60px 22px; }
+    .process-grid { grid-template-columns: 1fr; gap: 36px; }
+    .step { min-height: auto; }
+  }
+
+  .coda { background: var(--paper-alt); padding: 80px 60px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .coda-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .coda .line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(22px, 2.4vw, 32px); font-weight: 300; line-height: 1.4; color: var(--ink); }
+  @media (max-width: 900px) { .coda { padding: 50px 22px; } }
+
+  .faq { padding: 100px 60px; }
+  .faq-inner { max-width: 900px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 60px; }
+  .faq-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+  .faq-head h2 em { font-style: italic; color: var(--accent); }
+  .faq-head p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--mute); }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 1px solid var(--line); }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q { width: 100%; background: none; border: none; padding: 28px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--ink); transition: color 0.3s var(--ease); gap: 24px; }
+  .faq-q:hover { color: var(--accent); }
+  .faq-q .ic { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: var(--mute); flex-shrink: 0; transition: transform 0.4s var(--ease); }
+  .faq-item.open .faq-q .ic { transform: rotate(45deg); color: var(--accent); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease); }
+  .faq-item.open .faq-a { max-height: 400px; }
+  .faq-a p { font-family: 'Cormorant Garamond', serif; font-size: 17px; line-height: 1.65; color: var(--mute); padding: 0 0 28px; max-width: 720px; }
+  @media (max-width: 900px) { .faq { padding: 60px 22px; } .faq-q { font-size: 18px; padding: 22px 0; } .faq-a p { font-size: 16px; padding-bottom: 22px; } }
+
+  .cta-block { background: var(--ink); color: var(--paper); padding: 100px 60px; text-align: center; }
+  .cta-block .eyebrow { color: rgba(255,255,255,0.55); margin-bottom: 24px; }
+  .cta-block h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 52px); font-weight: 300; line-height: 1.1; max-width: 720px; margin: 0 auto 24px; }
+  .cta-block h2 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .cta-block p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto 36px; }
+  .cta-block .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-block .btn-light { background: var(--paper); color: var(--ink); padding: 18px 36px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease), color 0.4s var(--ease); }
+  .cta-block .btn-light:hover { background: var(--accent); color: var(--paper); }
+  @media (max-width: 900px) { .cta-block { padding: 60px 22px; } }
+</style>
+</head>
+<body data-page="commande">
+
+<div class="utility">
+  <div class="left">
+    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
+    <a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a>
+  </div>
+  <div class="right">
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
+    <span>FR</span>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="links-left">
+    <div class="nav-item has-drop">
+      <a href="#" class="drop-toggle">Collections <span class="caret">▾</span></a>
+      <div class="drop">
+        <a href="collections/tables.html">Tables</a>
+        <a href="collections/chaises.html">Chaises</a>
+        <a href="collections/murales.html">Sculptures murales</a>
+      </div>
+    </div>
+    <a href="atelier.html">Atelier</a>
+  </div>
+  <a href="index.html" class="mark">AURÉLIS<span class="tag">L'art de la forme</span></a>
+  <div class="links-right">
+    <a href="commande.html">Sur commande</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="micro eyebrow reveal">Le processus AURÉLIS</div>
+  <h1 class="reveal">Sur <em>commande.</em></h1>
+  <p class="lead reveal">De la première conversation à la pièce installée chez vous — quatre étapes, et un seul interlocuteur.</p>
+</header>
+
+<section class="process">
+  <div class="process-inner">
+    <div class="process-grid">
+      <div class="step reveal">
+        <div class="num">i</div>
+        <h3>Demande</h3>
+        <p>Email, téléphone ou formulaire. Décrivez le lieu, l'usage, l'intention. Nous prenons connaissance de votre projet et revenons vers vous.</p>
+        <div class="timing micro">Réponse sous 48 h</div>
+      </div>
+      <div class="step reveal d1">
+        <div class="num">ii</div>
+        <h3>Devis et rendu</h3>
+        <p>Un devis détaillé, accompagné d'un rendu 3D de la pièce dans votre espace. Rien ne se fabrique sans votre validation écrite.</p>
+        <div class="timing micro">5 à 10 jours</div>
+      </div>
+      <div class="step reveal d2">
+        <div class="num">iii</div>
+        <h3>Fabrication</h3>
+        <p>Un acompte de 50 % engage l'atelier. La pièce est sculptée à la main par un seul artisan, du dessin à la finition.</p>
+        <div class="timing micro">6 à 8 semaines</div>
+      </div>
+      <div class="step reveal d3">
+        <div class="num">iv</div>
+        <h3>Livraison</h3>
+        <p>Livraison et installation prises en charge par l'atelier, partout au Maroc. Le solde est réglé à la réception de la pièce.</p>
+        <div class="timing micro">Incluses</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coda">
+  <div class="coda-inner reveal">
+    <p class="line">« Une pièce d'Aurélis ne s'achète pas. Elle se commande, se dessine, puis se sculpte — pour vous, et pour personne d'autre. »</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <h2>Questions <em>fréquentes.</em></h2>
+      <p>Pour toute question qui ne figure pas ici, écrivez-nous.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q"><span>Quel est le délai de fabrication ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Entre 6 et 8 semaines à partir de la validation du devis et de la réception de l'acompte. Pour les pièces de grand format ou les essences rares, un délai supplémentaire peut s'appliquer — il est toujours communiqué avant signature.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Quel acompte est demandé ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Un acompte de 50 % à la validation du devis. Le solde est réglé à la livraison, après installation et acceptation de la pièce.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Livrez-vous hors du Maroc ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Oui. La livraison au Maroc est incluse dans le prix. Pour l'étranger, nous établissons un devis logistique séparé après définition de la pièce et du pays de destination.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Peut-on modifier la pièce après le devis ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Tant que la fabrication n'a pas commencé, oui — un nouveau devis est émis. Une fois la pièce en cours de fabrication, les modifications structurelles ne sont plus possibles, mais nous pouvons ajuster les finitions tardives sur demande.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Travaillez-vous avec des architectes et décorateurs ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Régulièrement. Nous proposons un accompagnement projet, des fiches techniques détaillées et des conditions adaptées pour les studios et bureaux d'architecture. Précisez votre cadre professionnel lors de votre demande.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Les pièces sont-elles numérotées ?</span><span class="ic">+</span></button>
+        <div class="faq-a"><p>Oui. Chaque pièce porte une signature gravée et un numéro unique. Aucune pièce n'est jamais reproduite à l'identique — la géométrie est paramétrique, le bois reste vivant.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="micro eyebrow">Commencer</div>
+  <h2>Parlez-nous de votre <em>projet.</em></h2>
+  <p>Lieu, usage, intention — quelques lignes suffisent pour ouvrir la conversation.</p>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-light">Nous écrire <span>→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand">Aurélis</div><div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div></div>
+    <div class="footer-col"><h5>Collections</h5><ul>
+      <li><a href="collections/tables.html">Tables</a></li>
+      <li><a href="collections/chaises.html">Chaises</a></li>
+      <li><a href="collections/murales.html">Sculptures murales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Ressources</h5><ul>
+      <li><a href="catalog/tables.html">Catalogue Tables</a></li>
+      <li><a href="catalog/chaises.html">Catalogue Chaises</a></li>
+      <li><a href="catalog/murales.html">Catalogue Murales</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Maison</h5><ul>
+      <li><a href="atelier.html">L'atelier</a></li>
+      <li><a href="commande.html">Sur commande</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
+      <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
+      <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI Aurélis — Tous droits réservés</span>
+    <span>Maison fondée à Casablanca</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
