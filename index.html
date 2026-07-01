@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','860595880458458');fbq('track','PageView');
@@ -13,6 +13,12 @@ fbq('init','860595880458458');fbq('track','PageView');
 
 <title>AURÉLIS — L'art de la forme</title>
 <meta name="description" content="AURÉLIS — Mobilier et sculptures paramétriques. Atelier à Casablanca. Sur commande.">
+<meta property="og:title" content="AURÉLIS — L'art de la forme">
+<meta property="og:description" content="Trois volumes. Tables, chaises, sculptures murales. Dessinés sur mesure, sculptés à la main à Casablanca.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurelis.ma/">
+<meta property="og:image" content="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1771621730/candy_hero_iocopp.webp">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffffff'/%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, EB Garamond, Georgia, Times New Roman, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
@@ -23,7 +29,7 @@ fbq('init','860595880458458');fbq('track','PageView');
 <link rel="stylesheet" href="site.css">
 
 <style>
-  /* ─── HERO (homepage-specific) ─── */
+  /* HERO */
   .hero { position: relative; height: 100vh; min-height: 720px; background: var(--ink); overflow: hidden; margin-top: 112px; }
   @media (max-width: 900px) { .hero { margin-top: 50px; min-height: 580px; height: calc(100vh - 50px); height: calc(100dvh - 50px); } }
   .hero-image { position: absolute; inset: 0; background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_90,w_2400,c_fill/v1771621730/candy_hero_iocopp.webp'); background-size: cover; background-position: center 100%; transform: scale(1.04); animation: heroIn 1.8s var(--ease) 0.2s forwards; }
@@ -37,10 +43,10 @@ fbq('init','860595880458458');fbq('track','PageView');
   .hero-bottom { margin-top: 48px; display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; opacity: 0; animation: fadeUp 1.1s var(--ease) 0.9s forwards; }
   .hero-blurb { font-family: 'Cormorant Garamond', serif; font-size: clamp(17px, 1.6vw, 22px); font-style: italic; font-weight: 300; line-height: 1.45; max-width: 460px; color: rgba(255,255,255,0.95); text-shadow: 0 1px 16px rgba(0,0,0,0.45); }
   .hero-cta-group { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
-  .hero .btn-primary { background: var(--paper); color: var(--ink); padding: 18px 32px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; transition: background 0.4s var(--ease), color 0.4s var(--ease); display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; border: none; cursor: pointer; }
+  .hero .btn-primary { background: var(--paper); color: var(--ink); }
   .hero .btn-primary:hover { background: var(--accent); color: var(--paper); }
-  .btn-outline { background: transparent; color: var(--paper); padding: 18px 32px; border: 1px solid rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; transition: background 0.4s var(--ease), border-color 0.4s var(--ease); white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; }
-  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--paper); }
+  .btn-light-outline { background: transparent; color: var(--paper); padding: 18px 32px; border: 1px solid rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; transition: background 0.4s var(--ease), border-color 0.4s var(--ease); white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+  .btn-light-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--paper); }
   .hero-credit { position: absolute; top: 40px; right: 60px; color: rgba(255,255,255,0.75); text-align: right; z-index: 2; line-height: 1.8; opacity: 0; animation: fadeUp 1.1s var(--ease) 1.1s forwards; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
   .hero-credit .pname { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -48,184 +54,70 @@ fbq('init','860595880458458');fbq('track','PageView');
     .hero-content { padding: 0 22px 44px; }
     .hero-bottom { flex-direction: column; align-items: stretch; gap: 28px; margin-top: 28px; }
     .hero-cta-group { flex-direction: column; width: 100%; gap: 12px; }
-    .hero .btn-primary, .btn-outline { justify-content: center; width: 100%; padding: 16px 24px; }
+    .hero .btn-primary, .btn-light-outline { justify-content: center; width: 100%; padding: 16px 24px; }
     .hero-credit { display: none; }
     .hero-eyebrow { margin-bottom: 20px; font-size: 9px; letter-spacing: 0.24em; }
   }
 
-  /* ─── COLLECTIONS ─── */
-  .collections { padding: 120px 60px 80px; }
-  .section-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 56px; gap: 40px; }
-  .section-head .heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 76px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
+  /* COLLECTIONS */
+  .collections { padding: 140px 60px 100px; }
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 64px; gap: 40px; max-width: 1500px; margin-left: auto; margin-right: auto; }
+  .section-head .heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 72px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
   .section-head .heading em { font-style: italic; color: var(--mute); }
   .section-head .meta { color: var(--mute); padding-bottom: 10px; text-align: right; line-height: 1.8; }
   .section-head .meta .label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--ink); margin-top: 4px; text-transform: none; letter-spacing: 0; }
-  .collections-grid { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; gap: 12px; }
-  .col-card { position: relative; overflow: hidden; background: var(--bone); display: block; color: var(--paper); }
-  .col-card .img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1.6s var(--ease); }
+
+  .collections-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1500px; margin: 0 auto; }
+  .col-card { display: block; position: relative; overflow: hidden; background: var(--bone); aspect-ratio: 3/4; }
+  .col-card .img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1.8s var(--ease); }
   .col-card:hover .img { transform: scale(1.06); }
-  .col-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.7) 100%); }
-  .col-card .meta { position: absolute; bottom: 36px; left: 36px; right: 36px; z-index: 2; }
+  .col-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%); transition: background 0.5s var(--ease); }
+  .col-card:hover::after { background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%); }
+  .col-card .meta { position: absolute; bottom: 36px; left: 36px; right: 36px; z-index: 2; color: var(--paper); }
   .col-card .meta .vol { opacity: 0.85; margin-bottom: 10px; }
-  .col-card .meta .name { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 46px); font-weight: 400; line-height: 1; letter-spacing: 0.02em; }
-  .col-card .meta .desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: rgba(255,255,255,0.85); margin-top: 12px; max-width: 320px; }
-  .col-feature { grid-row: span 2; aspect-ratio: auto; min-height: 720px; }
-  .col-secondary { aspect-ratio: 3/2; min-height: 354px; }
-  @media (max-width: 900px) {
-    .collections { padding: 70px 22px 50px; }
-    .section-head { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 22px; margin-bottom: 32px; }
+  .col-card .meta .name { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 2.6vw, 40px); font-weight: 400; line-height: 1; letter-spacing: 0.02em; margin-bottom: 14px; }
+  .col-card .meta .desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: rgba(255,255,255,0.88); margin-bottom: 22px; max-width: 320px; line-height: 1.45; opacity: 0; transform: translateY(8px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+  .col-card .meta .cta { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 4px; transition: gap 0.4s var(--ease), border-color 0.3s var(--ease); }
+  .col-card:hover .meta .desc { opacity: 1; transform: translateY(0); }
+  .col-card:hover .meta .cta { gap: 18px; border-color: var(--paper); }
+  @media (max-width: 1000px) {
+    .collections { padding: 80px 22px 60px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 22px; margin-bottom: 36px; }
     .section-head .meta { text-align: left; padding-bottom: 0; }
-    .collections-grid { grid-template-columns: 1fr; gap: 8px; }
-    .col-feature { grid-row: auto; min-height: 440px; aspect-ratio: 4/5; }
-    .col-secondary { min-height: 320px; aspect-ratio: 4/5; }
-    .col-card .meta { bottom: 22px; left: 22px; right: 22px; }
-    .col-card .meta .name { font-size: 30px; }
-    .col-card .meta .desc { font-size: 14px; }
+    .collections-grid { grid-template-columns: 1fr; gap: 14px; }
+    .col-card { aspect-ratio: 4/5; }
+    .col-card .meta { bottom: 26px; left: 26px; right: 26px; }
+    .col-card .meta .desc { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─── SIGNATURE ─── */
-  .signature { padding: 120px 60px; background: var(--paper-alt); }
-  .signature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
-  .signature-row:last-child { margin-bottom: 0; }
-  .signature-row.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
-  .signature-row.reverse > * { direction: ltr; }
-  .signature-img { width: 100%; aspect-ratio: 4/5; background-size: cover; background-position: center; overflow: hidden; }
-  .signature-text { padding: 20px 0; max-width: 480px; }
-  .signature-text .label { color: var(--mute); margin-bottom: 24px; }
-  .signature-text h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 60px); font-weight: 300; line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 28px; }
-  .signature-text h3 em { font-style: italic; color: var(--mute); }
-  .signature-text p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; color: var(--ink); margin-bottom: 16px; }
-  .signature-text .link { margin-top: 36px; display: inline-flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--ink); padding-bottom: 6px; font-weight: 500; transition: gap 0.4s var(--ease); }
-  .signature-text .link:hover { gap: 20px; }
+  /* ATELIER TEASER */
+  .atelier-teaser { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 80vh; background: var(--ink); color: var(--paper); }
+  .atelier-teaser .img { background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1600,c_fill/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg'); background-size: cover; background-position: center; min-height: 80vh; }
+  .atelier-teaser .text { padding: 120px 80px; display: flex; flex-direction: column; justify-content: center; }
+  .atelier-teaser .text .label { color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+  .atelier-teaser .text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 4.5vw, 60px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 36px; }
+  .atelier-teaser .text h2 em { font-style: italic; color: rgba(255,255,255,0.55); }
+  .atelier-teaser .text p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; color: rgba(255,255,255,0.85); margin-bottom: 22px; max-width: 480px; }
+  .atelier-teaser .text .link-light { margin-top: 30px; display: inline-flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 6px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; color: var(--paper); transition: gap 0.4s var(--ease), border-color 0.3s var(--ease); align-self: flex-start; }
+  .atelier-teaser .text .link-light:hover { gap: 20px; border-color: var(--paper); }
   @media (max-width: 900px) {
-    .signature { padding: 70px 22px; }
-    .signature-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 70px; direction: ltr; }
-    .signature-row.reverse { grid-template-columns: 1fr; direction: ltr; }
-    .signature-img { aspect-ratio: 4/5; width: 100%; }
-    .signature-text { padding: 0; max-width: 100%; }
-    .signature-text h3 { margin-bottom: 22px; }
-    .signature-text p { font-size: 17px; }
+    .atelier-teaser { grid-template-columns: 1fr; min-height: auto; }
+    .atelier-teaser .img { min-height: 55vh; }
+    .atelier-teaser .text { padding: 60px 22px; }
+    .atelier-teaser .text p { font-size: 17px; }
   }
-
-  /* ─── ATELIER ─── */
-  .atelier { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 100vh; background: var(--ink); color: var(--paper); }
-  .atelier-image { background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1600,c_fill/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg'); background-size: cover; background-position: center; min-height: 100vh; }
-  .atelier-text { padding: 140px 80px; display: flex; flex-direction: column; justify-content: center; }
-  .atelier-text .label { color: rgba(255,255,255,0.55); margin-bottom: 40px; }
-  .atelier-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 68px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 44px; }
-  .atelier-text h2 em { font-style: italic; color: rgba(255,255,255,0.55); }
-  .atelier-text p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; color: rgba(255,255,255,0.85); margin-bottom: 24px; max-width: 520px; }
-  .atelier-text p.lead { color: var(--paper); font-size: 21px; }
-  .atelier-meta { display: flex; gap: 56px; margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.15); flex-wrap: wrap; }
-  .atelier-meta div { display: flex; flex-direction: column; gap: 8px; }
-  .atelier-meta .k { color: rgba(255,255,255,0.55); }
-  .atelier-meta .v { font-family: 'Cormorant Garamond', serif; font-size: 19px; }
-  @media (max-width: 900px) {
-    .atelier { grid-template-columns: 1fr; min-height: auto; }
-    .atelier-image { min-height: 55vh; }
-    .atelier-text { padding: 70px 22px; }
-    .atelier-text h2 { margin-bottom: 32px; }
-    .atelier-text p { font-size: 17px; }
-    .atelier-text p.lead { font-size: 19px; }
-    .atelier-meta { gap: 28px; margin-top: 40px; padding-top: 28px; }
-    .atelier-meta > div { flex: 1 1 calc(50% - 14px); min-width: 120px; }
-    .atelier-meta .v { font-size: 17px; }
-  }
-
-  /* ─── COMMANDER ─── */
-  .commander { padding: 140px 60px; background: var(--paper); }
-  .commander-inner { max-width: 1080px; margin: 0 auto; }
-  .commander-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 80px; gap: 40px; }
-  .commander-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 76px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
-  .commander-head h2 em { font-style: italic; color: var(--mute); }
-  .commander-head .aside { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--mute); max-width: 320px; text-align: right; padding-bottom: 8px; line-height: 1.5; }
-  .commander-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-  .commander-step { display: flex; flex-direction: column; gap: 20px; padding-top: 24px; border-top: 1px solid var(--accent); }
-  .commander-step .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; font-weight: 300; color: var(--accent); line-height: 1; }
-  .commander-step h4 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 4px; }
-  .commander-step p { font-size: 13px; line-height: 1.6; color: var(--mute); }
-  .commander-step .timing { margin-top: auto; padding-top: 16px; color: var(--accent); }
-  .commander-coda { margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
-  .commander-coda .line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 2vw, 30px); font-weight: 300; line-height: 1.35; max-width: 680px; }
-  .commander-coda .btn-dark { background: var(--ink); color: var(--paper); padding: 18px 32px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; transition: background 0.4s var(--ease); display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; }
-  .commander-coda .btn-dark:hover { background: var(--accent); }
-  @media (max-width: 900px) {
-    .commander { padding: 70px 22px; }
-    .commander-head { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 24px; margin-bottom: 44px; }
-    .commander-head .aside { text-align: left; max-width: 100%; }
-    .commander-grid { grid-template-columns: 1fr; gap: 36px; }
-    .commander-coda { flex-direction: column; align-items: stretch; gap: 28px; margin-top: 60px; padding-top: 40px; }
-    .commander-coda .btn-dark { justify-content: center; }
-  }
-
-  /* ─── CONTACT ─── */
-  .contact { padding: 140px 60px 80px; background: var(--paper-alt); }
-  .contact-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 64px; gap: 40px; }
-  .contact-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 76px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
-  .contact-head h2 em { font-style: italic; color: var(--mute); }
-  .contact-head .aside { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--mute); text-align: right; padding-bottom: 8px; line-height: 1.5; max-width: 320px; }
-  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; }
-  .contact-form { display: flex; flex-direction: column; gap: 24px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .field { display: flex; flex-direction: column; gap: 8px; }
-  .field label { color: var(--mute); }
-  .field label .opt { text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--soft); font-weight: 400; margin-left: 6px; }
-  .field input, .field textarea, .field select { background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--ink); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; padding: 12px 0; outline: none; transition: border-color 0.3s var(--ease); border-radius: 0; }
-  .field input:focus, .field textarea:focus, .field select:focus { border-bottom-color: var(--accent); }
-  .field textarea { resize: vertical; min-height: 90px; }
-  .chips-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-  .chip { position: relative; cursor: pointer; user-select: none; }
-  .chip input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
-  .chip span { display: inline-block; padding: 10px 18px; border: 1px solid var(--line); background: transparent; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; color: var(--ink); transition: all 0.25s var(--ease); border-radius: 0; }
-  .chip:hover span { border-color: var(--accent); color: var(--accent); }
-  .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-  .chip input:focus-visible + span { outline: 1px solid var(--accent); outline-offset: 2px; }
-  .submit { margin-top: 20px; background: var(--ink); color: var(--paper); padding: 20px 40px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; cursor: pointer; border: none; transition: background 0.4s var(--ease); align-self: flex-start; border-radius: 0; }
-  .submit:hover { background: var(--accent); }
-  .submit:disabled { opacity: 0.5; cursor: wait; }
-  .form-status { margin-top: 16px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; min-height: 24px; }
-  .form-status.error { color: #a04040; }
-  .form-confirmation { display: none; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .form-confirmation.show { display: block; }
-  .form-confirmation .mark { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--accent); line-height: 1; margin-bottom: 24px; }
-  .form-confirmation h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 42px); font-weight: 300; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 20px; }
-  .form-confirmation h3 em { font-style: italic; color: var(--mute); }
-  .form-confirmation p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; color: var(--ink); margin-bottom: 14px; max-width: 480px; }
-  .form-confirmation .meta { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--mute); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
-  .contact-info { display: flex; flex-direction: column; gap: 36px; padding-left: 48px; border-left: 1px solid var(--line); }
-  .info-block .k { color: var(--mute); margin-bottom: 10px; }
-  .info-block .v { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; }
-  .info-block .v a { border-bottom: 1px solid var(--line); transition: border-color 0.3s var(--ease); }
-  .info-block .v a:hover { border-bottom-color: var(--accent); }
-  @media (max-width: 900px) {
-    .contact { padding: 70px 22px 50px; }
-    .contact-head { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 22px; margin-bottom: 36px; }
-    .contact-head .aside { text-align: left; }
-    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-    .form-row { grid-template-columns: 1fr; gap: 24px; }
-    .contact-info { padding-left: 0; border-left: none; padding-top: 40px; border-top: 1px solid var(--line); gap: 28px; }
-    .submit { align-self: stretch; text-align: center; }
-    .form-confirmation { padding: 40px 0; }
-    .form-confirmation .mark { font-size: 40px; }
-    .form-confirmation p { font-size: 17px; }
-  }
-
-  /* Override site.css reveal to match homepage timing */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
-  .reveal.in { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body data-page="home">
 
 <div class="utility">
   <div class="left">
-    <a href="#process">Sur commande</a>
-    <a href="#atelier">Atelier privé sur rendez-vous</a>
+    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
     <a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a>
   </div>
   <div class="right">
-    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
-    <a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
     <span>FR</span>
   </div>
 </div>
@@ -235,33 +127,22 @@ fbq('init','860595880458458');fbq('track','PageView');
     <div class="nav-item has-drop">
       <a href="#" class="drop-toggle">Collections <span class="caret">▾</span></a>
       <div class="drop">
-        <a href="produits-tables.html">Tables</a>
-        <a href="produits-chaises.html">Chaises</a>
-        <a href="produits-murales.html">Sculptures murales</a>
+        <a href="collections/tables.html">Tables</a>
+        <a href="collections/chaises.html">Chaises</a>
+        <a href="collections/murales.html">Sculptures murales</a>
       </div>
     </div>
-    <div class="nav-item has-drop">
-      <a href="#" class="drop-toggle">Catalogues <span class="caret">▾</span></a>
-      <div class="drop">
-        <a href="catalog/tables.html">Tables</a>
-        <a href="catalog/chaises.html">Chaises</a>
-        <a href="catalog/murales.html">Sculptures murales</a>
-      </div>
-    </div>
-    <a href="#atelier">Atelier</a>
+    <a href="atelier.html">Atelier</a>
   </div>
-  <a href="#top" class="mark">
-    Aurélis
-    <span class="tag">L'art de la forme · MMXXVI</span>
-  </a>
+  <a href="index.html" class="mark">AURÉLIS<span class="tag">L'art de la forme · MMXXVI</span></a>
   <div class="links-right">
-    <a href="#process">Sur commande</a>
-    <a href="#contact">Contact</a>
+    <a href="commande.html">Sur commande</a>
+    <a href="contact.html">Contact</a>
   </div>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
-<section class="hero" id="top">
+<section class="hero">
   <div class="hero-image"></div>
   <div class="hero-credit">
     <div class="pname">Miel</div>
@@ -271,224 +152,59 @@ fbq('init','860595880458458');fbq('track','PageView');
     <div class="hero-eyebrow micro">Édition MMXXVI — Collection paramétrique</div>
     <h1 class="hero-title">L'art<br><em>de la forme.</em></h1>
     <div class="hero-bottom">
-      <p class="hero-blurb">
-        Trois volumes. Tables, chaises, sculptures murales. Dessinés sur mesure, sculptés à la main, fabriqués à Casablanca.
-      </p>
+      <p class="hero-blurb">Trois volumes. Tables, chaises, sculptures murales. Dessinés sur mesure, sculptés à la main, fabriqués à Casablanca.</p>
       <div class="hero-cta-group">
-        <a href="#collections" class="btn-primary">Découvrir les collections</a>
-        <a href="#contact" class="btn-outline">Commander une pièce</a>
+        <a href="collections/tables.html" class="btn-primary">Découvrir les collections</a>
+        <a href="contact.html" class="btn-light-outline">Commander une pièce</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="collections" id="collections">
+<section class="collections">
   <div class="section-head reveal">
-    <div>
-      <h2 class="heading">Trois disciplines.<br><em>Un seul geste.</em></h2>
-    </div>
-    <div class="meta micro">
-      Édition MMXXVI
-      <div class="label">Trois volumes</div>
-    </div>
+    <h2 class="heading">Trois disciplines.<br><em>Un seul geste.</em></h2>
+    <div class="meta micro">Édition MMXXVI<div class="label">Trois volumes</div></div>
   </div>
   <div class="collections-grid">
-    <a href="produits-tables.html" class="col-card col-feature reveal">
-      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1600,c_fill/v1779392874/twisted_table_hero_qmewze.webp');"></div>
+    <a href="collections/tables.html" class="col-card reveal">
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1779392874/twisted_table_hero_qmewze.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume I · Dix pièces</div>
         <div class="name">Tables</div>
         <div class="desc">De la table basse à la salle à manger. Bois, courbes calculées.</div>
+        <span class="cta">Voir la collection <span>→</span></span>
       </div>
     </a>
-    <a href="produits-chaises.html" class="col-card col-secondary reveal">
-      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1780074133/coffee_rest_image_of_2_chairs_with_model_cm5vor.webp');"></div>
+    <a href="collections/chaises.html" class="col-card reveal d1">
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1780074183/riddle_rest_hero_buxjn5.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume II · Dix-neuf pièces</div>
         <div class="name">Chaises</div>
+        <div class="desc">Assises sculptées à la main. La géométrie tient le corps.</div>
+        <span class="cta">Voir la collection <span>→</span></span>
       </div>
     </a>
-    <a href="produits-murales.html" class="col-card col-secondary reveal">
+    <a href="collections/murales.html" class="col-card reveal d2">
       <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1771621734/walking-horse-different_setting_ci8pcb.webp');"></div>
       <div class="meta">
         <div class="vol micro">Volume III · Dix pièces</div>
         <div class="name">Sculptures murales</div>
+        <div class="desc">Le mur cesse d'être un fond. Pièces ajustées au lieu.</div>
+        <span class="cta">Voir la collection <span>→</span></span>
       </div>
     </a>
   </div>
 </section>
 
-<section class="signature" id="signature">
-  <div class="section-head reveal" style="max-width:1320px;margin:0 auto 80px;">
-    <div>
-      <h2 class="heading">Pièces signature<br><em>de la maison.</em></h2>
-    </div>
-    <div class="meta micro">
-      Sélection 2026
-      <div class="label">Trois regards</div>
-    </div>
-  </div>
-
-  <div style="max-width:1320px;margin:0 auto;">
-
-    <div class="signature-row reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1780074175/forest_table_lifestyle_khshyj.webp');"></div>
-      <div class="signature-text">
-        <div class="label micro">Volume I — Tables</div>
-        <h3>Sylve<br><em>la table de salle à manger.</em></h3>
-        <p>Un plateau de bois posé sur une structure dessinée pour disparaître. Une pièce calme, taillée pour les longues tablées. Sur commande, dans les essences de votre choix.</p>
-        <a href="produit.html?collection=tables&id=sylve" class="link">Découvrir la pièce <span>→</span></a>
-      </div>
-    </div>
-
-    <div class="signature-row reverse reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1780074183/riddle_rest_hero_buxjn5.webp');"></div>
-      <div class="signature-text">
-        <div class="label micro">Volume II — Chaises</div>
-        <h3>Énigme<br><em>la chaise lounge.</em></h3>
-        <p>Une géométrie pour s'asseoir, une autre pour s'oublier. Le dossier épouse la colonne, le siège accueille le repos. Chaque exemplaire est numéroté à la main.</p>
-        <a href="produit.html?collection=chaises&id=enigme" class="link">Découvrir la pièce <span>→</span></a>
-      </div>
-    </div>
-
-    <div class="signature-row reveal">
-      <div class="signature-img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1400,c_fill/v1771621721/walking-horse_huge_akbjo8.webp');"></div>
-      <div class="signature-text">
-        <div class="label micro">Volume III — Sculptures murales</div>
-        <h3>Cavale<br><em>le cheval en mouvement.</em></h3>
-        <p>Une centaine de lamelles assemblées, dessinées pour suggérer le galop. Format sur mesure, du petit panneau de bureau jusqu'à la pièce d'apparat de cinq mètres.</p>
-        <a href="produit.html?collection=murales&id=cavale" class="link">Découvrir la pièce <span>→</span></a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="atelier" id="atelier">
-  <div class="atelier-image"></div>
-  <div class="atelier-text reveal">
+<section class="atelier-teaser">
+  <div class="img"></div>
+  <div class="text reveal">
     <div class="label micro">L'atelier — Casablanca</div>
     <h2>Dessiné sur mesure.<br><em>Sculpté à la main.</em></h2>
-    <p class="lead">
-      Aurélis est un atelier installé à Casablanca. Chaque pièce est dessinée pour un lieu, un usage, un client — puis sculptée dans le bois par un seul artisan, du début à la fin.
-    </p>
-    <p>
-      Rien n'est produit en série. Rien n'attend en stock. Chaque commande est un dialogue entre vous et l'atelier.
-    </p>
-    <div class="atelier-meta">
-      <div><span class="k micro">Lieu</span><span class="v">Casablanca, Maroc</span></div>
-      <div><span class="k micro">Fondation</span><span class="v">MMXXVI</span></div>
-      <div><span class="k micro">Visites</span><span class="v">Sur rendez-vous</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="commander" id="process">
-  <div class="commander-inner">
-    <div class="commander-head reveal">
-      <h2>Commander<br><em>une pièce.</em></h2>
-      <div class="aside">De la première conversation à la pièce installée chez vous, quatre étapes — et un seul interlocuteur.</div>
-    </div>
-
-    <div class="commander-grid">
-      <div class="commander-step reveal">
-        <div class="num">i</div>
-        <h4>Demande</h4>
-        <p>Email, téléphone ou formulaire. Décrivez le lieu, l'usage, l'intention.</p>
-        <div class="timing micro">Réponse sous 48 h</div>
-      </div>
-      <div class="commander-step reveal">
-        <div class="num">ii</div>
-        <h4>Devis et rendu</h4>
-        <p>Un devis détaillé, et un rendu de la pièce dans votre espace. Rien ne se fabrique sans votre validation.</p>
-        <div class="timing micro">5 à 10 jours</div>
-      </div>
-      <div class="commander-step reveal">
-        <div class="num">iii</div>
-        <h4>Fabrication</h4>
-        <p>Un acompte de 50 % engage l'atelier. La pièce est sculptée à la main, par un seul artisan.</p>
-        <div class="timing micro">6 à 8 semaines</div>
-      </div>
-      <div class="commander-step reveal">
-        <div class="num">iv</div>
-        <h4>Livraison</h4>
-        <p>Livraison et installation prises en charge par l'atelier, partout au Maroc.</p>
-        <div class="timing micro">Incluses</div>
-      </div>
-    </div>
-
-    <div class="commander-coda reveal">
-      <div class="line">
-        « Une pièce d'Aurélis ne s'achète pas. Elle se commande, se dessine, puis se sculpte — pour vous, et pour personne d'autre. »
-      </div>
-      <a href="#contact" class="btn-dark">Commencer une conversation</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="contact-head reveal">
-    <h2>Dites-nous ce que<br><em>vous imaginez.</em></h2>
-    <div class="aside">Nous répondons à chaque demande sous 48 heures. Toujours par la même main.</div>
-  </div>
-  <div class="contact-grid">
-    <div style="width:100%;">
-      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mbdeaweb" method="POST">
-        <input type="hidden" name="_subject" value="Demande Aurélis — Nouveau contact">
-        <div class="form-row">
-          <div class="field"><label class="micro" for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" required></div>
-          <div class="field"><label class="micro" for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label class="micro" for="tel">Téléphone</label><input type="tel" id="tel" name="tel" required></div>
-          <div class="field"><label class="micro" for="email">Email <span class="opt">(optionnel)</span></label><input type="email" id="email" name="email"></div>
-        </div>
-        <div class="field">
-          <label class="micro">Votre intérêt <span class="opt">(plusieurs choix possibles)</span></label>
-          <div class="chips-wrap">
-            <label class="chip"><input type="checkbox" name="interet" value="Tables"><span>Tables</span></label>
-            <label class="chip"><input type="checkbox" name="interet" value="Chaises"><span>Chaises</span></label>
-            <label class="chip"><input type="checkbox" name="interet" value="Sculptures murales"><span>Sculptures murales</span></label>
-            <label class="chip"><input type="checkbox" name="interet" value="Pièce sur mesure"><span>Pièce sur mesure</span></label>
-          </div>
-        </div>
-        <div class="field">
-          <label class="micro" for="message">Votre projet</label>
-          <textarea id="message" name="message" rows="4" placeholder="Lieu, usage, intention…"></textarea>
-        </div>
-        <button type="submit" class="submit" id="submitBtn">Envoyer la demande</button>
-        <div class="form-status" id="formStatus"></div>
-      </form>
-
-      <div class="form-confirmation" id="formConfirmation">
-        <div class="mark">✓</div>
-        <h3>Merci.<br><em>Votre demande nous est parvenue.</em></h3>
-        <p>Nous revenons vers vous sous quarante-huit heures, par la même main qui répondra ensuite à chaque étape.</p>
-        <p>En attendant, n'hésitez pas à nous écrire directement à <a href="mailto:contact@aurelis.ma" style="border-bottom:1px solid var(--ink);">contact@aurelis.ma</a> si vous avez d'autres précisions à apporter.</p>
-        <div class="meta">Aurélis — Atelier de Casablanca</div>
-      </div>
-    </div>
-    <div class="contact-info reveal">
-      <div class="info-block">
-        <div class="k micro">Atelier privé</div>
-        <div class="v">Casablanca, Maroc<br>Sur rendez-vous uniquement</div>
-      </div>
-      <div class="info-block">
-        <div class="k micro">Téléphone</div>
-        <div class="v">
-          <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
-          <a href="tel:+212661656532">+212 6 61 65 65 32</a>
-        </div>
-      </div>
-      <div class="info-block">
-        <div class="k micro">Email</div>
-        <div class="v"><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></div>
-      </div>
-      <div class="info-block">
-        <div class="k micro">Instagram</div>
-        <div class="v"><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></div>
-      </div>
-    </div>
+    <p>Aurélis est un atelier installé à Casablanca. Chaque pièce est dessinée pour un lieu, un usage, un client — puis sculptée par un seul artisan, du début à la fin.</p>
+    <p>Rien n'est produit en série. Rien n'attend en stock.</p>
+    <a href="atelier.html" class="link-light">Découvrir l'atelier <span>→</span></a>
   </div>
 </section>
 
@@ -501,30 +217,29 @@ fbq('init','860595880458458');fbq('track','PageView');
     <div class="footer-col">
       <h5>Collections</h5>
       <ul>
-        <li><a href="produits-tables.html">Tables</a></li>
-        <li><a href="produits-chaises.html">Chaises</a></li>
-        <li><a href="produits-murales.html">Sculptures murales</a></li>
-        <li><a href="#contact">Sur mesure</a></li>
+        <li><a href="collections/tables.html">Tables</a></li>
+        <li><a href="collections/chaises.html">Chaises</a></li>
+        <li><a href="collections/murales.html">Sculptures murales</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Catalogues</h5>
+      <h5>Ressources</h5>
       <ul>
-        <li><a href="catalog/tables.html">Tables</a></li>
-        <li><a href="catalog/chaises.html">Chaises</a></li>
-        <li><a href="catalog/murales.html">Sculptures murales</a></li>
-        <li><a href="catalogues.html">Tous les catalogues</a></li>
+        <li><a href="catalog/tables.html">Catalogue Tables</a></li>
+        <li><a href="catalog/chaises.html">Catalogue Chaises</a></li>
+        <li><a href="catalog/murales.html">Catalogue Murales</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Maison</h5>
       <ul>
-        <li><a href="#atelier">L'atelier</a></li>
-        <li><a href="#process">Sur commande</a></li>
-        <li><a href="#contact">Visite privée</a></li>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="atelier.html">L'atelier</a></li>
+        <li><a href="commande.html">Sur commande</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
         <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
+        <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
       </ul>
     </div>
   </div>
@@ -535,59 +250,5 @@ fbq('init','860595880458458');fbq('track','PageView');
 </footer>
 
 <script src="site.js"></script>
-<script>
-  // Formspree AJAX submission
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const status = document.getElementById('formStatus');
-  const confirmation = document.getElementById('formConfirmation');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const interests = form.querySelectorAll('input[name="interet"]:checked');
-    if (interests.length === 0) {
-      status.className = 'form-status error';
-      status.textContent = 'Merci de sélectionner au moins un domaine d\'intérêt.';
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
-    status.className = 'form-status';
-    status.textContent = '';
-    try {
-      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-      if (response.ok) {
-        form.style.display = 'none';
-        confirmation.classList.add('show');
-        confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        if (window.fbq) fbq('track', 'Lead', { content_category: 'contact_form' });
-      } else {
-        const data = await response.json();
-        status.className = 'form-status error';
-        status.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Une erreur est survenue. Merci de réessayer.';
-        submitBtn.textContent = 'Envoyer la demande';
-        submitBtn.disabled = false;
-      }
-    } catch (err) {
-      status.className = 'form-status error';
-      status.textContent = 'Une erreur est survenue. Merci de réessayer ou de nous écrire à contact@aurelis.ma.';
-      submitBtn.textContent = 'Envoyer la demande';
-      submitBtn.disabled = false;
-    }
-  });
-
-  // Pre-select interest chip from URL parameter (deep-link from collection pages)
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const interest = params.get('interet');
-    if (!interest) return;
-    const chip = document.querySelector(`input[name="interet"][value="${interest}"]`);
-    if (chip) {
-      chip.checked = true;
-      setTimeout(() => { document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 400);
-    }
-  })();
-</script>
-
 </body>
 </html>
