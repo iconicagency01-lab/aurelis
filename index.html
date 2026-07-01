@@ -106,6 +106,58 @@ fbq('init','860595880458458');fbq('track','PageView');
     .atelier-teaser .text { padding: 60px 22px; }
     .atelier-teaser .text p { font-size: 17px; }
   }
+
+  /* CONTACT */
+  .contact { padding: 140px 60px 100px; background: var(--paper-alt); }
+  .contact-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 64px; gap: 40px; max-width: 1500px; margin-left: auto; margin-right: auto; }
+  .contact-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 72px); font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
+  .contact-head h2 em { font-style: italic; color: var(--mute); }
+  .contact-head .aside { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--mute); text-align: right; padding-bottom: 8px; line-height: 1.5; max-width: 320px; }
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1500px; margin: 0 auto; }
+  .contact-form { display: flex; flex-direction: column; gap: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { color: var(--mute); font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+  .field label .opt { text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--soft); font-weight: 400; margin-left: 6px; }
+  .field input, .field textarea, .field select { background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--ink); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; padding: 12px 0; outline: none; transition: border-color 0.3s var(--ease); border-radius: 0; }
+  .field input:focus, .field textarea:focus, .field select:focus { border-bottom-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .chips-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .chip { position: relative; cursor: pointer; user-select: none; }
+  .chip input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+  .chip span { display: inline-block; padding: 10px 18px; border: 1px solid var(--line); background: transparent; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; color: var(--ink); transition: all 0.25s var(--ease); border-radius: 0; }
+  .chip:hover span { border-color: var(--accent); color: var(--accent); }
+  .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .chip input:focus-visible + span { outline: 1px solid var(--accent); outline-offset: 2px; }
+  .submit { margin-top: 20px; background: var(--ink); color: var(--paper); padding: 20px 40px; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; cursor: pointer; border: none; transition: background 0.4s var(--ease); align-self: flex-start; border-radius: 0; }
+  .submit:hover { background: var(--accent); }
+  .submit:disabled { opacity: 0.5; cursor: wait; }
+  .form-status { margin-top: 16px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; min-height: 24px; }
+  .form-status.error { color: #a04040; }
+  .form-confirmation { display: none; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .form-confirmation.show { display: block; }
+  .form-confirmation .mark { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--accent); line-height: 1; margin-bottom: 24px; }
+  .form-confirmation h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 42px); font-weight: 300; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 20px; }
+  .form-confirmation h3 em { font-style: italic; color: var(--mute); }
+  .form-confirmation p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; color: var(--ink); margin-bottom: 14px; max-width: 480px; }
+  .form-confirmation .meta { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--mute); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .contact-info { display: flex; flex-direction: column; gap: 36px; padding-left: 48px; border-left: 1px solid var(--line); }
+  .info-block .k { color: var(--mute); margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; }
+  .info-block .v { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; }
+  .info-block .v a { border-bottom: 1px solid var(--line); transition: border-color 0.3s var(--ease); }
+  .info-block .v a:hover { border-bottom-color: var(--accent); }
+  @media (max-width: 900px) {
+    .contact { padding: 70px 22px 60px; }
+    .contact-head { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 22px; margin-bottom: 36px; }
+    .contact-head .aside { text-align: left; }
+    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .form-row { grid-template-columns: 1fr; gap: 24px; }
+    .contact-info { padding-left: 0; border-left: none; padding-top: 40px; border-top: 1px solid var(--line); gap: 28px; }
+    .submit { align-self: stretch; text-align: center; }
+    .form-confirmation { padding: 40px 0; }
+    .form-confirmation .mark { font-size: 40px; }
+    .form-confirmation p { font-size: 17px; }
+  }
 </style>
 </head>
 <body data-page="home">
@@ -208,6 +260,72 @@ fbq('init','860595880458458');fbq('track','PageView');
   </div>
 </section>
 
+<section class="contact" id="contact">
+  <div class="contact-head reveal">
+    <h2>Dites-nous ce que<br><em>vous imaginez.</em></h2>
+    <div class="aside">Nous répondons à chaque demande sous 48 heures. Toujours par la même main.</div>
+  </div>
+  <div class="contact-grid">
+    <div style="width:100%;">
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mbdeaweb" method="POST">
+        <input type="hidden" name="_subject" value="Demande Aurélis — Nouveau contact">
+        <div class="form-row">
+          <div class="field"><label class="micro" for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" required></div>
+          <div class="field"><label class="micro" for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label class="micro" for="tel">Téléphone</label><input type="tel" id="tel" name="tel" required></div>
+          <div class="field"><label class="micro" for="email">Email <span class="opt">(optionnel)</span></label><input type="email" id="email" name="email"></div>
+        </div>
+        <div class="field">
+          <label class="micro">Votre intérêt <span class="opt">(plusieurs choix possibles)</span></label>
+          <div class="chips-wrap">
+            <label class="chip"><input type="checkbox" name="interet" value="Tables"><span>Tables</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Chaises"><span>Chaises</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Sculptures murales"><span>Sculptures murales</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Pièce sur mesure"><span>Pièce sur mesure</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="micro" for="message">Votre projet</label>
+          <textarea id="message" name="message" rows="4" placeholder="Lieu, usage, intention…"></textarea>
+        </div>
+        <button type="submit" class="submit" id="submitBtn">Envoyer la demande</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+
+      <div class="form-confirmation" id="formConfirmation">
+        <div class="mark">✓</div>
+        <h3>Merci.<br><em>Votre demande nous est parvenue.</em></h3>
+        <p>Nous revenons vers vous sous quarante-huit heures, par la même main qui répondra ensuite à chaque étape.</p>
+        <p>En attendant, n'hésitez pas à nous écrire directement à <a href="mailto:contact@aurelis.ma" style="border-bottom:1px solid var(--ink);">contact@aurelis.ma</a> si vous avez d'autres précisions à apporter.</p>
+        <div class="meta">Aurélis — Atelier de Casablanca</div>
+      </div>
+    </div>
+    <div class="contact-info reveal">
+      <div class="info-block">
+        <div class="k micro">Atelier privé</div>
+        <div class="v">Casablanca, Maroc<br>Sur rendez-vous uniquement</div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Téléphone</div>
+        <div class="v">
+          <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
+          <a href="tel:+212661656532">+212 6 61 65 65 32</a>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Email</div>
+        <div class="v"><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Instagram</div>
+        <div class="v"><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-grid">
     <div>
@@ -250,5 +368,71 @@ fbq('init','860595880458458');fbq('track','PageView');
 </footer>
 
 <script src="site.js"></script>
+<script>
+  // Formspree AJAX submission
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  const confirmation = document.getElementById('formConfirmation');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const interests = form.querySelectorAll('input[name="interet"]:checked');
+      if (interests.length === 0) {
+        status.className = 'form-status error';
+        status.textContent = 'Merci de sélectionner au moins un domaine d\'intérêt.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+      status.className = 'form-status';
+      status.textContent = '';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          confirmation.classList.add('show');
+          confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (window.fbq) fbq('track', 'Lead');
+        } else {
+          const data = await response.json();
+          status.className = 'form-status error';
+          status.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Une erreur est survenue. Merci de réessayer.';
+          submitBtn.textContent = 'Envoyer la demande';
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.textContent = 'Une erreur est survenue. Merci de réessayer ou de nous écrire à contact@aurelis.ma.';
+        submitBtn.textContent = 'Envoyer la demande';
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Pre-select interest chip from URL parameter (deep-link)
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const interest = params.get('interet');
+      if (!interest) return;
+      const chip = document.querySelector(`input[name="interet"][value="${interest}"]`);
+      if (chip) {
+        chip.checked = true;
+        setTimeout(() => {
+          document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 400);
+      }
+    })();
+  }
+</script>
+
 </body>
 </html>
