@@ -331,3 +331,123 @@ footer {
 .reveal.d1 { transition-delay: 0.08s; }
 .reveal.d2 { transition-delay: 0.16s; }
 .reveal.d3 { transition-delay: 0.24s; }
+/* ─── MOBILE BURGER MENU — FIT ALL ITEMS ON SCREEN ─── */
+@media (max-width: 900px) {
+
+  /* When menu is open, the panel takes the full viewport */
+  nav.open {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    height: 100dvh; /* dynamic viewport height — handles mobile browser chrome */
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    padding: 70px 22px 24px;
+    overflow: hidden; /* no scrolling inside menu */
+    z-index: 200;
+  }
+
+  /* The three grid columns collapse into a single stacked list */
+  nav.open .links-left,
+  nav.open .links-right {
+    display: flex;
+    flex-direction: column;
+    position: static;      /* cancel any absolute/fixed positioning */
+    inset: auto;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+  }
+
+  /* Mark/logo stays put at top */
+  nav.open .mark {
+    order: -1;
+    margin-bottom: 18px;
+  }
+
+  /* Every link — compact, evenly spaced, no wasted room */
+  nav.open .links-left > a,
+  nav.open .links-right > a,
+  nav.open .nav-item > a.drop-toggle {
+    display: block;
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 5.5vw, 28px);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-weight: 400;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  /* Collections dropdown — always expanded on mobile, no tap-to-open */
+  nav.open .nav-item.has-drop .drop-toggle .caret {
+    display: none;
+  }
+  nav.open .nav-item.has-drop .drop {
+    position: static;
+    display: flex !important;
+    flex-direction: column;
+    background: transparent;
+    box-shadow: none;
+    padding: 6px 0 10px 18px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: none;
+  }
+  nav.open .nav-item.has-drop .drop a {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+    padding: 8px 0;
+    border: none;
+  }
+  nav.open .nav-item.has-drop .drop a:hover {
+    color: var(--accent);
+  }
+  /* The Collections toggle itself: not clickable, just a header */
+  nav.open .nav-item.has-drop .drop-toggle {
+    pointer-events: none;
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
+
+  /* Right side (Sur commande, Contact) sits directly below left side */
+  nav.open .links-right {
+    margin-top: 0;
+  }
+
+  /* Burger X stays on top */
+  nav.open .burger {
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 210;
+  }
+}
+
+/* Very small phones (iPhone SE etc.) — tighten further */
+@media (max-width: 900px) and (max-height: 700px) {
+  nav.open {
+    padding-top: 60px;
+  }
+  nav.open .links-left > a,
+  nav.open .links-right > a,
+  nav.open .nav-item > a.drop-toggle {
+    font-size: 20px;
+    padding: 11px 0;
+  }
+  nav.open .nav-item.has-drop .drop a {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+}
