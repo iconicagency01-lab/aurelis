@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','860595880458458');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+
+<title>AURÉLIS — Contact</title>
+<meta name="description" content="Contactez AURÉLIS — atelier de mobilier et sculptures sur mesure à Casablanca. Réponse sous 48 heures.">
+<meta property="og:title" content="AURÉLIS — Contact">
+<meta property="og:description" content="Réponse sous 48 heures. Toujours par la même main.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurelis.ma/contact.html">
+<meta property="og:image" content="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1771621730/candy_hero_iocopp.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+
+<style>
+  .contact-wrap { padding: 80px 60px 100px; background: var(--paper-alt); }
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1300px; margin: 0 auto; }
+  .contact-form { display: flex; flex-direction: column; gap: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { color: var(--mute); }
+  .field label .opt { text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--soft); font-weight: 400; margin-left: 6px; }
+  .field input, .field textarea { background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--ink); font-family: 'Inter', sans-serif; font-size: 15px; padding: 12px 0; outline: none; transition: border-color 0.3s var(--ease); border-radius: 0; }
+  .field input:focus, .field textarea:focus { border-bottom-color: var(--accent); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .chips-wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .chip { position: relative; cursor: pointer; user-select: none; }
+  .chip input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+  .chip span { display: inline-block; padding: 10px 18px; border: 1px solid var(--line); background: transparent; font-size: 12px; letter-spacing: 0.1em; color: var(--ink); transition: all 0.25s var(--ease); }
+  .chip:hover span { border-color: var(--accent); color: var(--accent); }
+  .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .submit { margin-top: 20px; background: var(--ink); color: var(--paper); padding: 20px 40px; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; cursor: pointer; border: none; transition: background 0.4s var(--ease); align-self: flex-start; }
+  .submit:hover { background: var(--accent); }
+  .submit:disabled { opacity: 0.5; cursor: wait; }
+  .form-status { margin-top: 16px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; min-height: 24px; }
+  .form-status.error { color: #a04040; }
+  .form-confirmation { display: none; padding: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .form-confirmation.show { display: block; }
+  .form-confirmation .mark { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--accent); line-height: 1; margin-bottom: 24px; }
+  .form-confirmation h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.2vw, 42px); font-weight: 300; line-height: 1.1; margin-bottom: 20px; }
+  .form-confirmation h3 em { font-style: italic; color: var(--mute); }
+  .form-confirmation p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; margin-bottom: 14px; max-width: 480px; }
+  .form-confirmation .meta { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--mute); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  .contact-info { display: flex; flex-direction: column; gap: 36px; padding-left: 48px; border-left: 1px solid var(--line); }
+  .info-block .k { color: var(--mute); margin-bottom: 10px; }
+  .info-block .v { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.55; }
+  .info-block .v a { border-bottom: 1px solid var(--line); transition: border-color 0.3s var(--ease); }
+  .info-block .v a:hover { border-bottom-color: var(--accent); }
+  .info-block .v .small { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--mute); display: block; margin-top: 4px; }
+
+  @media (max-width: 900px) {
+    .contact-wrap { padding: 50px 22px 60px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .form-row { grid-template-columns: 1fr; gap: 24px; }
+    .contact-info { padding-left: 0; border-left: none; padding-top: 40px; border-top: 1px solid var(--line); gap: 28px; }
+    .submit { align-self: stretch; text-align: center; }
+  }
+</style>
+</head>
+<body data-page="contact">
+
+<div class="utility">
+  <div class="left">
+    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
+    <a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a>
+  </div>
+  <div class="right">
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
+    <span>FR</span>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="links-left">
+    <div class="nav-item has-drop">
+      <a href="#" class="drop-toggle">Collections <span class="caret">▾</span></a>
+      <div class="drop">
+        <a href="collections/tables.html">Tables</a>
+        <a href="collections/chaises.html">Chaises</a>
+        <a href="collections/murales.html">Sculptures murales</a>
+      </div>
+    </div>
+    <a href="atelier.html">Atelier</a>
+  </div>
+  <a href="index.html" class="mark">AURÉLIS<span class="tag">L'art de la forme</span></a>
+  <div class="links-right">
+    <a href="commande.html">Sur commande</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="page-header">
+  <div class="micro eyebrow reveal">Toujours par la même main</div>
+  <h1 class="reveal">Dites-nous ce que<br><em>vous imaginez.</em></h1>
+  <p class="lead reveal">Nous répondons à chaque demande sous 48 heures.</p>
+</header>
+
+<section class="contact-wrap">
+  <div class="contact-grid">
+    <div>
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mbdeaweb" method="POST">
+        <input type="hidden" name="_subject" value="Demande Aurélis — Nouveau contact">
+        <div class="form-row">
+          <div class="field"><label class="micro" for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" required></div>
+          <div class="field"><label class="micro" for="nom">Nom</label><input type="text" id="nom" name="nom" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label class="micro" for="tel">Téléphone</label><input type="tel" id="tel" name="tel" required></div>
+          <div class="field"><label class="micro" for="email">Email <span class="opt">(optionnel)</span></label><input type="email" id="email" name="email"></div>
+        </div>
+        <div class="field">
+          <label class="micro">Votre intérêt <span class="opt">(plusieurs choix possibles)</span></label>
+          <div class="chips-wrap">
+            <label class="chip"><input type="checkbox" name="interet" value="Tables"><span>Tables</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Chaises"><span>Chaises</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Sculptures murales"><span>Sculptures murales</span></label>
+            <label class="chip"><input type="checkbox" name="interet" value="Pièce sur mesure"><span>Pièce sur mesure</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="micro" for="message">Votre projet</label>
+          <textarea id="message" name="message" rows="4" placeholder="Lieu, usage, intention…"></textarea>
+        </div>
+        <button type="submit" class="submit" id="submitBtn">Envoyer la demande</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+
+      <div class="form-confirmation" id="formConfirmation">
+        <div class="mark">✓</div>
+        <h3>Merci.<br><em>Votre demande nous est parvenue.</em></h3>
+        <p>Nous revenons vers vous sous quarante-huit heures, par la même main qui répondra ensuite à chaque étape.</p>
+        <p>En attendant, écrivez-nous directement à <a href="mailto:contact@aurelis.ma" style="border-bottom:1px solid var(--ink);">contact@aurelis.ma</a> si vous avez d'autres précisions.</p>
+        <div class="meta">Aurélis — Atelier de Casablanca</div>
+      </div>
+    </div>
+
+    <div class="contact-info reveal">
+      <div class="info-block">
+        <div class="k micro">Atelier privé</div>
+        <div class="v">Casablanca, Maroc<span class="small">Visites sur rendez-vous uniquement</span></div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Téléphone</div>
+        <div class="v">
+          <a href="tel:+212661420939">+212 6 61 42 09 39</a><br>
+          <a href="tel:+212661656532">+212 6 61 65 65 32</a>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">WhatsApp</div>
+        <div class="v"><a href="https://wa.me/212661420939" target="_blank" rel="noopener">+212 6 61 42 09 39</a></div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Email</div>
+        <div class="v"><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Instagram</div>
+        <div class="v"><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></div>
+      </div>
+      <div class="info-block">
+        <div class="k micro">Horaires</div>
+        <div class="v">Lundi — Vendredi<span class="small">9 h — 18 h (GMT+1)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand">Aurélis</div><div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div></div>
+    <div class="footer-col"><h5>Collections</h5><ul>
+      <li><a href="collections/tables.html">Tables</a></li>
+      <li><a href="collections/chaises.html">Chaises</a></li>
+      <li><a href="collections/murales.html">Sculptures murales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Ressources</h5><ul>
+      <li><a href="catalog/tables.html">Catalogue Tables</a></li>
+      <li><a href="catalog/chaises.html">Catalogue Chaises</a></li>
+      <li><a href="catalog/murales.html">Catalogue Murales</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Maison</h5><ul>
+      <li><a href="atelier.html">L'atelier</a></li>
+      <li><a href="commande.html">Sur commande</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
+      <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
+      <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI Aurélis — Tous droits réservés</span>
+    <span>Maison fondée à Casablanca</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  const confirmation = document.getElementById('formConfirmation');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const interests = form.querySelectorAll('input[name="interet"]:checked');
+    if (interests.length === 0) {
+      status.className = 'form-status error';
+      status.textContent = 'Merci de sélectionner au moins un domaine d\'intérêt.';
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    status.className = 'form-status';
+    status.textContent = '';
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (response.ok) {
+        form.style.display = 'none';
+        confirmation.classList.add('show');
+        confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (window.fbq) fbq('track', 'Lead', { content_category: 'contact_form' });
+      } else {
+        const data = await response.json();
+        status.className = 'form-status error';
+        status.textContent = data.errors ? data.errors.map(err => err.message).join(', ') : 'Une erreur est survenue. Merci de réessayer.';
+        submitBtn.textContent = 'Envoyer la demande';
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      status.className = 'form-status error';
+      status.textContent = 'Une erreur est survenue. Merci de réessayer ou de nous écrire à contact@aurelis.ma.';
+      submitBtn.textContent = 'Envoyer la demande';
+      submitBtn.disabled = false;
+    }
+  });
+
+  // Pre-select interest chip from URL parameter
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get('interet');
+    if (!interest) return;
+    const chip = document.querySelector(`input[name="interet"][value="${interest}"]`);
+    if (chip) chip.checked = true;
+  })();
+</script>
+</body>
+</html>
