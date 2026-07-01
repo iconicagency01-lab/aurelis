@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','860595880458458');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+
+<title>AURÉLIS — Chaises</title>
+<meta name="description" content="Collection AURÉLIS de chaises sculptées à la main à Casablanca. Salle à manger, tabourets, lounge.">
+<meta property="og:title" content="AURÉLIS — Collection Chaises">
+<meta property="og:description" content="Dix-neuf chaises sculptées à la main. La géométrie tient le corps.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurelis.ma/collections/chaises.html">
+<meta property="og:image" content="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1780074183/riddle_rest_hero_buxjn5.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+
+<style>
+  .filters { padding: 30px 60px; display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; border-bottom: 1px solid var(--line); background: var(--paper); }
+  .filter { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; color: var(--mute); cursor: pointer; padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.3s var(--ease), border-color 0.3s var(--ease); background: none; border-left: 0; border-right: 0; border-top: 0; font-family: 'Inter', sans-serif; }
+  .filter:hover, .filter.active { color: var(--ink); border-bottom-color: var(--ink); }
+  @media (max-width: 900px) { .filters { padding: 22px 16px; gap: 14px; } .filter { font-size: 10px; letter-spacing: 0.2em; } }
+
+  .grid { padding: 60px 60px 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 32px; max-width: 1600px; margin: 0 auto; }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); padding: 40px 22px 70px; gap: 40px 18px; } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .product { display: block; position: relative; }
+  .product .img-wrap { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--bone); margin-bottom: 20px; }
+  .product .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease), opacity 0.6s var(--ease); }
+  .product .img-wrap img.alt { position: absolute; inset: 0; opacity: 0; }
+  .product:hover .img-wrap img.main { opacity: 0; }
+  .product:hover .img-wrap img.alt { opacity: 1; }
+  .product:hover .img-wrap img { transform: scale(1.04); }
+  .product .category { color: var(--mute); margin-bottom: 8px; }
+  .product .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; letter-spacing: 0.06em; line-height: 1.1; margin-bottom: 10px; }
+  .product .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--mute); line-height: 1.4; }
+
+  .empty { padding: 80px 60px; text-align: center; color: var(--mute); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; display: none; }
+
+  .contact-strip { background: var(--paper-alt); padding: 80px 60px; text-align: center; border-top: 1px solid var(--line); }
+  .contact-strip .eyebrow { color: var(--mute); margin-bottom: 22px; }
+  .contact-strip h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .contact-strip h3 em { font-style: italic; color: var(--accent); }
+  .contact-strip p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--mute); margin-bottom: 34px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 900px) { .contact-strip { padding: 50px 22px; } }
+
+  .other-collections { padding: 80px 60px 100px; background: var(--paper); border-top: 1px solid var(--line); }
+  .other-collections .head { text-align: center; margin-bottom: 44px; }
+  .other-collections .head .micro { color: var(--mute); }
+  .other-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .other { position: relative; display: block; aspect-ratio: 16/9; overflow: hidden; background: var(--bone); }
+  .other .img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1.4s var(--ease); }
+  .other:hover .img { transform: scale(1.05); }
+  .other::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.6) 100%); }
+  .other .lbl { position: absolute; bottom: 26px; left: 26px; color: var(--paper); z-index: 2; }
+  .other .lbl .micro { opacity: 0.85; display: block; margin-bottom: 6px; }
+  .other .lbl .nm { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; letter-spacing: 0.04em; display: block; }
+  @media (max-width: 700px) {
+    .other-collections { padding: 60px 22px 80px; }
+    .other-grid { grid-template-columns: 1fr; gap: 16px; }
+    .other { aspect-ratio: 4/3; }
+  }
+</style>
+</head>
+<body data-page="collection" data-collection="chaises">
+
+<div class="utility">
+  <div class="left">
+    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
+    <a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a>
+  </div>
+  <div class="right">
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
+    <span>FR</span>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="links-left">
+    <div class="nav-item has-drop">
+      <a href="#" class="drop-toggle">Collections <span class="caret">▾</span></a>
+      <div class="drop">
+        <a href="../collections/tables.html">Tables</a>
+        <a href="../collections/chaises.html">Chaises</a>
+        <a href="../collections/murales.html">Sculptures murales</a>
+      </div>
+    </div>
+    <a href="../atelier.html">Atelier</a>
+  </div>
+  <a href="../index.html" class="mark">AURÉLIS<span class="tag">L'art de la forme</span></a>
+  <div class="links-right">
+    <a href="../commande.html">Sur commande</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="crumbs">
+  <a href="../index.html">Accueil</a>
+  <span class="sep">·</span>
+  <span>Chaises</span>
+</div>
+
+<header class="page-header">
+  <div class="micro eyebrow reveal">Volume II · Collection MMXXVI · Dix-neuf pièces</div>
+  <h1 class="reveal">Chaises.</h1>
+  <p class="lead reveal">Assises sculptées à la main. De la salle à manger au lounge, en passant par les tabourets — la géométrie tient le corps.</p>
+  <a href="../catalog/chaises.html" class="magazine-link reveal">Feuilleter le catalogue imprimé <span>→</span></a>
+</header>
+
+<div class="filters reveal" id="filters"></div>
+<section class="grid" id="grid"></section>
+<div class="empty" id="empty">Aucune pièce dans cette catégorie.</div>
+
+<section class="contact-strip">
+  <div class="micro" style="color:var(--mute); margin-bottom:20px;">Sur mesure</div>
+  <h3>Toutes les pièces existent <em>aussi</em> sur mesure.</h3>
+  <p>Dimensions, finition, matériau — parlez-nous de votre projet.</p>
+  <a href="../contact.html?interet=Chaises" class="btn-primary">Nous écrire <span>→</span></a>
+</section>
+
+<section class="other-collections">
+  <div class="head">
+    <div class="micro">Voir aussi</div>
+  </div>
+  <div class="other-grid">
+    <a href="../collections/tables.html" class="other">
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1779392874/twisted_table_hero_qmewze.webp');"></div>
+      <div class="lbl"><span class="micro">Volume I</span><span class="nm">Tables</span></div>
+    </a>
+    <a href="../collections/murales.html" class="other">
+      <div class="img" style="background-image:url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_1200,c_fill/v1771621734/walking-horse-different_setting_ci8pcb.webp');"></div>
+      <div class="lbl"><span class="micro">Volume III</span><span class="nm">Sculptures murales</span></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-brand">Aurélis</div><div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div></div>
+    <div class="footer-col"><h5>Collections</h5><ul>
+      <li><a href="../collections/tables.html">Tables</a></li>
+      <li><a href="../collections/chaises.html">Chaises</a></li>
+      <li><a href="../collections/murales.html">Sculptures murales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Ressources</h5><ul>
+      <li><a href="../catalog/tables.html">Catalogue Tables</a></li>
+      <li><a href="../catalog/chaises.html">Catalogue Chaises</a></li>
+      <li><a href="../catalog/murales.html">Catalogue Murales</a></li>
+      <li><a href="../mentions-legales.html">Mentions légales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Maison</h5><ul>
+      <li><a href="../atelier.html">L'atelier</a></li>
+      <li><a href="../commande.html">Sur commande</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
+      <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
+      <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI Aurélis — Tous droits réservés</span>
+    <span>Maison fondée à Casablanca</span>
+  </div>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+  let allProducts = [];
+  let activeFilter = 'Tout';
+  const COLLECTION = 'chaises';
+  const CATEGORY_ORDER = ['Tout','Salle à manger','Tabouret','Lounge'];
+
+  fetch('../products.json').then(r => r.json()).then(data => {
+    allProducts = data[COLLECTION].items;
+    buildFilters();
+    renderGrid();
+  });
+
+  function buildFilters() {
+    const filters = document.getElementById('filters');
+    filters.innerHTML = CATEGORY_ORDER.map(c => `<button class="filter ${c === activeFilter ? 'active' : ''}" data-cat="${c}">${c}</button>`).join('');
+    filters.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => { activeFilter = b.dataset.cat; buildFilters(); renderGrid(); }));
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const filtered = activeFilter === 'Tout' ? allProducts : allProducts.filter(p => p.category === activeFilter);
+    if (!filtered.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.map(p => `
+      <a href="produit.html?collection=${COLLECTION}&id=${p.id}" class="product reveal" data-id="${p.id}">
+        <div class="img-wrap">
+          <img class="main" src="${p.hero}" alt="${p.name}" loading="lazy">
+          ${p.gallery && p.gallery.length ? `<img class="alt" src="${p.gallery[0]}" alt="" loading="lazy">` : ''}
+        </div>
+        <div class="category micro">${p.category}</div>
+        <div class="name">${p.name}</div>
+        <div class="quote">${p.quote}</div>
+      </a>`).join('');
+    document.querySelectorAll('.product.reveal').forEach(el => window.AurelisIO.observe(el));
+    document.querySelectorAll('.product').forEach(card => {
+      card.addEventListener('click', () => { if (window.fbq) fbq('track','ViewContent',{ content_name: card.dataset.id, content_category: COLLECTION, content_type:'product' }); });
+    });
+  }
+</script>
+</body>
+</html>
