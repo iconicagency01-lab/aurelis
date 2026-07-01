@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','860595880458458');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=860595880458458&ev=PageView&noscript=1"/></noscript>
+
+<title>AURÉLIS — L'atelier</title>
+<meta name="description" content="L'atelier AURÉLIS à Casablanca. Chaque pièce, dessinée pour un lieu, sculptée par un seul artisan.">
+<meta property="og:title" content="AURÉLIS — L'atelier de Casablanca">
+<meta property="og:description" content="Un seul artisan, du dessin à la livraison. Rien n'est produit en série.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurelis.ma/atelier.html">
+<meta property="og:image" content="https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_85,w_1200/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='32' y='50' font-family='Cormorant Garamond, serif' font-size='56' font-weight='500' fill='%231a1612' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+
+<style>
+  .atelier-hero { position: relative; height: 75vh; min-height: 600px; margin-top: 112px; overflow: hidden; }
+  @media (max-width: 900px) { .atelier-hero { margin-top: 50px; min-height: 480px; height: 65vh; } }
+  .atelier-hero .img { position: absolute; inset: 0; background-image: url('https://res.cloudinary.com/dlo4exspj/image/upload/f_auto,q_88,w_2400,c_fill/v1781099786/pexels-shvetsa-5710850-photoaidcom-greyscale_jii7aw.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroIn 2s var(--ease) 0.2s forwards; }
+  @keyframes heroIn { to { transform: scale(1); } }
+  .atelier-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%); }
+  .atelier-hero .content { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 70px; color: var(--paper); z-index: 2; }
+  .atelier-hero .eyebrow { color: rgba(255,255,255,0.85); margin-bottom: 24px; opacity: 0; animation: fadeUp 1s var(--ease) 0.5s forwards; }
+  .atelier-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 7vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 1.1s var(--ease) 0.7s forwards; text-shadow: 0 2px 24px rgba(0,0,0,0.4); }
+  .atelier-hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 900px) { .atelier-hero .content { padding: 0 22px 44px; } }
+
+  .story { padding: 120px 60px; max-width: 920px; margin: 0 auto; }
+  .story .lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.4vw, 32px); font-style: italic; font-weight: 300; line-height: 1.4; color: var(--ink); margin-bottom: 60px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
+  .story p { font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.65; color: var(--ink); margin-bottom: 24px; }
+  .story p strong { font-weight: 500; color: var(--ink); }
+  @media (max-width: 900px) { .story { padding: 60px 22px; } .story .lead { font-size: 22px; margin-bottom: 40px; padding-bottom: 32px; } .story p { font-size: 17px; } }
+
+  .pillars { background: var(--paper-alt); padding: 100px 60px; border-top: 1px solid var(--line); }
+  .pillars-inner { max-width: 1200px; margin: 0 auto; }
+  .pillars-head { text-align: center; margin-bottom: 64px; }
+  .pillars-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.1; margin-bottom: 18px; }
+  .pillars-head h2 em { font-style: italic; color: var(--accent); }
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .pillar { padding-top: 28px; border-top: 1px solid var(--accent); }
+  .pillar .num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 48px; color: var(--accent); line-height: 1; margin-bottom: 18px; font-weight: 300; }
+  .pillar h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 14px; line-height: 1.2; }
+  .pillar p { font-size: 14px; line-height: 1.7; color: var(--mute); }
+  @media (max-width: 900px) { .pillars { padding: 60px 22px; } .pillars-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .meta-strip { padding: 100px 60px; }
+  .meta-inner { max-width: 1200px; margin: 0 auto; }
+  .meta-head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 56px; gap: 40px; }
+  .meta-head h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 56px); font-weight: 300; line-height: 1; }
+  .meta-head h2 em { font-style: italic; color: var(--mute); }
+  .meta-head .aside { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; color: var(--mute); max-width: 340px; text-align: right; line-height: 1.5; padding-bottom: 6px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .meta-item { display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .meta-item .k { color: var(--mute); }
+  .meta-item .v { font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.4; }
+  @media (max-width: 900px) {
+    .meta-strip { padding: 60px 22px; }
+    .meta-head { flex-direction: column; align-items: flex-start; gap: 12px; padding-bottom: 22px; margin-bottom: 40px; }
+    .meta-head .aside { text-align: left; }
+    .meta-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  }
+
+  .cta-block { background: var(--ink); color: var(--paper); padding: 100px 60px; text-align: center; }
+  .cta-block .eyebrow { color: rgba(255,255,255,0.55); margin-bottom: 24px; }
+  .cta-block h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 52px); font-weight: 300; line-height: 1.1; max-width: 720px; margin: 0 auto 24px; }
+  .cta-block h2 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .cta-block p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto 36px; }
+  .cta-block .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-block .btn-light { background: var(--paper); color: var(--ink); padding: 18px 36px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease), color 0.4s var(--ease); }
+  .cta-block .btn-light:hover { background: var(--accent); color: var(--paper); }
+  .cta-block .btn-light-outline { background: transparent; color: var(--paper); padding: 18px 36px; border: 1px solid rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; display: inline-flex; align-items: center; gap: 12px; transition: background 0.4s var(--ease), border-color 0.3s var(--ease); }
+  .cta-block .btn-light-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--paper); }
+  @media (max-width: 900px) { .cta-block { padding: 60px 22px; } }
+</style>
+</head>
+<body data-page="atelier">
+
+<div class="utility">
+  <div class="left">
+    <a href="tel:+212661420939">+212 6 61 42 09 39</a>
+    <a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a>
+  </div>
+  <div class="right">
+    <a href="https://www.instagram.com/aurelis.maroc" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/212661420939" target="_blank" rel="noopener">WhatsApp</a>
+    <span>FR</span>
+  </div>
+</div>
+
+<nav id="nav">
+  <div class="links-left">
+    <div class="nav-item has-drop">
+      <a href="#" class="drop-toggle">Collections <span class="caret">▾</span></a>
+      <div class="drop">
+        <a href="collections/tables.html">Tables</a>
+        <a href="collections/chaises.html">Chaises</a>
+        <a href="collections/murales.html">Sculptures murales</a>
+      </div>
+    </div>
+    <a href="atelier.html">Atelier</a>
+  </div>
+  <a href="index.html" class="mark">AURÉLIS<span class="tag">L'art de la forme</span></a>
+  <div class="links-right">
+    <a href="commande.html">Sur commande</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="atelier-hero">
+  <div class="img"></div>
+  <div class="content">
+    <div class="eyebrow micro">Casablanca · Maroc · MMXXVI</div>
+    <h1>L'atelier<br><em>d'AURÉLIS.</em></h1>
+  </div>
+</section>
+
+<section class="story">
+  <p class="lead reveal">Aurélis est un atelier — pas une marque, pas une usine. Une seule main, du dessin à la livraison.</p>
+  <p class="reveal">Chaque pièce commence par un dialogue. Un lieu, un usage, une intention. Avant le premier trait, on écoute. La forme arrive ensuite — calculée, dessinée, validée — puis le bois prend le relais.</p>
+  <p class="reveal">Le bois est choisi pièce par pièce. Il est lu, écouté, parfois refusé. Il porte une mémoire — celle de l'arbre, de la saison, du grain — et la forme doit suivre cette mémoire, jamais la contraindre. C'est pourquoi <strong>aucune pièce d'AURÉLIS n'est identique à une autre</strong>. La géométrie est paramétrique ; le résultat reste unique.</p>
+  <p class="reveal">L'atelier est installé à Casablanca, dans un espace où chaque commande passe par les mêmes mains. Pas de production en série. Pas de sous-traitance. Pas de stock qui attend. Une pièce ne quitte l'atelier qu'une fois ajustée à son lieu d'arrivée.</p>
+  <p class="reveal">Ce que nous fabriquons s'inscrit dans une tradition d'art appliqué — celle où la main, le calcul et le matériau ne sont pas opposés mais alliés. C'est cette alliance qu'AURÉLIS appelle <em>l'art de la forme</em>.</p>
+</section>
+
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-head reveal">
+      <h2>Trois principes,<br><em>une signature.</em></h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal">
+        <div class="num">i</div>
+        <h3>Sur mesure</h3>
+        <p>Aucune pièce ne sort sans avoir été dessinée pour un lieu. Dimensions, finition, essence — tout est ajusté.</p>
+      </div>
+      <div class="pillar reveal d1">
+        <div class="num">ii</div>
+        <h3>À la main</h3>
+        <p>Un seul artisan suit la pièce du début à la fin. Le bois est lu, taillé, poncé, huilé par la même main.</p>
+      </div>
+      <div class="pillar reveal d2">
+        <div class="num">iii</div>
+        <h3>À Casablanca</h3>
+        <p>Tout est fabriqué dans notre atelier marocain. Pas de délocalisation, pas d'intermédiaire, pas de série.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meta-strip">
+  <div class="meta-inner">
+    <div class="meta-head reveal">
+      <h2>L'atelier<br><em>en bref.</em></h2>
+      <div class="aside">Visites privées sur rendez-vous. Nous accueillons particuliers, architectes et décorateurs.</div>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item reveal"><span class="k micro">Lieu</span><span class="v">Casablanca, Maroc</span></div>
+      <div class="meta-item reveal d1"><span class="k micro">Fondation</span><span class="v">MMXXVI</span></div>
+      <div class="meta-item reveal d2"><span class="k micro">Visites</span><span class="v">Sur rendez-vous</span></div>
+      <div class="meta-item reveal d3"><span class="k micro">Délai standard</span><span class="v">6 à 8 semaines</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="micro eyebrow">Une pièce pour vous</div>
+  <h2>Une géométrie pensée<br><em>pour votre lieu.</em></h2>
+  <p>Parlez-nous de votre projet. Nous concevons sur mesure, pour particuliers, architectes et hôtellerie.</p>
+  <div class="btn-row">
+    <a href="commande.html" class="btn-light">Voir le processus <span>→</span></a>
+    <a href="contact.html" class="btn-light-outline">Nous écrire <span>→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Aurélis</div>
+      <div class="footer-tagline">L'art de la forme. Mobilier et sculptures, dessinés sur mesure et sculptés à la main à Casablanca.</div>
+    </div>
+    <div class="footer-col"><h5>Collections</h5><ul>
+      <li><a href="collections/tables.html">Tables</a></li>
+      <li><a href="collections/chaises.html">Chaises</a></li>
+      <li><a href="collections/murales.html">Sculptures murales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Ressources</h5><ul>
+      <li><a href="catalog/tables.html">Catalogue Tables</a></li>
+      <li><a href="catalog/chaises.html">Catalogue Chaises</a></li>
+      <li><a href="catalog/murales.html">Catalogue Murales</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Maison</h5><ul>
+      <li><a href="atelier.html">L'atelier</a></li>
+      <li><a href="commande.html">Sur commande</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="tel:+212661420939">+212 6 61 42 09 39</a></li>
+      <li><a href="mailto:contact@aurelis.ma">contact@aurelis.ma</a></li>
+      <li><a href="https://instagram.com/aurelis.maroc" target="_blank" rel="noopener">@aurelis.maroc</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI Aurélis — Tous droits réservés</span>
+    <span>Maison fondée à Casablanca</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
